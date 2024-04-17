@@ -1,0 +1,583 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+  font-family: Open Sans;
+  transition: all 0.6s ease;
+}
+* h2 {
+  font-family: permanent marker;
+}
+* header {
+  display: flex;
+  background-color: black;
+}
+* header .logo {
+  margin: 0.5rem 0 0.5rem 1rem;
+}
+* header .logo img {
+  height: 5vh;
+}
+* header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40%;
+}
+* header nav #training_btn {
+  border: 2px solid red;
+  background: transparent;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+  margin-right: 2rem;
+  color: white;
+  cursor: pointer;
+}
+* header nav #training_btn:hover {
+  color: black;
+  background-color: red;
+}
+* .profile {
+  display: block;
+}
+* .profile h2 {
+  text-align: center;
+  font-size: 4rem;
+  color: red;
+}
+* .profile .wrapper {
+  padding: 3rem 10rem 0 10rem;
+  font-size: 120%;
+}
+* .profile .wrapper form {
+  display: grid;
+  grid-template-areas: "bi bi ad ad" "mi exp exp pb" "- - - btns";
+  grid-template-columns: 35vw 15vw 20vw;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+* .profile .wrapper form label {
+  font-size: 1.2rem;
+}
+* .profile .wrapper form input {
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgb(92, 0, 0);
+}
+* .profile .wrapper form .basic_informations {
+  grid-area: bi;
+  display: flex;
+}
+* .profile .wrapper form .basic_informations .profile_pic {
+  width: 15%;
+  height: 50%;
+  border-radius: 50%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+* .profile .wrapper form .basic_informations .profile_pic img {
+  width: auto;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+* .profile .wrapper form .basic_informations .profile_pic #photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+* .profile .wrapper form .basic_informations .profile_pic #file {
+  border: 1px solid red;
+  display: none;
+}
+* .profile .wrapper form .basic_informations .profile_pic #upload_pic {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25%;
+  width: 25%;
+  padding: 0.4rem;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  bottom: 10%;
+  right: -5%;
+  background-color: rgba(185, 185, 185, 0.5);
+}
+* .profile .wrapper form .basic_informations .profile_pic #upload_pic i {
+  background-color: transparent;
+  color: #5c0000;
+}
+* .profile .wrapper form .basic_informations .personal_info {
+  margin-left: 4%;
+  padding: 1%;
+  border-radius: 10px;
+  border: 2px solid rgb(92, 0, 0);
+}
+* .profile .wrapper form .basic_informations .personal_info div {
+  display: flex;
+  margin: 1rem 0;
+}
+* .profile .wrapper form .basic_informations .personal_info div div {
+  width: 20vw;
+}
+* .profile .wrapper form .basic_informations .personal_info div div label {
+  margin-right: 1%;
+}
+* .profile .wrapper form .basic_informations .personal_info div div select, * .profile .wrapper form .basic_informations .personal_info div div option {
+  border: 2px solid rgb(92, 0, 0);
+}
+* .profile .wrapper form .additional_info {
+  grid-area: ad;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  border-radius: 10px;
+  border: 2px solid rgb(92, 0, 0);
+}
+* .profile .wrapper form .additional_info div {
+  display: flex;
+  margin: 1rem 2rem 1rem 0;
+}
+* .profile .wrapper form .additional_info div label {
+  margin-right: 1rem;
+}
+* .profile .wrapper form .measurements {
+  grid-area: mi;
+  padding: 2rem 1rem 1rem 4rem;
+  border-radius: 10px;
+  border: 2px solid rgb(92, 0, 0);
+}
+* .profile .wrapper form .measurements div {
+  display: flex;
+  margin-bottom: 2%;
+  width: 100%;
+}
+* .profile .wrapper form .measurements div label {
+  margin-right: 1rem;
+}
+* .profile .wrapper form .measurements div input {
+  width: 2.2rem;
+}
+* .profile .wrapper form .experience {
+  grid-area: exp;
+  display: flex;
+  padding: 2%;
+  border-radius: 10px;
+  border: 2px solid rgb(92, 0, 0);
+}
+* .profile .wrapper form .experience div {
+  margin-top: 1rem;
+}
+* .profile .wrapper form .experience div label {
+  margin-right: 2rem;
+}
+* .profile .wrapper form .experience div input[type=radio] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 1vw;
+  height: 2vh;
+  border: 1px solid #999;
+  border-radius: 50%;
+  border: 2px solid rgb(92, 0, 0);
+  transition: box-shadow 0.3s ease;
+}
+* .profile .wrapper form .experience div input[type=radio]:hover {
+  cursor: pointer;
+}
+* .profile .wrapper form .experience div input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 50%;
+  margin: 22% auto;
+  border-radius: 50%;
+}
+* .profile .wrapper form .experience div input[type=radio]:checked:before {
+  background-color: rgb(92, 0, 0);
+}
+* .profile .wrapper form .records {
+  margin-right: 0;
+  grid-area: pb;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid rgb(92, 0, 0);
+}
+* .profile .wrapper form .btns {
+  grid-area: btns;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-top: 1rem;
+}
+* .profile .wrapper form .btns .btn {
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 15px;
+  font-size: 70%;
+  text-align: center;
+  padding: 0;
+  height: 5vh;
+  width: 6vw;
+}
+* .profile .wrapper form .btns .btn:first-child {
+  margin-right: 5%;
+}
+* .profile .wrapper form .btns .btn:hover {
+  background-color: rgb(92, 0, 0);
+  border: none;
+  color: black;
+  font-weight: 900;
+}
+* .training-container {
+  display: none;
+}
+* .training-container h2 {
+  text-align: center;
+  font-size: 4rem;
+  color: red;
+}
+* .training-container .training {
+  padding: 2rem;
+}
+* .training-container .training .one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+* .training-container .training .one .upper {
+  display: grid;
+  place-items: center;
+  text-transform: uppercase;
+  padding: 2rem;
+  border: 2px solid red;
+  border-radius: 15px;
+  font-size: 2rem;
+  margin-bottom: -3.5rem;
+  z-index: 1;
+}
+* .training-container .training .one .lower {
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 4rem 2rem 2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+* .training-container .training .one .lower .exercise-card {
+  border: 2px solid rgb(92, 0, 0);
+  border-radius: 15px;
+  padding: 0.2rem;
+  margin: 0.5rem 1.2rem;
+  cursor: pointer;
+}
+* .training-container .training .one .lower .exercise-card:hover {
+  transform: scale(1.1);
+}
+* .training-container .training .one .lower .exercise-card .exercise-thumb {
+  border-radius: 10px;
+}
+* .training-container .training .one .lower .exercise-card .exercise-thumb img {
+  height: 20vh;
+  border-radius: 10px;
+}
+* .training-container .training .one .lower .exercise-card h4 {
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 2px solid rgb(92, 0, 0);
+  padding: 0.5rem 0;
+}
+* .training-container .training .one .lower .exercise-card .exercise-details {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+* .training-container .training .one .lower .exercise-card .exercise-details div:nth-child(2) {
+  padding: 0 0.5rem;
+  margin: 0 0.5rem;
+  border-inline: solid rgb(92, 0, 0);
+}
+* .training-container .training .one .lower .exercise-card .exercise-details div p {
+  text-align: center;
+  text-transform: uppercase;
+}
+* .training-container .training .one .lower .exercise-card .exercise-details div p:last-child {
+  padding-top: 0.5rem;
+}
+* .show {
+  display: block;
+}
+* .modal-exercise-back {
+  position: fixed;
+  z-index: 1000;
+  padding: 7rem;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(192, 192, 192, 0.534);
+}
+* .modal-exercise-back .modal-exercise {
+  background-color: #000000;
+  padding: 1rem 2rem;
+  border: 2px solid red;
+  border-radius: 10px;
+  position: relative;
+}
+* .modal-exercise-back .modal-exercise .modal-header h3 {
+  text-align: center;
+  color: red;
+  font-size: 2rem;
+}
+* .modal-exercise-back .modal-exercise .modal-header .video-instruction {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+* .modal-exercise-back .modal-exercise .modal-header .video-instruction .video img {
+  height: 12rem;
+  cursor: pointer;
+}
+* .modal-exercise-back .modal-exercise .modal-header .video-instruction .instruction form textarea {
+  color: white;
+  border: 2px solid rgb(92, 0, 0);
+  border-radius: 5px;
+  width: 30vw;
+  height: 12rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+* .modal-exercise-back .modal-exercise .modal-header .video-instruction .instruction form textarea::-moz-placeholder {
+  color: black;
+}
+* .modal-exercise-back .modal-exercise .modal-header .video-instruction .instruction form textarea::placeholder {
+  color: black;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust {
+  border: 2px solid rgb(92, 0, 0);
+  background-color: black;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns {
+  display: flex;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column {
+  width: 25%;
+  text-align: center;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .header {
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5% 0;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .header p {
+  text-transform: uppercase;
+  color: red;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .adjust {
+  height: 5vh;
+  padding-top: 2%;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .adjust input {
+  width: 15%;
+  text-align: end;
+  border: none;
+  background: transparent;
+  margin-right: 2%;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .adjust input::-moz-placeholder {
+  color: white;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .adjust input::placeholder {
+  color: white;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 2%;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete .save_btn input {
+  border: 2px solid rgb(92, 0, 0);
+  background: transparent;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 0.8rem;
+  color: white;
+  cursor: pointer;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete .save_btn input:hover {
+  background-color: rgb(92, 0, 0);
+  color: black;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete .icons {
+  text-align: center;
+  margin-bottom: 15%;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete .icons span {
+  cursor: pointer;
+}
+* .modal-exercise-back .modal-exercise .exercise-save-btn {
+  display: flex;
+  justify-content: end;
+  margin-top: 1rem;
+}
+* .modal-exercise-back .modal-exercise .exercise-save-btn input {
+  border: 2px solid red;
+  background: transparent;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+* .modal-exercise-back .modal-exercise .exercise-save-btn input:hover {
+  color: black;
+  background-color: red;
+}
+
+@media only screen and (max-width: 1440px) {
+  * .profile h2 {
+    text-align: center;
+  }
+  * .profile .wrapper {
+    padding: 2%;
+  }
+  * .profile .wrapper form {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  * .profile .wrapper form .basic_informations {
+    grid-row: 1/2;
+    grid-column: 1/4;
+  }
+  * .profile .wrapper form .basic_informations .profile_pic {
+    width: 12%;
+  }
+  * .profile .wrapper form .basic_informations .personal_info {
+    padding: 0 2%;
+    width: 60vw;
+  }
+  * .profile .wrapper form .basic_informations .personal_info div {
+    width: 100%;
+  }
+  * .profile .wrapper form .basic_informations .personal_info div div {
+    width: 50%;
+  }
+  * .profile .wrapper form .additional_info {
+    margin: 0;
+    grid-row: 1/2;
+    grid-column: 4/5;
+    height: 20vh;
+  }
+  * .profile .wrapper form .measurements {
+    grid-row: 2/4;
+    grid-column: 2/3;
+    margin: 0;
+  }
+  * .profile .wrapper form .experience {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    margin: 0;
+  }
+  * .profile .wrapper form .records {
+    grid-row: 2/3;
+    grid-column: 3/4;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  * header {
+    justify-content: space-between;
+  }
+  * header nav {
+    margin-left: 0;
+  }
+  * .profile .wrapper {
+    padding: 2% 2% 2% 5%;
+  }
+  * .profile .wrapper form {
+    display: flex;
+    flex-direction: column;
+  }
+  * .profile .wrapper form .basic_informations .profile_pic {
+    height: 15%;
+  }
+  * .profile .wrapper form .basic_informations .profile_pic #upload_pic {
+    width: auto;
+    height: auto;
+    bottom: 0;
+    right: 0;
+  }
+  * .profile .wrapper form .basic_informations .personal_info {
+    width: 80vw;
+  }
+  * .profile .wrapper form .measurements,
+  * .profile .wrapper form .experience,
+  * .profile .wrapper form .additional_info {
+    margin-left: 15%;
+    justify-content: center;
+  }
+  * .profile .wrapper form .experience div input[type=radio] {
+    width: 2vw;
+  }
+}
+@media only screen and (max-width: 768px) {
+  * .profile .wrapper form .basic_informations {
+    flex-direction: column;
+    align-items: center;
+  }
+  * .profile .wrapper form .basic_informations .personal_info {
+    margin: 0;
+    width: 100%;
+  }
+  * .profile .wrapper form .basic_informations .personal_info div {
+    display: block;
+  }
+  * .profile .wrapper form .basic_informations .personal_info div div {
+    width: auto;
+  }
+  * .profile .wrapper form .gym_info {
+    margin: 0;
+  }
+  * .profile .wrapper form .measurements {
+    margin: 0;
+    width: 100%;
+    padding: 5%;
+  }
+  * .profile .wrapper form .experience {
+    margin: 0;
+  }
+  * .profile .wrapper form .additional_info {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 425px) {
+  * .profile .wrapper form .basic_informations .profile_pic {
+    width: 30%;
+  }
+  * .profile .wrapper form .experience div input[type=radio] {
+    width: 4vw;
+  }
+}/*# sourceMappingURL=profile.css.map */

@@ -1,0 +1,316 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.6s ease;
+  color: white;
+  background-color: black;
+  font-family: Open Sans;
+}
+* .exercises-container nav {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5%;
+}
+* .exercises-container nav .logo img {
+  height: 5vh;
+}
+* .exercises-container nav .headline {
+  margin-left: 10%;
+}
+* .exercises-container nav .headline h2 {
+  color: red;
+  font-size: 3rem;
+}
+* .exercises-container nav .search-bar form {
+  height: 5vh;
+  width: 15vw;
+  display: flex;
+  align-items: center;
+}
+* .exercises-container nav .search-bar form input {
+  padding-left: 5%;
+  border-radius: 15px;
+  border: 2px solid red;
+  background: none;
+  color: white;
+  height: 70%;
+  width: 100%;
+}
+* .exercises-container nav .search-bar form input:focus {
+  outline: none;
+}
+* .exercises-container nav .search-bar form input::-moz-placeholder {
+  color: white;
+}
+* .exercises-container nav .search-bar form input::placeholder {
+  color: white;
+}
+* .exercises-container main {
+  position: relative;
+}
+* .exercises-container main .muscles {
+  position: absolute;
+  height: 100%;
+  width: 15%;
+  padding: 1% 2%;
+}
+* .exercises-container main .muscles h3 {
+  font-size: 2rem;
+  color: rgb(92, 0, 0);
+  text-align: center;
+}
+* .exercises-container main .muscles ul {
+  margin-top: 5%;
+}
+* .exercises-container main .muscles ul div {
+  display: flex;
+  justify-content: space-between;
+}
+* .exercises-container main .muscles ul div li:not(:last-child) {
+  margin-bottom: 5%;
+}
+* .exercises-container main .muscles ul div span {
+  cursor: pointer;
+  color: rgb(92, 0, 0);
+}
+* .exercises-container main .exercises-databse {
+  margin-left: 15%;
+  padding: 2% 1%;
+  display: flex;
+  flex-wrap: wrap;
+  -moz-column-gap: 1%;
+       column-gap: 1%;
+  row-gap: 4%;
+  height: 50vh;
+  overflow-y: auto;
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+  border-radius: 15px;
+}
+* .exercises-container main .exercises-databse .exercise-card {
+  border: 2px solid rgb(92, 0, 0);
+  border-radius: 15px;
+  cursor: pointer;
+  height: 50%;
+}
+* .exercises-container main .exercises-databse .exercise-card .pic {
+  border-radius: 15px;
+}
+* .exercises-container main .exercises-databse .exercise-card .pic img {
+  border-bottom: 2px solid rgb(92, 0, 0);
+  height: 15vh;
+  border-radius: 15px;
+}
+* .exercises-container main .exercises-databse .exercise-card .exercise-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+}
+* .exercises-container main .exercises-databse .exercise-card .exercise-name p {
+  text-align: center;
+  text-transform: uppercase;
+}
+* .exercises-container main .program {
+  border: 2px solid rgb(92, 0, 0);
+  border-radius: 15px;
+  height: 50vh;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  -moz-column-gap: 1%;
+       column-gap: 1%;
+  row-gap: 4%;
+  margin-left: 15%;
+  padding: 2% 1%;
+}
+* .exercises-container main .program .delete {
+  display: none;
+  background-color: red;
+  right: 0;
+  top: 0;
+  position: absolute;
+  border-radius: 50%;
+  color: white;
+}
+* .exercises-container main .program .number-exercise {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 28%;
+  left: 1%;
+  padding: 2% 4.5%;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+}
+* .exercises-container main .program .exercise-card {
+  border: 2px solid rgb(92, 0, 0);
+  border-radius: 15px;
+  cursor: pointer;
+  height: 50%;
+  position: relative;
+}
+* .exercises-container main .program .exercise-card:hover .delete {
+  display: block;
+}
+* .exercises-container main .program .exercise-card .pic {
+  border-radius: 15px;
+}
+* .exercises-container main .program .exercise-card .pic img {
+  border-bottom: 2px solid rgb(92, 0, 0);
+  height: 15vh;
+  border-radius: 15px;
+}
+* .exercises-container main .program .exercise-card .exercise-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+}
+* .exercises-container main .program .exercise-card .exercise-name p {
+  text-align: center;
+  text-transform: uppercase;
+}
+* .exercises-container main .modal-exercise-back {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding: 7rem;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(192, 192, 192, 0.534);
+}
+* .exercises-container main .modal-exercise-back .modal-exercise {
+  background-color: #000000;
+  padding: 1rem 2rem;
+  border: 2px solid red;
+  border-radius: 10px;
+  position: relative;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .modal-header h3 {
+  text-align: center;
+  color: red;
+  font-size: 2rem;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .modal-header .video-instruction {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .modal-header .video-instruction .video img {
+  height: 12rem;
+  cursor: pointer;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .modal-header .video-instruction .instruction form textarea {
+  border: 2px solid rgb(92, 0, 0);
+  border-radius: 5px;
+  width: 30vw;
+  height: 12rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .header-adjust {
+  border: 2px solid rgb(92, 0, 0);
+  border-radius: 5px 5px 0 0;
+  padding: 1rem 2rem;
+  width: 100%;
+  display: flex;
+  gap: 5%;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .header-adjust p {
+  width: 10%;
+  text-align: center;
+  text-transform: uppercase;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .header-adjust .add-set-btn {
+  margin-left: 33%;
+  border: 2px solid rgb(92, 0, 0);
+  background: transparent;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 0.8rem;
+  color: white;
+  cursor: pointer;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .header-adjust .add-set-btn:hover {
+  color: black;
+  background-color: rgb(92, 0, 0);
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row {
+  display: flex;
+  padding: 1rem 2rem;
+  width: 100%;
+  border-inline: 2px solid rgb(92, 0, 0);
+  border-bottom: 2px solid rgb(92, 0, 0);
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row div {
+  width: 10%;
+  padding-left: 2rem;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row div:first-child input {
+  padding: 0;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row div:last-child {
+  margin-left: 30%;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row div:not(:last-child) {
+  margin-right: 5%;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row div span {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row div span i {
+  background: none;
+  font-weight: 900;
+  color: rgb(92, 0, 0);
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row div span .white {
+  color: white;
+  margin: 0 0.5rem;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row div p {
+  text-align: center;
+  margin-right: 30%;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row input {
+  text-align: center;
+  border: none;
+  font-size: 1rem;
+  width: 60%;
+  padding-left: 1rem;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row input::-moz-placeholder {
+  color: white;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .adjust-row input::placeholder {
+  color: white;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .exercise-save-btn {
+  display: flex;
+  justify-content: end;
+  margin-top: 1rem;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .exercise-save-btn input {
+  border: 2px solid red;
+  background: transparent;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+* .exercises-container main .modal-exercise-back .modal-exercise .adjustments .exercise-save-btn input:hover {
+  color: black;
+  background-color: red;
+}/*# sourceMappingURL=chooseExercises.css.map */

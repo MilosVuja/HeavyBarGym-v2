@@ -1,0 +1,369 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all .6s ease;
+  color: white;
+  background-color: black;
+  font-family: Open Sans;
+  
+  .exercises-container{
+    nav{
+      background-color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .5%;
+
+      .logo{
+        img{
+          height: 5vh;
+        }
+      }
+      .headline{
+        margin-left: 10%;
+        h2{
+          color: red;
+          font-size: 3rem;
+        }
+      }
+      .search-bar{
+        form{
+          height: 5vh;
+          width: 15vw;
+          display: flex;
+          align-items: center;
+          
+          input{
+            padding-left: 5%;
+            border-radius: 15px;
+            border: 2px solid red;
+            background: none;
+            color: white;
+            height: 70%;
+            width: 100%;
+            
+            &:focus{
+              outline: none;
+            }
+            
+            &::placeholder{
+              color: white;
+            }
+          }
+        }
+      }
+    }
+
+    main{
+      position: relative;
+      
+      .muscles{
+        position: absolute;
+        height: 100%;
+        width: 15%;
+        padding: 1% 2%;
+        
+        h3{
+          font-size: 2rem;
+          color: rgb(92, 0, 0);
+          text-align: center;
+        }
+
+        & ul{
+         margin-top: 5%;
+        }
+        
+        & ul div{
+          display: flex;
+          justify-content: space-between;
+          
+          & li:not(:last-child) {
+            margin-bottom: 5%;
+          }
+          
+          & span{
+            cursor: pointer;
+            color: rgb(92, 0, 0);
+          }
+        }
+      }
+      .exercises-databse{
+        margin-left: 15%;
+        padding: 2% 1%;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 1%;
+        row-gap: 4%;
+        height: 50vh;
+        overflow-y: auto;
+        border-left: 2px solid white;
+        border-top: 2px solid white;
+        border-radius: 15px;
+        
+        .exercise-card{
+          border: 2px solid rgb(92, 0, 0);
+          border-radius: 15px;
+          cursor: pointer;
+          height: 50%;
+
+          .pic{
+            border-radius: 15px;
+            img{
+              border-bottom: 2px solid rgb(92, 0, 0);
+              height: 15vh;
+              border-radius: 15px;
+            }
+          }
+          .exercise-name{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3%;
+            p{
+              text-align: center;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+
+      .program{
+        border: 2px solid rgb(92, 0, 0);
+        border-radius: 15px;
+        height:50vh;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 1%;
+        row-gap: 4%;
+        margin-left: 15%;
+        padding: 2% 1%;
+        
+        .delete{
+          display: none;
+          background-color: red;
+          right: 0;
+          top: 0;
+          position: absolute;
+          border-radius: 50%;
+          color: white;
+        }
+        
+        .number-exercise{
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          bottom: 28%;
+          left: 1%;
+          padding: 2% 4.5%;
+          border-radius: 50%;
+          background-color: black;
+          color: white;
+        }
+
+        .exercise-card{
+          border: 2px solid rgb(92, 0, 0);
+          border-radius: 15px;
+          cursor: pointer;
+          height: 50%;
+          position: relative;
+
+          &:hover .delete{
+            display: block;
+          }
+
+          .pic{
+            border-radius: 15px;
+            img{
+              border-bottom: 2px solid rgb(92, 0, 0);
+              height: 15vh;
+              border-radius: 15px;
+            }
+          }
+          .exercise-name{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3%;
+            p{
+              text-align: center;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+      .modal-exercise-back{
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        padding: 7rem;
+        right: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        background-color: rgba(192, 192, 192, 0.534);
+    
+        .modal-exercise{
+          background-color: #000000;
+          padding: 1rem 2rem;
+          border: 2px solid red;
+          border-radius: 10px;
+          position: relative;
+    
+          .modal-header{
+            h3{
+              text-align: center;
+              color:red;
+              font-size: 2rem;
+            }
+    
+            .video-instruction{
+              margin: 1rem 0;
+              display: flex;
+              justify-content: space-between;
+    
+              .video{
+                img{
+                  height: 12rem;
+                  cursor: pointer;
+                }
+              }
+    
+              .instruction{
+                form{
+                  textarea{
+                    border: 2px solid rgb(92, 0, 0);
+                    border-radius: 5px;
+                    width: 30vw;
+                    height: 12rem;
+                    padding: .5rem;
+                    font-size: 1rem;
+                  }
+                }
+                
+              }
+            }
+          }
+          
+          .adjustments{
+            .header-adjust{
+              border: 2px solid rgb(92, 0, 0);
+              border-radius: 5px 5px 0 0;
+              padding: 1rem 2rem;
+              width: 100%;
+              display: flex;
+              gap: 5%;
+    
+              p{
+                width: 10%;
+                text-align: center;
+                text-transform: uppercase;
+              }
+              .add-set-btn{
+                margin-left: 33%;
+                border: 2px solid rgb(92, 0, 0);
+                background: transparent;
+                border-radius: 15px;
+                font-size: .8rem;
+                font-weight: 700;
+                padding: .5rem .8rem;
+                color: white;
+                cursor: pointer;
+    
+                &:hover{
+                  color: black;
+                  background-color: rgb(92, 0, 0);
+                }
+              }
+            }
+    
+            .adjust-row{
+              display: flex;
+              padding: 1rem 2rem;
+              width: 100%;
+              border-inline: 2px solid rgb(92, 0, 0);
+              border-bottom: 2px solid rgb(92, 0, 0);
+    
+              & div{
+                width: 10%;
+                padding-left: 2rem;
+    
+                &:first-child input{
+                  padding: 0;
+                }
+    
+                &:last-child{
+                  margin-left: 30%;
+                }
+                &:not(:last-child){
+                  margin-right: 5%;
+                }
+    
+                & span{
+                  font-size: 1.2rem;
+                  cursor: pointer;
+    
+                  i{
+                    background: none;
+                    font-weight:900;
+                    color: rgb(92, 0, 0);
+                  }
+    
+                  .white{
+                    color: white;
+                    margin: 0 .5rem;
+                  }
+                }
+    
+                & p{
+                  text-align: center;
+                  margin-right: 30%
+                }
+              }
+              
+              input{
+                text-align: center;
+                border: none;
+                font-size: 1rem;
+                width: 60%;
+                padding-left: 1rem;
+    
+                &::placeholder{
+                  color: white;
+                }
+              }
+    
+              
+            }
+            .exercise-save-btn{
+              display: flex;
+              justify-content: end;
+              margin-top: 1rem;
+              
+              input{
+                border: 2px solid red;
+                background: transparent;
+                border-radius: 15px;
+                font-size: .8rem;
+                font-weight: 700;
+                padding: .5rem 1.5rem;
+                color: white;
+                cursor: pointer;
+    
+                &:hover{
+                  color: black;
+                  background-color: red;
+                }
+    
+              }
+    
+            }
+          }
+        }
+      }
+    }
+  }
+}

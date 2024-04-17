@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+  <link rel="shortcut icon" href="/images/flavicon-04.png" type="tablogo">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <title>Heavy Bar Gym</title>
+</head>
+<body>
+  <div class="container">
+    <div class="hours-wrapper">
+        <div class="hours">
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+          <p>We are open 24/7!</p>
+        </div>
+    </div>
+    <header>
+      <div class="ham-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li><a href="index.html#about-us">About us</a></li>
+          <li><a href="index.html#memberships">Memberships</a></li>
+          <li><a href="index.html#trainings">Trainings</a></li>
+          <li><a href="index.html#get-in-touch">Contact</a></li>
+        </ul>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html#about-us">About us</a></li>
+          <li><a href="index.html#memberships">Memberships</a></li>
+          <li><a href="index.html#trainings">Trainings</a></li>
+          <li><a href="/partials/footer">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="logo_and_login">
+        <div class="logo">
+          <img src="/images/heavy-bar-logo.png" alt="logo-red">
+        </div>
+        <button class="login_btn">Login</button>
+        <div class="login">
+          <form class="loginForm">
+            <div class="email_pin">
+              <div class="email">
+                <label for="emailLogin">Email:</label><br>
+                <input type="emailLogin" id="emailLogin" placeholder="Email" required />
+              </div>
+              <div class="pin-number">
+                <label for="pinCode">PIN code:</label><br>
+                <input type="password" id="pinCode" placeholder="PIN code">
+              </div>
+            </div>
+            <div>
+              <button type="submit" class="login_btn_dd">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </header>
+    <main>
+      <h1>
+      Heavy Bar Gym
+      </h1>
+      <p>
+        Not your regular gym!
+      </p>
+    </main>
+    <%- include('./partials/aboutUs') %>
+   
+    <div id="memberships">
+      <div class="memberships-head">
+        <h2>
+          Memberships
+        </h2>
+      </div>
+      <div class="memberships-prices">
+        <div class="card">
+          <div class="card-img">
+            <img src="/images/prices/daily.jpg" alt="daily">
+          </div>
+          <div class="card-desc">
+            <h3>Daily pass</h3>
+            <div class="price-details">
+              <div class="price">
+                <p>Price: </p>
+                <p>20&#36;</p>
+              </div>
+              <button class="membership-btn">Purchase</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <img src="/images/prices/month.jpg" alt="month">
+          </div>
+          <div class="card-desc">
+            <h3>1 month</h3>
+            <div class="price-details">
+              <div class="price">
+                <p>Price: </p>
+                <p>60&#36;</p>
+              </div>
+              <button class="membership-btn">Purchase</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <img src="/images/prices/month3.avif" alt="month3">
+          </div>
+          <div class="card-desc">
+            <h3>3 months</h3>
+            <div class="price-details">
+              <div class="price">
+                <p>Price: </p>
+                <p>150&#36;</p>
+              </div>
+              <button class="membership-btn">Purchase</button>
+            </div>
+          </div>
+          <span class="gold"></span>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <img src="/images/prices/month6.jpg" alt="month6">
+          </div>
+          <div class="card-desc">
+            <h3>6 months</h3>
+            <div class="price-details">
+              <div class="price">
+                <p>Price:</p>
+                <p>250&#36;</p>
+              </div>
+              <button  class="membership-btn">Purchase</button>
+            </div>
+          </div>
+          <span class="platinum"></span>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <img src="/images/prices/month12.jpg" alt="month12">
+          </div>
+          <div class="card-desc">
+            <h3>12 months</h3>
+            <div class="price-details">
+              <div class="price">
+                <p>Price:</p>
+                <p>300&#36;</p>
+              </div>
+              <button class="membership-btn">Purchase</button>
+            </div>
+          </div>
+          <span class="diamond"></span>
+        </div>
+      </div>
+    </div>
+    <div id="trainings">
+      <h2>Need some help?</h2>
+      <p class="training-p">We got you covered!</p>
+      <div class="trainings-wrapper">
+        <div class="guided">
+          <img src="/images/trainings/guided.jpg" alt="guidedt">
+          <p>Guided training</p>
+        </div>
+        <div class="personal">
+         <img src="/images/trainings/personal.jpg" alt="personalt">
+         <p>Personal training</p>
+        </div>
+      <div class="group">
+        <img src="/images/trainings/group.jpg" alt="groupt">
+        <p>Group training</p>
+      </div>
+      </div>
+      <div class="schedule-group-btn">
+        <a class="group-btn" href="/pages/groupClassBooking.ejs" target="_blank">Group trainings<br>schedule</a>
+      </div>
+    </div>
+    <div id="get-in-touch">
+      <h2>How to contact us</h2>
+      <div class="contact-location">
+        <div class="location">
+        <h3>Come to a visit!</h3>
+        <iframe class="location-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.224852768581!2d20.473953776631667!3d44.8169836763882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7ab945e79d73%3A0x1a9a01f45cea37c0!2z0JHRg9C70LXQstCw0YAg0LTQtdGB0L_QvtGC0LAg0KHRgtC10YTQsNC90LAgNjgsINCR0LXQvtCz0YDQsNC0!5e0!3m2!1ssr!2srs!4v1704059425904!5m2!1ssr!2srs"></iframe>
+        </div>
+        <div class="contact">
+          <h3>Send us a message!</h3>
+          <form>
+          <div class="fname">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" placeholder="Enter your first name">
+          </div>
+          <div class="lname">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" placeholder="Enter your last name">
+          </div>
+          <div class="email">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+          </div>
+          <textarea name="msg" id="msg" cols="30" rows="10" placeholder="Enter your message"></textarea>
+          <div class="send-btn">
+            <input type="submit" class="contact_btn" value="Send">
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <div class="modal-purchasing">
+      <div class="modal-container">
+        <div><div class="mem-buy"></div></div>
+        <div><div class="purchasing-modal-header">
+          <h3>Provide your information</h3>
+          <div class="close">
+            <span class="eks">&#x2718;</span>
+          </div>
+        </div>
+        <div class="buy-information">
+          <div class="new-member">
+            <div class="info-policy">
+              <div class="fname-lname">
+                <input type="text" id="fname" placeholder="First name &ast;">
+                <input type="text" id="lname" placeholder="Last name &ast;">
+              </div>
+              <div class="email-phone">
+                <input type="email" id="email" placeholder="Email address &ast;">
+                <input type="tel" id="phone-number" placeholder="Phone number &ast;">
+              </div>
+              <div class="policy" style="flex-direction: column;">
+                <div>
+                  <details>
+                    <summary>Terms and Conditions</summary>
+                    <p style="text-align: left; width: 30vw;" >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi quibusdam eligendi aspernatur! Aliquid officiis facilis porro obcaecati sequi dolor modi rerum corrupti at quae? Exercitationem nisi alias repellat vero magni?
+                    Architecto laboriosam hic, nulla harum placeat nam ratione aut officia fugiat suscipit quis possimus voluptas quos enim pariatur minus quo facilis </p>
+                  </details>
+                </div>
+                  <div style="text-align: center;">
+                    <input type="checkbox" id="policy-main">
+                    <label for="policy-main">I agree to the privacy policy and Terms and Conditions</label> 
+                  </div>
+              </div>
+              <div class="create-btn">
+                <input type="submit" id="create-profile-btn" value="Create profile"> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="credit-card">
+          <div class="container">
+            <h3>Please enter your card details</h3>
+            <div class="card">
+              <div class="card-logos">
+                <img class="logo" id="visa" src="/images/credit-card/visa.png" />
+                <img class="logo" id="mastercard" src="/images/credit-card/master.png" />
+                <img class="logo" id="american-express" src="/images/credit-card/american-express.png" />
+              </div>
+              <form>
+                <div class="card-number">
+                  <label>Card Number</label>
+                  <input class="card-number" type="text" placeholder="1234 1234 1234 1234" required maxlength="16" />
+                </div>
+                <div class="container-inner">
+                  <div class="name">
+                    <label>Card</label>
+                    <input class="card-name" type="text" placeholder="JOHN DOE" required />
+                  </div>
+                  <div class="expiration-date">
+                    <label>Exp. Date</label>
+                    <input class="card-name" type="text" placeholder="10/25"  maxlength="5" required />
+                  </div>
+                  <div class="ccv">
+                    <label>CCV</label>
+                    <input class="card-name" type="text" placeholder="123"  maxlength="3" required />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div></div>
+        
+      </div>   
+    </div>
+  </div>
+
+
+  <script src="/js/main.js"></script>
+  <script src="/js/login.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
+</body>
+</html>

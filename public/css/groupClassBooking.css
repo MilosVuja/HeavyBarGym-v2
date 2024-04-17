@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Open Sans;
+}
+
+.modal-booking {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding: 7rem;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(192, 192, 192, 0.534);
+}
+.modal-booking .modal-container {
+  background-color: #000000;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 2px solid red;
+  width: 55%;
+  position: relative;
+  color: white;
+}
+.modal-booking .modal-container .booking-modal-header {
+  position: relative;
+}
+.modal-booking .modal-container .booking-modal-header h3 {
+  text-align: center;
+  color: red;
+  font-size: 2rem;
+}
+.modal-booking .modal-container .booking-modal-header .close {
+  position: absolute;
+  right: -1%;
+  top: -40%;
+  display: flex;
+  align-items: center;
+}
+.modal-booking .modal-container .booking-modal-header .close .eks {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-booking .modal-container .main {
+  padding: 2%;
+}
+.modal-booking .modal-container .main * {
+  margin-bottom: 0.5rem;
+}
+.modal-booking .modal-container .main p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.modal-booking .modal-container .main form {
+  text-align: center;
+}
+.modal-booking .modal-container .main form .contact-info {
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+}
+.modal-booking .modal-container .main form .book-modal-btn {
+  border: 2px solid red;
+  background: transparent;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+  color: white;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+.modal-booking .modal-container .main form .book-modal-btn:hover {
+  color: black;
+  background-color: red;
+}
+
+.container header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+}
+.container header .logo {
+  margin: 0.5rem 0 0.5rem 1rem;
+}
+.container header .logo img {
+  height: 5vh;
+}
+.container header .schedule-headline h2 {
+  color: red;
+  text-align: center;
+  text-transform: uppercase;
+}
+.container header .back-home-btn {
+  padding-right: 1rem;
+}
+.container header .back-home-btn .backh-btn {
+  text-decoration: none;
+  border: 2px solid red;
+  background: transparent;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+  color: white;
+  cursor: pointer;
+}
+.container header .back-home-btn .backh-btn:hover {
+  color: black;
+  background-color: red;
+}
+.container table {
+  margin: 0 auto;
+  color: white;
+  border-collapse: separate;
+  border-spacing: 0.1rem;
+}
+.container table tr {
+  background-color: black;
+}
+.container table tr th {
+  background-color: rgb(92, 0, 0);
+  padding: 1%;
+  width: 10%;
+}
+.container table tr .red {
+  border-left: 5px solid red;
+}
+.container table tr .red h3 {
+  color: red;
+}
+.container table tr .red div button {
+  background-color: red;
+}
+.container table tr .red p:nth-last-child(3) {
+  color: red;
+}
+.container table tr .blue {
+  border-left: 5px solid blue;
+}
+.container table tr .blue h3 {
+  color: blue;
+}
+.container table tr .blue div button {
+  background-color: blue;
+}
+.container table tr .blue p:nth-last-child(3) {
+  color: blue;
+}
+.container table tr .yellow {
+  border-left: 5px solid yellow;
+}
+.container table tr .yellow h3 {
+  color: yellow;
+}
+.container table tr .yellow div button {
+  color: black;
+  background-color: yellow;
+}
+.container table tr .yellow p:nth-last-child(3) {
+  color: yellow;
+}
+.container table tr td {
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+.container table tr td:hover {
+  background-color: rgba(255, 255, 255, 0.11);
+}
+.container table tr td * {
+  padding: 0.3rem 0.2rem;
+}
+.container table tr td div {
+  display: flex;
+  justify-content: center;
+}
+.container table tr td div button {
+  border: none;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.6rem 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+.container section {
+  display: flex;
+  justify-content: space-between;
+  padding: 2% 10%;
+}
+.container section .legend h4 {
+  font-size: 1.5rem;
+}
+.container section .legend .legend-desc {
+  width: 155%;
+}
+.container section .legend .legend-desc div {
+  display: flex;
+}
+.container section .legend .legend-desc div .redl {
+  background-color: red;
+}
+.container section .legend .legend-desc div .bluel {
+  background-color: blue;
+}
+.container section .legend .legend-desc div .yellowl {
+  background-color: yellow;
+}
+.container section .legend .legend-desc div div {
+  width: 100%;
+  margin-bottom: 2%;
+}
+.container section .legend .legend-desc div p {
+  width: 10%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.container section .remove-booking p {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 2%;
+}
+.container section .remove-booking form {
+  display: flex;
+  justify-content: space-around;
+}
+.container section .remove-booking form div:first-child {
+  margin-right: 2%;
+}
+.container section .remove-booking form .cancel-booking {
+  border: 2px solid red;
+  background-color: black;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.container section .remove-booking form .cancel-booking:hover {
+  background-color: rgb(24, 24, 24);
+}/*# sourceMappingURL=groupClassBooking.css.map */

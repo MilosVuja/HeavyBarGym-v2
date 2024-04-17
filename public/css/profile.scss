@@ -1,0 +1,717 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+  font-family: Open Sans;
+  transition: all .6s ease;
+
+
+  h2{
+    font-family: permanent marker;
+  }
+
+  header{
+    display: flex;
+    background-color: black;
+
+    .logo{
+      margin: .5rem 0 .5rem 1rem;
+
+      img{
+        height: 5vh;
+      }
+    }
+
+    nav{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 40%; 
+      
+      #training_btn{
+        border: 2px solid red;
+        background: transparent;
+        border-radius: 15px;
+        font-size: .8rem;
+        font-weight: 700;
+        padding: .5rem 1.2rem;
+        margin-right: 2rem;
+        color: white;
+        cursor: pointer;
+
+        &:hover{
+          color: black;
+          background-color: red;
+        }
+      }
+    }
+  }
+
+  .profile{
+    display: block;
+    h2{
+      text-align: center;
+      font-size: 4rem;
+      color: red;
+    }
+
+    .wrapper{
+      padding: 3rem 10rem 0 10rem;
+      font-size: 120%;
+      
+      form{
+        display: grid;
+        grid-template-areas:  "bi bi ad ad"
+                              "mi exp exp pb"
+                              "- - - btns";
+        grid-template-columns: 35vw 15vw 20vw;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 1rem;
+
+        & label{
+          font-size: 1.2rem;
+        }
+        & input{
+          font-size: 1.2rem;
+          border: none;
+          outline: none;
+          border-bottom: 1px solid rgb(92, 0, 0);
+        }
+
+        .basic_informations{
+          grid-area: bi;
+          display: flex;
+          
+          .profile_pic{
+            width: 15%;
+            height: 50%;
+            border-radius: 50%;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+
+            img{
+              width: auto;
+              height: auto;
+              object-fit: cover;
+            }
+
+            #photo{
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+            }
+
+            #file{
+              border: 1px solid red;
+              display: none;
+            }
+
+            #upload_pic{
+              position: absolute;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 25%;
+              width: 25%;
+              padding: .4rem;
+              border-radius: 50%;
+              cursor: pointer;
+              color: #fff;
+              bottom: 10%;
+              right: -5%;
+              background-color: rgba(185, 185, 185, 0.5);
+              
+              i{
+                background-color: transparent;
+                color: #5c0000;
+              }
+            }
+          }
+
+          .personal_info{
+            margin-left: 4%;
+            padding: 1%;
+            border-radius: 10px;
+            border: 2px solid rgb(92, 0, 0);
+            
+            & div{
+              display: flex;
+              margin: 1rem 0;
+
+              & div {
+                width: 20vw;
+                
+                & label{
+                  margin-right: 1%;
+                }
+
+                & select,
+                & option{
+                  border: 2px solid rgb(92, 0, 0);
+                }
+              }
+            }
+          }
+        }
+        
+        .additional_info{
+          grid-area: ad;
+          display: flex;
+          flex-direction: column;
+          padding: 2%;
+          border-radius: 10px;
+          border: 2px solid rgb(92, 0, 0);
+
+          & div {
+            display: flex;
+            margin: 1rem 2rem 1rem 0;
+
+            & label{
+              margin-right: 1rem;
+            }
+          }
+
+          
+        }
+
+        .measurements{
+          grid-area: mi;
+          padding: 2rem 1rem 1rem 4rem;
+          border-radius: 10px;
+          border: 2px solid rgb(92, 0, 0);
+          
+          & div {
+            display: flex;
+            margin-bottom: 2%;
+            width: 100%;
+            
+            & label{
+              margin-right: 1rem;
+            }
+
+            & input {
+              width: 2.2rem;
+            }
+          }
+        }
+
+        .experience{
+          grid-area: exp;
+          display: flex;
+          padding: 2%;
+          border-radius: 10px;
+          border: 2px solid rgb(92, 0, 0);
+        
+          & div{
+            margin-top: 1rem;
+            
+            & label {
+              margin-right: 2rem;
+            }
+            & input[type='radio']{
+              appearance: none;
+              width: 1vw;
+              height: 2vh;
+              border: 1px solid #999;
+              border-radius: 50%;
+              border: 2px solid rgb(92, 0, 0);
+              transition: box-shadow 0.3s ease;
+              
+              &:hover{
+                cursor: pointer;
+              }
+
+              &:before {
+                content: '';
+                display: block;
+                width: 50%;
+                height: 50%;
+                margin: 22% auto;
+                border-radius: 50%;
+              }
+
+              &:checked:before{
+                background-color: rgb(92, 0, 0);
+              }
+            }
+          }
+        }
+      
+        .records{
+          margin-right: 0;
+          grid-area: pb;
+          display: flex;
+          flex-direction: column;
+          padding: 1rem;
+          border-radius: 10px;
+          border: 2px solid rgb(92, 0, 0);
+        }
+
+        .btns{
+          grid-area: btns;
+          display: flex;
+          justify-content: center;
+          align-items: end;
+          margin-top: 1rem;
+
+          .btn{
+            cursor: pointer;
+            background: transparent;
+            border: 2px solid white;
+            border-radius: 15px;
+            font-size: 70%;
+            text-align: center;
+            padding: 0;
+            height: 5vh;
+            width: 6vw;
+
+            &:first-child{
+            margin-right: 5%;
+          }
+            &:hover{
+              background-color: rgb(92, 0, 0);
+              border: none;
+              color: black;
+              font-weight: 900;
+            }
+          }
+        }
+      }
+    }
+  }  
+  .training-container{
+    display: none;
+
+    h2{
+      text-align: center;
+      font-size: 4rem;
+      color: red;
+    }
+    .training{
+      padding: 2rem;
+      
+      .one{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 4rem;
+        .upper{
+          display: grid;
+          place-items: center;
+          text-transform: uppercase;
+          padding: 2rem;
+          border: 2px solid red;
+          border-radius: 15px;
+          font-size: 2rem;
+          margin-bottom: -3.5rem;
+          z-index: 1;
+
+        }
+        .lower{
+          border: 2px solid white;
+          border-radius: 15px;
+          padding: 4rem 2rem 2rem 2rem;
+          display: flex;
+          flex-wrap: wrap;
+
+          .exercise-card{
+            border: 2px solid rgb(92, 0, 0);
+            border-radius: 15px;
+            padding: .2rem;
+            margin: .5rem 1.2rem;
+            cursor: pointer;
+            
+            &:hover{
+              transform: scale(1.1);
+            }
+
+            .exercise-thumb{
+              border-radius: 10px;
+              img{
+                height: 20vh;
+                border-radius: 10px;
+              }
+            }
+
+            h4{
+              text-align: center;
+              text-transform: uppercase;
+              border-bottom: 2px solid rgb(92, 0, 0);
+              padding: .5rem 0;
+            }
+
+            .exercise-details{
+              display: flex;
+              justify-content: center;
+              padding: .5rem;
+
+              & div:nth-child(2){
+                padding: 0 .5rem;
+                margin: 0 .5rem;
+                border-inline: solid rgb(92, 0, 0);
+              }
+              
+              & div p{
+                text-align: center;
+                text-transform: uppercase;
+                
+                
+                &:last-child{
+                  padding-top: .5rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .show{
+    display: block;
+  }
+  .modal-exercise-back{
+    // display: none;
+    position: fixed;
+    z-index: 1000;
+    padding: 7rem;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(192, 192, 192, 0.534);
+
+    .modal-exercise{
+      background-color: #000000;
+      padding: 1rem 2rem;
+      border: 2px solid red;
+      border-radius: 10px;
+      position: relative;
+
+      .modal-header{
+        h3{
+          text-align: center;
+          color:red;
+          font-size: 2rem;
+        }
+
+        .video-instruction{
+          margin: 1rem 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+
+          .video{
+            img{
+              height: 12rem;
+              cursor: pointer;
+            }
+          }
+
+          .instruction{
+            form{
+              textarea{
+                color: white;
+                border: 2px solid rgb(92, 0, 0);
+                border-radius: 5px;
+                width: 30vw;
+                height: 12rem;
+                padding: .5rem;
+                font-size: 1rem;
+                outline: none;
+                
+                &::placeholder{
+                  color: black;
+                }
+              }
+            } 
+          }
+        }
+      }
+      
+      .wrapper_adjust{
+        border: 2px solid rgb(92, 0, 0);
+        background-color: black;
+      
+        .adjustments{
+          display: flex;
+          justify-content: space-between;
+          color: white;
+      
+          .columns{
+            display: flex;
+
+            .column{
+              width: 25%;
+              text-align: center;
+
+              .header{
+                height: 5vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 5% 0;
+
+                p{
+                  text-transform: uppercase;
+                  color: red;
+                }
+              }
+
+              .adjust{
+                height: 5vh;
+                padding-top: 2%;
+                
+                input{
+                  width: 15%;
+                  text-align: end;
+                  border: none;
+                  background: transparent;
+                  margin-right: 2%;
+        
+                  &::placeholder{
+                    color: white;
+                  }
+                }
+              }
+            }
+          }
+      
+          .add-delete{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin-right: 2%;
+            .save_btn{
+              input{
+                border: 2px solid rgb(92, 0, 0);
+                background: transparent;
+                border-radius: 15px;
+                font-size: .8rem;
+                font-weight: 700;
+                padding: .5rem .8rem;
+                color: white;
+                cursor: pointer;
+
+                &:hover{
+                  background-color: rgb(92, 0, 0);
+                  color: black;
+                }
+              }
+            }
+      
+            .icons{
+              text-align: center;
+              margin-bottom: 15%;
+              span{
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+      .exercise-save-btn{
+        display: flex;
+        justify-content: end;
+        margin-top: 1rem;
+        
+        input{
+          border: 2px solid red;
+          background: transparent;
+          border-radius: 15px;
+          font-size: .8rem;
+          font-weight: 700;
+          padding: .5rem 1.5rem;
+          color: white;
+          cursor: pointer;
+
+          &:hover{
+            color: black;
+            background-color: red;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px){
+  *{
+    .profile{
+      h2{
+        text-align: center;
+      }
+      .wrapper{
+        padding: 2%;
+        form{
+          grid-template-columns: 1fr 1fr 1fr;
+          // grid-template-rows: ;
+          gap: 10px;
+
+          .basic_informations{
+            grid-row: 1/2;
+            grid-column: 1/4;
+            .profile_pic{
+              width: 12%;
+            }
+            .personal_info{
+              padding: 0 2%;
+              width: 60vw;
+
+              & div{
+                width: 100%;
+
+                & div{
+                  width: 50%;
+                }
+              }
+            }
+          }
+
+          .additional_info{
+            margin: 0;
+            grid-row: 1/2;
+            grid-column: 4/5;
+            height: 20vh;
+          }
+
+          .measurements{
+            grid-row: 2/4;
+            grid-column: 2/3;
+            margin: 0;
+
+          }
+
+          .experience{
+            grid-row: 2/3;
+            grid-column: 1/2;
+            margin: 0;
+
+          }
+
+          .records{
+            grid-row:2/3;
+            grid-column: 3/4;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1024px){
+  *{
+    header{
+      justify-content: space-between;
+      
+      nav{
+        margin-left: 0;  
+      }
+    }
+    .profile{
+      .wrapper{
+        padding: 2% 2% 2% 5%;
+        form{
+          display: flex;
+          flex-direction: column;
+
+          .basic_informations{
+            .profile_pic{
+              height: 15%;
+
+              #upload_pic{
+                width: auto;
+                height: auto;
+                bottom: 0;
+                right: 0;
+              }
+            }
+            .personal_info{
+              width: 80vw;
+            }
+          }
+
+          .measurements,
+          .experience,
+          .additional_info{
+            margin-left: 15%;
+            justify-content: center;
+          }
+
+          .experience{
+            & div{
+              & input[type='radio']{
+                width: 2vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px){
+  *{
+    .profile{
+      .wrapper{
+        form{
+          .basic_informations{
+            flex-direction: column;
+            align-items: center;
+
+           .personal_info{
+              margin: 0;
+              width: 100%;
+              & div{
+                display: block;
+                & div{
+                  width: auto;
+                }
+              }
+            }
+          }
+          .gym_info{
+            margin: 0;
+          }
+          .measurements{
+            margin: 0;
+            width: 100%;
+            padding: 5%;
+          }
+          .experience{
+            margin: 0;
+
+          }
+          .additional_info{
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 425px){
+  *{
+    .profile{
+      .wrapper{
+        form{
+          .basic_informations{
+            .profile_pic{
+              width: 30%;
+            }
+          }
+          .experience{
+            & div{
+              & input[type='radio']{
+                width: 4vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

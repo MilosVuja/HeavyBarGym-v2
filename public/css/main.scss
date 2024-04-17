@@ -1,0 +1,1111 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: Open Sans;
+  transition: all .6s ease;
+
+  textarea:focus,
+  input:focus {
+    outline: none;
+  }
+
+  h2{
+    font-size: 4rem;
+    text-align: center;
+    padding: 2% 0;
+    background: none;
+    color: red;
+    font-family: permanent marker;
+  }
+
+  
+  .container{
+    .hours-wrapper{
+      overflow: hidden;
+
+      .hours{
+        background-color: rgb(92, 0, 0);
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 10rem;
+        justify-items: stretch;
+        gap: 10rem;
+        
+        p{
+          font-weight: 600;
+          color: black;
+          animation: banner 10s linear infinite;
+        }
+      }
+    }
+
+    header{
+      padding: 0 2%;
+      display: flex;
+      align-items: center;
+      height: 15vh;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .ham-menu{
+        display: none;
+        height: 45px;
+        width: 45px;
+        cursor: pointer;
+        position: relative;
+        
+        span{
+          height: 5px;
+          width: 100%;
+          background-color: white;
+          border-radius: 30px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: .3s ease;
+          
+          &:first-child{
+            top: 25%;
+          }
+          &:last-child{
+            top: 75%;
+          }
+        }
+        
+        &.active{
+
+          span:first-child{
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+          span:nth-child(2){
+            opacity: 0;
+          }
+          span:last-child{
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+          }
+        }
+      }
+
+      .nav-links{
+        display: none;
+        position: absolute;
+        top: 100%;
+        border: 2px solid white;
+        border-radius: 15px;
+        padding: .5% 2% .5% 1%;
+
+        ul{
+          li{
+            list-style-type: none;
+            padding: 5% 0;
+
+            a{
+              text-decoration: none;
+              color: white;
+              border-bottom: 2px solid black;
+
+              &:hover{
+                border-bottom: 2px solid rgb(92, 0, 0);
+              }
+            }
+          }
+        }
+      }
+
+      .active{
+        display: block;
+      }
+
+      nav{
+        margin-left: 2%;
+        width: 40vw;
+        height: 100%;
+
+        ul{
+          display: flex;
+          justify-content: space-between;
+          height: 100%;
+          
+          li{
+            list-style-type: none;
+
+            a{
+              text-decoration: none;
+              text-align: center;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              border: 2px solid transparent;
+              position: relative;
+
+              &::before{
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: .25rem;
+                background: red;
+                border-radius: 5px;
+                transform: scaleX(0);
+                transition: all .6s ease;
+              }
+
+              &:hover::before{
+                transform: scaleX(1);
+              }
+            }
+          }
+        } 
+      }
+
+      .logo_and_login{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 60vw;
+        position: relative;
+        
+        .logo {
+          display: flex;
+          justify-content: center;
+          height: 15vh;
+          margin-top: 1%;
+          margin-left: 5%;
+
+          img{
+            height: 100%;
+          }
+        }
+        .login{
+          display: none;
+          position: absolute;
+          right: 2%;
+          top: 80%;
+
+          form{
+            border: 2px solid white;
+            border-radius: 15px;;
+            padding: 2%;
+            
+            input{
+              color: black;
+              width: 100%;
+            }
+
+            .email_pin{
+              display: flex;
+              justify-content: space-around;
+              gap: 1%;
+              margin-bottom: 2%;
+            }
+
+            & div{
+              text-align: center;
+
+              .login_btn_dd{
+                color: white;
+                cursor: pointer;
+                background: transparent;
+                border: 2px solid rgb(92, 0, 0);
+                border-radius: 15px;
+                font-size: 1rem;
+                text-align: center;
+                padding: 0;
+                height: 2.5rem;
+                width: 6rem;
+                margin-top: .5rem;
+
+                &:hover{
+                  background-color: rgb(92, 0, 0);
+                  color: black;
+                  font-weight: bold;
+                }
+
+                a{
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+        .login.active{
+          display: block;
+        }
+        .login_btn{
+          border: 2px solid red;
+          background: transparent;
+          border-radius: 15px;
+          font-size: .8rem;
+          font-weight: 700;
+          padding: .5rem 1.2rem;
+          margin-right: 2rem;
+          cursor: pointer;
+
+          &:hover{
+            color: black;
+            background-color: red;
+          }
+        }
+      }
+    }
+
+    main{
+      height: 100vh;
+      background-image: url(../images/main-pic.jpg);
+      background-position: center;
+      padding: 2%;
+
+      h1{
+        font-size: 6rem;
+        font-family: permanent marker;
+        color: red;
+        margin-top: 8%;
+      }
+
+      p{
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1%;
+      }
+    }
+
+    #about-us{
+      height: 50vh;
+      padding: 0 15%;
+      
+      h2{
+        color: black;
+      }
+
+      .about-us-icon-wrapper{
+        display: flex;
+        padding-top: 5%;
+        justify-content: center;
+        align-items: center;
+
+        .wrapp{
+          width: 20%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          .icon{
+
+            img{
+              height: 4rem;
+            }
+          }
+
+          .desc{
+
+            .scroll{
+              text-align: center;
+              font-weight: bold;
+              color: hsl(0 0% 100% / 0.1);
+              background-clip: text;
+              background-repeat: no-repeat;
+              background-size: 0% 100%;
+              background-image: linear-gradient(black, black);
+              animation: scroll linear forwards;
+              animation-timeline: view(y);
+              animation-range-start: cover 15vh;
+              animation-range-end: cover 40vh;
+            }
+          }
+        }
+      }
+    }
+
+    #memberships{
+      padding-bottom: 10%;
+      background-color: black;
+      
+      .memberships-head{
+        margin-bottom: 4%;
+      }
+
+      .memberships-head{
+        margin-bottom: 4%;
+      }
+
+      .memberships-prices{
+        padding: 0 2%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .card{
+          border: 2px solid rgb(92, 0, 0);
+          border-radius: 10px;
+          position: relative;
+          cursor: pointer;
+
+          &:hover{
+            border: 2px solid rgb(255, 0, 0);
+            box-shadow: 2px 2px 10px rgb(92, 0, 0);
+          }
+
+          &:hover .card-img img{
+            filter: saturate(1.5);
+          }
+
+          &:hover .card-desc h3{
+            color: red;
+          }
+
+          &:hover .card-desc .price-details button,
+          &:hover span::before{
+            background-color: red;
+          }
+
+          .card-img{
+            width: 15vw;
+
+            img{
+              width: 100%;
+              border-top-right-radius: 10px;
+              border-top-left-radius: 10px;
+              filter: grayscale(1);
+            }
+          }
+
+          .card-desc{
+
+            h3{
+              font-size: 2rem;
+              color: rgb(92, 0, 0);
+              text-align: center;
+              margin-bottom: 10%;
+              text-transform: uppercase;
+            }
+
+            .price-details{
+              padding: 10%;
+              display: flex;
+              justify-content: space-between;
+
+              .price p:last-child{
+                font-size: 1.5rem;
+                text-shadow: 0 0 10px #fff;
+              }
+
+              button{
+                background-color: rgb(92, 0, 0);
+                border: none;
+                font-weight: 900;
+                padding: 0 10%;
+                border-radius: 20px;
+                color: black;
+                cursor: pointer;
+                text-transform: uppercase;
+              }
+            }
+          }
+
+          span{
+            position: absolute;
+            overflow: hidden;
+            width: 9rem;
+            height: 9rem;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;         
+
+            &::before {
+              content:'';
+              position: absolute;
+              width: 150%;
+              height: 2.5rem;
+              background-color: rgb(92, 0, 0);
+              transform: rotate(-45deg) translateY(-1.4rem);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #fff;
+              font-weight: 600;
+              letter-spacing: 0.25em;
+              text-transform: uppercase;
+            }
+          }
+
+          .gold::before{
+            content:"GOLD"
+          }
+
+          .platinum::before{
+            content: 'PLATINUM';
+          }
+
+          .diamond::before{
+            content: 'DIAMOND';
+          }
+        }
+      }
+    }
+
+    #trainings{
+      padding-bottom: 5%;
+      background: linear-gradient(360deg, hsla(0, 0%, 0%, 1) 10%, hsla(0, 100%, 29%, 1) 40%, hsla(0, 100%, 29%, 1) 60%, hsla(0, 0%, 0%, 1) 90%);
+      position: relative;
+
+      h2{
+        text-align: center;
+        padding: 0;
+      }
+
+      .training-p{
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 3%;
+
+      }
+
+      .trainings-wrapper{
+        padding-top: 2%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 100px;
+        align-items: center;
+        
+        div{
+          position: relative;
+          cursor: pointer;
+          height: 30vh;
+          
+          &:hover{
+            transform: scale(1.4);
+          }
+
+          img{
+            height: 30vh;
+            border-radius: 10px;
+          }
+
+          p{
+            position: absolute;
+            padding: 2%;
+            left: 35%;
+            bottom: 5%;
+            background-color: black;
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .schedule-group-btn{
+        display: flex;
+        position: absolute;
+        bottom: -5%;
+        right: 18.5%;
+
+
+        .group-btn{
+          border: 2px solid red;
+          background-color: black;
+          border-radius: 15px;
+          font-size: .8rem;
+          font-weight: 700;
+          padding: .5rem 1.2rem;
+          text-align: center;
+          text-decoration: none;
+          cursor: pointer;
+
+          &:hover{
+            background-color: rgb(24, 24, 24);
+          }
+        }
+      }
+    }
+
+    #get-in-touch{
+      background-image: url(../images/get-in-touch.png);
+      color: white;
+      padding: 2.5%;
+
+
+      h2{
+        color: red;
+      }
+
+      h3{
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      .location{
+
+        .location-map{
+          margin-top: 1%;
+          width: 50vw;
+          height: 60vh;
+        }
+      }
+      .contact-location{
+        display: flex;
+        gap: 2%;
+
+        .contact{
+          width: 50vw;
+
+          form{
+            
+            label{
+              font-size: 1.3rem;
+              margin-top: .4rem;
+              
+            }
+
+            input{
+              height: 2rem;
+              padding: 1.5%;
+              font-size: 1rem;
+            }
+
+            input[type="text"],
+            input[type="email"]{
+              background: none;
+              border: none;
+            }
+            .fname,
+            .lname,
+            .email{
+              display: flex;
+              flex-direction: column;
+              margin: 2% 0;
+            }
+            textarea{
+              width: 100%;
+              padding: 1.5%;
+              font-size: 1rem;
+              color: black;
+              font-weight: 600;
+            }
+            .contact_btn{
+              cursor: pointer;
+              background: transparent;
+              border: 2px solid white;
+              border-radius: 15px;
+              font-size: 1rem;
+              text-align: center;
+              padding: 0;
+              height: 3rem;
+              width: 6rem;
+              margin-top: 1.5rem;
+
+              &:hover{
+                background-color: rgb(92, 0, 0);
+                border: 2px solid black;
+                color: black;
+                font-weight: 900;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    footer{
+      background-color: rgb(92, 0, 0);
+      height: 5vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5%;
+
+      .copyright{
+        p{
+          font-size: .8rem;
+          font-weight: 600;
+          color: black;
+        }
+      }
+
+      .small-logo{
+        display: flex;
+        align-items: center;
+        img{
+          height: 3vh;
+        }
+      }
+
+      .social-net{
+        display: flex;
+        gap: 1rem;
+        
+        i{
+          color: black;
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .modal-purchasing{
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding: 7rem;
+      right: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      background-color: rgba(192, 192, 192, 0.534);
+      
+      .modal-container{
+        background-color: #000000;
+        margin: 0 auto;
+        padding: 1rem;
+        border: 2px solid red;
+        width: 35%;
+        position: relative;
+
+        .purchasing-modal-header{
+          display: flex;
+          justify-content: end;
+          position: relative;
+          h3{
+            color:red;
+            font-size: 2rem;
+            margin-right: 8%;
+          }
+          .close{
+            display: flex;
+            align-items: center;
+            position: absolute;
+            right: -1%;
+            top: -40%;
+            .eks{
+              font-size: 1.5rem;
+              cursor: pointer;
+            }
+          }
+        }
+        
+        .buy-informations{
+          
+          .new-member{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            .info-policy{
+              .policy{
+                display: flex;
+                
+                & div{
+                  margin: .5rem;
+
+                  & details summary::marker{
+                    color: red;
+                  }
+                }
+                
+                & div:last-child{
+                  text-align: left;
+                }
+              }
+
+              .create-btn{
+                #create-profile-btn{
+                  border: 2px solid red;
+                  background: transparent;
+                  border-radius: 15px;
+                  font-size: .8rem;
+                  font-weight: 700;
+                  padding: .5rem 1.2rem;
+                  color: white;
+                  cursor: pointer;
+
+                  &:hover{
+                    color: black;
+                    background-color: red
+                  }
+                }
+              }
+            }
+          }
+        }
+        .credit-card{
+          .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h3{
+              color:red;
+              font-size: 2rem;
+            }
+
+            .card {
+              display: flex;
+              flex-direction: column;
+              height: 40vh;
+              width: 25vw;
+              border-radius: 15px;
+              background: rgba(255, 255, 255, 0.1);
+              backdrop-filter: blur(35px);
+              border: 2px solid rgba(255, 255, 255, 0.1);
+              padding: 2%;
+              overflow: hidden;
+
+              .card-logos{
+                display: flex;
+                justify-content: space-between;
+              }
+
+              .logo {
+                height: 10vh;
+                margin-bottom: 10%;
+              }
+
+              form{
+                input {
+                  font-size: 1rem;
+                  border: none;
+                  background: 0;
+                  border-bottom: 2px solid red;
+                  color: white;
+
+                  &::placeholder {
+                    color: #b5b5b5;
+                  }
+                }
+                
+                label {
+                  color: red;
+                  font-size: .8rem;
+                  font-weight: bolder;
+                  pointer-events: none;
+                  display: block;
+                  padding-bottom: 2%;
+                }
+
+                .card-number {
+                  font-size: 2rem;
+                  margin-bottom: 2%;
+                }
+
+                .container-inner {
+                  display: flex;
+                  gap: 10%;
+                  margin-top: 5%;
+    
+                  .name {
+                    width: 10rem;
+                    display: inline-block;
+                    overflow: hidden;
+    
+                    .card-name {
+                      color: white;
+                      font-size: 1rem;
+                      border-bottom: 2px solid red;
+                    }
+                  }
+    
+                  .expiration-date {
+                    width: 20%;
+                    display: inline-block;
+                    overflow: hidden;
+                  }
+    
+                  .ccv {
+                    width: 10%;
+                    overflow: hidden;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes scroll {
+      to {
+        background-size: 100% 100%;
+      }
+}
+@keyframes banner{
+  from{
+    transform: translateX(100%);
+  }
+  to{
+    transform: translateX(-100%);
+  }
+}
+@media only screen and (max-width: 1440px){
+  *{
+    .container{
+      #trainings{
+        .trainings-wrapper{
+          div{
+            &:hover{
+              transform: scale(1);
+            }
+          }
+        }
+        .schedule-group-btn{
+          right: 10%;
+        }
+      }
+      .modal-purchasing{
+        .modal-container{
+          width: 40vw;
+
+          .credit-card{
+            .container{
+              .card{
+                width: 90%;
+              }
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1024px){
+  *{
+    .container{
+      header{
+        nav{
+          width: 35vw;
+        }
+        .logo_and_login{
+          .logo{
+            height: 12.5vh;
+          }
+          .login{
+            form{
+              .email_pin{
+                flex-direction: column;
+              }
+            }
+          }
+        }
+      }
+      main{
+        height: 75vh;
+        h1{
+          margin-top: 15%;
+          font-size: 4rem;
+        }
+        p{
+          font-size: 2rem;
+        }
+      }
+      #about-us{
+        padding: 0 2%;
+      }
+      #memberships{
+        
+        .memberships-prices{
+          justify-content: space-evenly;
+          gap: 5vw;
+          .card{
+            width: 25%;
+            .card-img{
+              width: 100%;
+            }
+            .card-desc{
+              h3{
+                font-size: 1.5rem;
+                margin: 0;
+              }
+
+              .price-details{
+                font-size: 1rem;
+                .price{
+                  & p:last-child{
+                    font-size: 1.2rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      #trainings{
+        .trainings-wrapper{
+          gap: 5vw;
+        
+          div{
+            &:hover{
+              transform: scale(1.2);
+            }
+          }
+        }
+      }
+      .modal-purchasing{
+        .modal-container{
+          h3{
+            text-align: center;
+          }
+          .purchasing-modal-header{
+            h3{
+              text-align: center;
+              margin-right: 0;
+            }
+
+            .close{
+              top: -20%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px){
+  *{
+    .container{
+      header{
+        justify-content: center;
+        .ham-menu{
+          display: block;
+          margin: 0 10%;
+        }
+        .nav-links{
+          top: 80%;
+          left: 10%;
+          padding: 1% 4% 1% 2%;
+        }
+        nav{
+          display: none;
+        }
+        .logo_and_login{
+          justify-content: space-around;
+          width: 75%;
+        }
+      }
+      #trainings{
+        .trainings-wrapper{
+          div{
+            &:hover{
+              transform: scale(1);
+            }
+          }
+        }
+        .schedule-group-btn{
+          bottom: 5%;
+          right: 30%;
+        }
+      }
+      .modal-purchasing{
+        .modal-container{
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 425px){
+  *{
+    .container{
+      header{
+        padding: 0;
+        justify-content: space-between;
+
+        .ham-menu{
+          margin-left: 5%;
+        }
+        .nav-links{
+          top: 100%;
+          left: 2%;
+          background-color: #000000;
+          padding: 1% 8% 1% 2%;
+        }
+
+        .logo_and_login{
+          .logo{
+            height: 10vh;
+            margin-right: 5%;
+          }
+
+          .login{
+            border-radius: 15px;
+            background-color: #000000;
+            top: 105%;
+          }
+        }
+      }
+      main{
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      #about-us{
+        height: 80vh;
+        padding: 0;
+
+        .about-us-icon-wrapper{
+          flex-wrap: wrap;
+          gap: 50px;
+        }
+      }
+      #memberships{
+        .memberships-head{
+          h2{
+            font-size: 3.5rem;
+          }
+        }
+        .memberships-prices{
+          flex-direction: column;
+          align-items: center;
+          padding: 0;
+
+          .card{
+            width: 50vw;
+          }
+        }
+      }
+      #trainings{
+        height: 130vh;
+      }
+      #get-in-touch{
+        padding: 0;
+        .contact-location{
+          flex-direction: column;
+          align-items: center;
+
+          .location{
+            .location-map{
+              width: 80vw;
+            }
+          }
+          .contact{
+            width: 80vw;
+
+            .contact_btn{
+              margin-left: 35%;
+            }
+          }
+        }
+      }
+      .modal-purchasing{
+        padding: 2%;
+        .modal-container{
+          width: 100%;
+        }
+      }
+    }
+  }
+}

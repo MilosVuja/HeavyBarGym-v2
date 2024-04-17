@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/profile.css">
+  <link rel="shortcut icon" href="/images/flavicon-04.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <title>Profile</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/images/heavy-bar-logo.png" alt="logo">
+    </div>
+    <nav>
+      <button id="training_btn">Training</button>
+    </nav>
+  </header>
+  <div class="profile" style="display: block">
+    <h2>Your profile</h2>
+    <div class="wrapper">
+      <form>
+        <div class="basic_informations">
+          <div class="profile_pic">
+            <img src="/images/your-profile-default-pic.png" id="photo" alt="profile_pic">
+            <input type="file" id="file">
+            <label for="file" id="upload_pic">
+              <i class="fa-solid fa-camera"></i>
+            </label>
+          </div>
+          <div class="personal_info">
+            <div class="profile-fname-lname">
+              <div class="profile-fname">
+              <label for="fname">First name: </label>
+              <input type="text" id="fname">
+            </div>
+            <div class="profile-lname">
+              <label for="lname">Last name: </label>
+              <input type="text" id="lname">
+            </div>
+          </div>
+          <div class="profile-email-pnumber">
+            <div class="profile-email">
+              <label for="email">Email: </label>
+              <input type="email" id="email">
+            </div>
+            <div class="profile-pnumber">
+              <label for="tel">Phone number:</label>
+              <input type="tel" id="tel">
+            </div>
+          </div>
+          <div class="profile-address-sex">
+            <div class="profile-address-sex">
+              <label for="address">Address: </label>
+              <input type="text" id="address">
+            </div>
+            <div class="profile-sex">
+              <label for="sex">Sex:</label>
+              <select name="sex" id="sex">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="additional_info">
+          <div class="goal">
+            <label for="goal">Goal:</label>
+            <input type="text" id="goal">
+          </div>
+          <div class="program">
+            <label for="program">Program:</label>
+            <input type="text" id="program">
+          </div>
+          <p>Membership: </p>
+        </div>
+        <div class="measurements">
+          <div class="height_weight">
+            <div class="height">
+              <label for="height">Height: </label>
+              <input type="text" id="height" placeholder="cm">
+            </div>
+            <div class="weight">
+              <label for="weight">Weight: </label>
+              <input type="text" id="weight" placeholder="kg">
+            </div>
+          </div>
+          <div class="bfat_bmi">
+            <div class="body_fat">
+              <label for="bfat">Body fat:</label>
+              <input type="text" id="bfat" placeholder="%">
+            </div>
+            <div class="bmi">
+              <label for="bmi">BMI:</label>
+              <input type="text" id="bmi" placeholder="">
+            </div>
+          </div>
+          <div class="waist_arm">
+            <div class="waist">
+              <label for="waist">Waist:</label>
+              <input type="text" id="waist" placeholder="cm">
+            </div>
+            <div class="arm">
+              <label for="arm">Arm:</label>
+              <input type="text" id="arm" placeholder="cm">
+            </div>
+          </div>
+          <div class="thigh">
+            <label for="height">Thigh: </label>
+            <input type="text" id="thigh" placeholder="cm">
+          </div>
+        </div>
+        <div class="experience">
+          <div class="exp_head">
+            <label>Experiance:</label>
+          </div>
+          <div class="select_options">
+            <div class="exp-beg">
+              <label for="exp-beg">Beginner:</label>
+              <input type="radio" id="exp-beg" name="experiance" value="beginner">
+            </div>
+            <div class="exp-int">
+              <label for="exp-int">Intermediate:</label>
+              <input type="radio" id="exp-int" name="experiance" value="intermediate">
+            </div>
+            <div class="exp-adv">
+              <label for="exp-adv">Advanced:</label>
+              <input type="radio" id="exp-adv" name="experiance" value="advanced">
+            </div>
+          </div>
+        </div>
+        <div class="records">
+          <p>Records: </p>
+          <div class="personal-best">
+            <div class="squat">
+              <label for="squat">Squat: </label>
+              <input type="number" id="squat" placeholder="100">
+            </div>
+            <div class="bench">
+              <label for="bench">Bench: </label>
+              <input type="number" id="bench" placeholder="80">
+            </div>
+            <div class="deadlift">
+              <label for="deadlift">Deadlift: </label>
+              <input type="number" id="deadlift" placeholder="100">
+            </div>
+          </div>
+        </div>
+        <div class="btns">
+          <input class="btn" type="submit" value="Save">
+          <input class="btn" type="reset" value="Delete">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="training-container" style="display: none">
+      
+      <h2>push/pull/legs</h2>
+      <div class="training">
+        <div class="one">
+        <div class="upper">
+          <!-- Naziv treninga koji se radi tog dana -->
+          <p>
+            Push
+          </p>
+        </div>
+        <div class="lower">
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="one">
+        <div class="upper">
+          <!-- Naziv treninga koji se radi tog dana -->
+          <p>
+            Push
+          </p>
+        </div>
+        <div class="lower">
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-thumb">
+              <img src="/images/about-us.jpg" alt="exercise">
+            </div>
+            <h4>Naziv vezbe</h4>
+            <div class="exercise-details">
+              <div class="sets">
+                <p>Sets</p>
+                <p>4</p>
+              </div>
+              <div class="reps">
+                <p>Reps</p>
+                <p>12</p>
+              </div>
+              <div class="weight">
+                <p>Weight (kg)</p>
+                <p>40</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-exercise-back">
+      <div class="modal-exercise">
+        <div class="modal-header">
+          <h3>Name of the exercise</h3>
+          <div class="video-instruction">
+            <div class="video">
+              <img src="/images/about-us.jpg" alt="">
+            </div>
+            <div class="instruction">
+              <form>
+                <textarea placeholder="Input instructions"></textarea>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="wrapper_adjust">
+          <form class="adjustments">
+            <div class="columns">
+              <div class="column">
+                <div class="header">
+                  <p>Weight</p>
+                </div>
+                <div class="adjust">
+                  <input type="text" placeholder="0" name="weight">
+                  <span><i class="fa-regular fa-plus"></i></span>
+                  <span><i class="fa-solid fa-minus"></i></span>
+                </div>
+              </div>
+              <div class="column">
+                <div class="header">
+                  <p>Sets</p>
+                </div>
+                <div class="adjust">
+                  <input type="text" placeholder="0" name="weight">
+                  <span><i class="fa-regular fa-plus"></i></span>
+                  <span><i class="fa-solid fa-minus"></i></span>
+                </div>
+              </div>
+              <div class="column">
+                <div class="header">
+                  <p>Reps</p>
+                </div>
+                <div class="adjust">
+                  <input type="text" placeholder="0" name="weight">
+                  <span><i class="fa-regular fa-plus"></i></span>
+                  <span><i class="fa-solid fa-minus"></i></span>
+                </div>
+              </div>
+              <div class="column">
+                <div class="header">
+                  <p>Rest</p>
+                </div>
+                <div class="adjust">
+                  <input type="text" placeholder="0" name="weight">
+                  <span><i class="fa-regular fa-plus"></i></span>
+                  <span><i class="fa-solid fa-minus"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="add-delete">
+              <div class="save_btn">
+                <input type="submit" value="Save">
+              </div>
+              <div class="icons">
+                <span><i class="fa-regular fa-plus white addRow"></i></span>
+                <span><i class="fa-solid fa-trash white deleteRow"></i></span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="/js/profile.js"></script>
+</body>
+</html>

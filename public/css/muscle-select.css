@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+  font-family: Open Sans;
+}
+* header {
+  display: flex;
+  background-color: black;
+}
+* header .logo {
+  margin: 0.5rem 0 0.5rem 1rem;
+}
+* header .logo img {
+  height: 5vh;
+}
+* .training h2 {
+  text-align: center;
+  font-size: 4rem;
+  color: red;
+}
+* .training .muscle-select-description {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 3rem 10rem;
+  font-size: 1.5rem;
+}
+* .training .muscle-select-description .selected-muscle-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+* .training .muscle-select-description .selected-muscle-btn .selected-muscles {
+  margin-top: 2rem;
+}
+* .training .muscle-select-description .selected-muscle-btn .selected-muscles p {
+  margin-top: 1rem;
+  border-bottom: 1px solid rgb(92, 0, 0);
+  padding-bottom: 0.2rem;
+  text-decoration-color: rgb(92, 0, 0);
+}
+* .training .muscle-select-description .selected-muscle-btn .smuscle-btn {
+  border: 2px solid red;
+  background: transparent;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+  margin-right: 2rem;
+  color: white;
+  cursor: pointer;
+}
+* .training .muscle-select-description .selected-muscle-btn .smuscle-btn:hover {
+  color: black;
+  background-color: red;
+}
+* .training .muscle-select-description .muscle-description div {
+  border: 4px solid rgb(92, 0, 0);
+  border-radius: 10px;
+  height: 20vh;
+  width: 30vw;
+  padding: 0.5rem;
+}
+* .training .muscle-select-description .muscle-description div:first-child {
+  margin-top: 2rem;
+}
+* .training .muscle-select-description .muscle-description div:not(:last-child) {
+  margin-bottom: 1rem;
+}
+* .training svg {
+  height: 70vh;
+}
+* .training svg:not(:last-child) {
+  margin-right: 2rem;
+}
+* .training .upper-chest:hover .cls-2,
+* .training .middle-chest:hover .cls-2,
+* .training .middle-deltoideus:hover .cls-2,
+* .training .front-deltoideus:hover .cls-2,
+* .training .biceps:hover .cls-2,
+* .training .side-abs:hover .cls-2,
+* .training .forearms:hover .cls-2,
+* .training .adductors:hover .cls-2,
+* .training .sartorius:hover .cls-2,
+* .training .abductors:hover .cls-2,
+* .training .pectineus:hover .cls-2,
+* .training .quadriceps:hover .cls-2,
+* .training .tibialis:hover .cls-2,
+* .training .upper-trapezius:hover .cls-2,
+* .training .lower-trapezius:hover .cls-2,
+* .training .rhomboids-major:hover .cls-2,
+* .training .rear-deltoideus:hover .cls-2,
+* .training .teres-major:hover .cls-2,
+* .training .triceps:hover .cls-2,
+* .training .latissimus:hover .cls-2,
+* .training .lower-back:hover .cls-2,
+* .training .gluteus:hover .cls-2,
+* .training .hamstrings:hover .cls-2,
+* .training .calfs:hover .cls-2,
+* .training .abdominals:hover .cls-2 {
+  fill: red;
+  cursor: pointer;
+}/*# sourceMappingURL=muscle-select.css.map */
