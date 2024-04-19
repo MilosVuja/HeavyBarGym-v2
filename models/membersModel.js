@@ -2,9 +2,8 @@ const { default: mongoose } = require("mongoose");
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 
-const GENDERS = ["male", "female", "other"];
-const EXP = ["beginner", "intermediate", "advanced"];
-const roles = ['member', 'admin']
+const gender = ["male", "female", "other"];
+const exp = ["beginner", "intermediate", "advanced"];
 const memberSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -29,7 +28,7 @@ const memberSchema = new mongoose.Schema({
   photo: String,
   role: {
     type: String,
-    enum: roles,
+    enum: ['member', 'admin'],
     default: 'member'
   },
   pinCode:{
@@ -54,7 +53,7 @@ const memberSchema = new mongoose.Schema({
   },
   sex:{
     type: String,
-    enum: GENDERS,
+    enum: gender,
     default: 'other'
   },
   membership: String,
@@ -72,7 +71,7 @@ const memberSchema = new mongoose.Schema({
   },
   experiance:{
     type: String,
-    enum: EXP,
+    enum: exp,
     default: 'beginner'
   },
   goal:{
