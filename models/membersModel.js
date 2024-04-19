@@ -33,8 +33,8 @@ const memberSchema = new mongoose.Schema({
   },
   pinCode:{
     type: String,
-    required: [true, 'Please provide a pin code!'],
-    minlength: 8,
+    required: [true, 'Please provide a pin code!'],//
+    minlength: 8,//
     select: false
   },
   confirmPinCode:{
@@ -83,18 +83,24 @@ const memberSchema = new mongoose.Schema({
   }
 });
 
-
 memberSchema.pre('save', async function(next){
-  if(this.isModified('pinCOde')) return next();
+  let password = "";
+    let chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let passwordLength = 12;
 
-  this.pinCode = await bcrypt.hash(this.pinCode, 12);
+ for (let i = 0; i <= passwordLength; i++) {
+   let randomNumber = Math.floor(Math.random() * chars.length);
+   password += chars.substring(randomNumber, randomNumber +1);
+  }
+
+  this.pinCode = await bcrypt.hash(password, 12);
 
   this.confirmPinCode = undefined;
+  
   next();
 })
 
 memberSchema.methods.correctPinCode = async function(candidatePinCode, memberPinCode){
-
   return await bcrypt.compare(candidatePinCode, memberPinCode);
 }
 

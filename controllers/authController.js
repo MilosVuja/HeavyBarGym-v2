@@ -3,6 +3,7 @@ const catchAsync = require('./../utilities/catchAsync');
 const jwt = require('jsonwebtoken');
 const AppError = require('./../utilities/appError');
 const { promisify } = require('util');
+const sendMail = require('./../utilities/email');
 
 const signToken = id => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
@@ -13,8 +14,8 @@ exports.signup = catchAsync (async (req, res, next) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    pinCode: req.body.pinCode,
-    confirmPinCode: req.body.confirmPinCode,
+    role: req.body.role,
+    // confirmPinCode: req.body.confirmPinCode,
     phoneNumber: req.body.phoneNumber
   });
 
