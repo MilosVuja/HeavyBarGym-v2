@@ -341,6 +341,7 @@ node_modules/bcrypt/test-docker.sh
 node_modules/bcrypt/.github/workflows/ci.yaml
 node_modules/bcrypt/examples/async_compare.js
 node_modules/bcrypt/examples/forever_gen_salt.js
+node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node
 node_modules/bcrypt/src/bcrypt_node.cc
 node_modules/bcrypt/src/bcrypt.cc
 node_modules/bcrypt/src/blowfish.cc
@@ -1822,6 +1823,7 @@ node_modules/node/installArchSpecificPackage.js
 node_modules/node/package.json
 node_modules/node/README.md
 node_modules/node/bin/node
+node_modules/node/bin/node.exe
 node_modules/node/node_modules/.package-lock.json
 node_modules/node/node_modules/.bin/node
 node_modules/node/node_modules/.bin/node.cmd
@@ -2558,5 +2560,3 @@ node_modules/yallist/LICENSE
 node_modules/yallist/package.json
 node_modules/yallist/README.md
 node_modules/yallist/yallist.js
-node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node
-node_modules/node/bin/node.exe
