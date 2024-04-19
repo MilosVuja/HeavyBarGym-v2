@@ -37,7 +37,5 @@ const groupClassSchema = new mongoose.Schema({
   }
 })
 
-
-
 const GroupClass = mongoose.model('GroupClass', groupClassSchema);
 module.exports = GroupClass;

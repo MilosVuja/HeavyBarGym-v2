@@ -1,41 +1,18 @@
-// exports.getAllMembers = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
-// exports.getMember = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
-// exports.createMember = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
-// exports.updateMember = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
-// exports.deleteMember = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
+const Member = require('./../models/membersModel');
+const catchAsync = require('../utilities/catchAsync');
 
 
-exports.getAllMembers = (req, res) => {
-  res.status(500).json({
-    status: 'Error',
-    message: 'This route isnt yet defined'
+exports.getAllMembers = catchAsync (async (req, res) => {
+  const members = await Member.find();
+
+  res.status(200).json({
+    status: 'Success',
+    results: members.length,
+    data: {
+      members
+    }
   })
-}
+})
 
 exports.getMember = (req, res) => {
   res.status(500).json({

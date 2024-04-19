@@ -3,7 +3,8 @@ const validator = require('validator');
 const bcrypt = require('bcrypt');
 
 const GENDERS = ["male", "female", "other"];
-const EXP = ["beginner", "intermediate", "advanced"]
+const EXP = ["beginner", "intermediate", "advanced"];
+const roles = ['member', 'admin']
 const memberSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -26,14 +27,20 @@ const memberSchema = new mongoose.Schema({
     unique: true
   },
   photo: String,
+  role: {
+    type: String,
+    enum: roles,
+    default: 'member'
+  },
   pinCode:{
     type: String,
-    required: [true, 'Please provide a password!'],
-    minlength: 8
+    required: [true, 'Please provide a pin code!'],
+    minlength: 8,
+    select: false
   },
   confirmPinCode:{
     type: String,
-    required: [true, 'Please confirm your PIN code!'],
+    required: [true, 'Please confirm your pin code!'],
     validate:{
       validator: function(el){
         return el === this.pinCode;
@@ -87,7 +94,10 @@ memberSchema.pre('save', async function(next){
   next();
 })
 
+memberSchema.methods.correctPinCode = async function(candidatePinCode, memberPinCode){
 
+  return await bcrypt.compare(candidatePinCode, memberPinCode);
+}
 
 const Member = mongoose.model('Member', memberSchema);
 module.exports = Member;

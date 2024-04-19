@@ -1,34 +1,3 @@
-// exports.getAllGroupClasses = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
-// exports.groupClass = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
-// exports.createGroupClass = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
-// exports.updateGroupClass = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
-// exports.deleteGroupClass = (req, res) => {
-//   res.status(500).json({
-//     status: 'error',
-//     message: 'This route is not yet defined!'
-//   });
-// };
-
 const { query } = require('express');
 const GroupClass = require('./../models/groupClassModel');
 const ApiFeatures = require('../utilities/apiFeatures');
