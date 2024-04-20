@@ -1,31 +1,67 @@
 const express = require('express');
 const fs = require('fs');
-const app = express();
 const path = require('path');
+const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const hpp = require('hpp');
+
 const memberRouter = require('./routes/memberRoutes');
 const groupClassRouter = require('./routes/groupClassRoutes');
-const morgan = require('morgan');
 const AppError = require('./utilities/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
+
+const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'))
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(helmet());
 
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'));
 }
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP! Please try again in an hour!'
+});
+app.use('/api', limiter);
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.use(express.json({limit: '10kb'}));
 
+app.use(mongoSanitize());
+
+app.use(hpp({
+  whitelist: [
+    'maxGroupSize',
+    'ratingsAverage',
+    'difficulty'
+  ]
+}));
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 })
 
-//routes
+app.get('/', (req, res,) => {
+  res.status(200).render('main')
+})
+
+app.get('/login', (req, res) => {
+  res.status(200).render('login')
+})
+
+app.get('/groupClassBooking', (req, res,) => {
+  res.status(200).render('groupClassBooking')
+})
+
 app.use('/api/v1/home', memberRouter);
 app.use('/api/v1/groupClassBooking', groupClassRouter);
 

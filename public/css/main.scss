@@ -184,68 +184,15 @@
             height: 100%;
           }
         }
-        .login{
-          display: none;
-          position: absolute;
-          right: 2%;
-          top: 80%;
 
-          form{
-            border: 2px solid white;
-            border-radius: 15px;;
-            padding: 2%;
-            
-            input{
-              color: black;
-              width: 100%;
-            }
-
-            .email_pin{
-              display: flex;
-              justify-content: space-around;
-              gap: 1%;
-              margin-bottom: 2%;
-            }
-
-            & div{
-              text-align: center;
-
-              .login_btn_dd{
-                color: white;
-                cursor: pointer;
-                background: transparent;
-                border: 2px solid rgb(92, 0, 0);
-                border-radius: 15px;
-                font-size: 1rem;
-                text-align: center;
-                padding: 0;
-                height: 2.5rem;
-                width: 6rem;
-                margin-top: .5rem;
-
-                &:hover{
-                  background-color: rgb(92, 0, 0);
-                  color: black;
-                  font-weight: bold;
-                }
-
-                a{
-                  text-decoration: none;
-                }
-              }
-            }
-          }
-        }
-        .login.active{
-          display: block;
-        }
         .login_btn{
+          text-decoration: none;
           border: 2px solid red;
           background: transparent;
           border-radius: 15px;
           font-size: .8rem;
           font-weight: 700;
-          padding: .5rem 1.2rem;
+          padding: .8rem 1.8rem;
           margin-right: 2rem;
           cursor: pointer;
 
@@ -530,7 +477,7 @@
     }
 
     #get-in-touch{
-      background-image: url(../images/get-in-touch.png);
+      background-image: url(/images/get-in-touch.png);
       color: white;
       padding: 2.5%;
 
@@ -695,7 +642,6 @@
         }
         
         .buy-informations{
-          
           .new-member{
             display: flex;
             justify-content: center;

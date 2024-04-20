@@ -156,61 +156,14 @@
 * .container header .logo_and_login .logo img {
   height: 100%;
 }
-* .container header .logo_and_login .login {
-  display: none;
-  position: absolute;
-  right: 2%;
-  top: 80%;
-}
-* .container header .logo_and_login .login form {
-  border: 2px solid white;
-  border-radius: 15px;
-  padding: 2%;
-}
-* .container header .logo_and_login .login form input {
-  color: black;
-  width: 100%;
-}
-* .container header .logo_and_login .login form .email_pin {
-  display: flex;
-  justify-content: space-around;
-  gap: 1%;
-  margin-bottom: 2%;
-}
-* .container header .logo_and_login .login form div {
-  text-align: center;
-}
-* .container header .logo_and_login .login form div .login_btn_dd {
-  color: white;
-  cursor: pointer;
-  background: transparent;
-  border: 2px solid rgb(92, 0, 0);
-  border-radius: 15px;
-  font-size: 1rem;
-  text-align: center;
-  padding: 0;
-  height: 2.5rem;
-  width: 6rem;
-  margin-top: 0.5rem;
-}
-* .container header .logo_and_login .login form div .login_btn_dd:hover {
-  background-color: rgb(92, 0, 0);
-  color: black;
-  font-weight: bold;
-}
-* .container header .logo_and_login .login form div .login_btn_dd a {
-  text-decoration: none;
-}
-* .container header .logo_and_login .login.active {
-  display: block;
-}
 * .container header .logo_and_login .login_btn {
+  text-decoration: none;
   border: 2px solid red;
   background: transparent;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 700;
-  padding: 0.5rem 1.2rem;
+  padding: 0.8rem 1.8rem;
   margin-right: 2rem;
   cursor: pointer;
 }
@@ -440,7 +393,7 @@
   background-color: rgb(24, 24, 24);
 }
 * .container #get-in-touch {
-  background-image: url(../images/get-in-touch.png);
+  background-image: url(/images/get-in-touch.png);
   color: white;
   padding: 2.5%;
 }

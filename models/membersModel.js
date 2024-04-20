@@ -1,6 +1,7 @@
 const { default: mongoose } = require("mongoose");
 const validator = require('validator');
 const bcrypt = require('bcrypt');
+const sendEmail = require('./../utilities/email');
 
 const gender = ["male", "female", "other"];
 const exp = ["beginner", "intermediate", "advanced"];
@@ -33,20 +34,20 @@ const memberSchema = new mongoose.Schema({
   },
   pinCode:{
     type: String,
-    required: [true, 'Please provide a pin code!'],//
-    minlength: 8,//
+    // required: [true, 'Please provide a pin code!'],//
+    // minlength: 8,//
     select: false
   },
-  confirmPinCode:{
-    type: String,
-    required: [true, 'Please confirm your pin code!'],
-    validate:{
-      validator: function(el){
-        return el === this.pinCode;
-      },
-      message: 'Pin Codes are not the same!'
-    }
-  },
+  // confirmPinCode:{
+  //   type: String,
+  //   required: [true, 'Please confirm your pin code!'],
+  //   validate:{
+  //     validator: function(el){
+  //       return el === this.pinCode;
+  //     },
+  //     message: 'Pin Codes are not the same!'
+  //   }
+  // },
   phoneNumber: {
     type: String,
     required: [true, 'Please provide your phone number!']
@@ -80,6 +81,11 @@ const memberSchema = new mongoose.Schema({
   createdAt:{
     type: Date,
     default: Date.now()
+  },
+  active:{
+    type: Boolean,
+    default: true,
+    select: false
   }
 });
 
@@ -88,15 +94,26 @@ memberSchema.pre('save', async function(next){
     let chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let passwordLength = 12;
 
- for (let i = 0; i <= passwordLength; i++) {
-   let randomNumber = Math.floor(Math.random() * chars.length);
-   password += chars.substring(randomNumber, randomNumber +1);
+  for (let i = 0; i <= passwordLength; i++) {
+    let randomNumber = Math.floor(Math.random() * chars.length);
+    password += chars.substring(randomNumber, randomNumber +1);
   }
-
+  console.log(password);
   this.pinCode = await bcrypt.hash(password, 12);
 
   this.confirmPinCode = undefined;
   
+  // await sendEmail({
+  //   email: 'milos.vujicic.dev@gmail.com',
+  //   subject: 'Login informations',
+  //   message: `This is your login password ${password}!`
+  // })
+
+  next();
+})
+
+memberSchema.pre(/^find/, function(next){
+  this.find({active: {$ne: false}});
   next();
 })
 

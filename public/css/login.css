@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Open Sans;
+}
+* body {
+  background-color: black;
+}
+* body .container {
+  margin-top: 3rem;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+* body .container .logo img {
+  height: 10rem;
+}
+* body .container .login-info {
+  margin-top: 5rem;
+}
+* body .container .login-info h3 {
+  font-size: 200%;
+  color: red;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+* body .container .login-info form .email-pin {
+  width: 100%;
+}
+* body .container .login-info form .email-pin input {
+  width: 100%;
+  padding: 0.5rem 0;
+}
+* body .container .login-info form .email-pin .email {
+  margin-bottom: 1rem;
+}
+* body .container .login-info form .email-pin .log-btn {
+  margin: 2rem 0 0 8rem;
+  border: 2px solid red;
+  background: transparent;
+  border-radius: 15px;
+  font-size: 80%;
+  font-weight: 700;
+  padding: 0.8rem;
+  color: white;
+  cursor: pointer;
+  width: 35%;
+  font-weight: bold;
+  font-size: 100%;
+}
+* body .container .login-info form .email-pin .log-btn:hover {
+  color: black;
+  background-color: red;
+}/*# sourceMappingURL=login.css.map */

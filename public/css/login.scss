@@ -1,0 +1,72 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Open Sans;
+
+  body{
+    background-color: black;
+    .container{
+      margin-top: 3rem;
+      background-color: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 2rem;
+
+      .logo{
+        img{
+          height: 10rem;
+        }
+      }
+
+      .login-info{
+        margin-top: 5rem;
+
+        h3{
+          font-size: 200%;
+          color: red;
+          margin-bottom: 3rem;
+          text-transform: uppercase;
+        }  
+        form{
+          .email-pin{
+            width: 100%;
+
+            input{
+              width: 100%;
+              padding: .5rem 0;
+            }
+
+            .email{
+              margin-bottom: 1rem;
+            }
+
+            .log-btn{
+              margin: 2rem 0 0 8rem;
+              border: 2px solid red;
+              background: transparent;
+              border-radius: 15px;
+              font-size: 80%;
+              font-weight: 700;
+              padding: .8rem;
+              color: white;
+              cursor: pointer;
+              width: 35%;
+              font-weight: bold;
+              font-size: 100%;
+
+              &:hover{
+                color: black;
+                background-color: red;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
+}

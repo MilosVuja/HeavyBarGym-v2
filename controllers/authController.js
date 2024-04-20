@@ -1,12 +1,35 @@
+const jwt = require('jsonwebtoken');
+const { promisify } = require('util');
+
 const Member = require("./../models/membersModel");
 const catchAsync = require('./../utilities/catchAsync');
-const jwt = require('jsonwebtoken');
 const AppError = require('./../utilities/appError');
-const { promisify } = require('util');
-const sendMail = require('./../utilities/email');
 
 const signToken = id => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
+}
+
+const createSendToken = (member, statusCode, res) => {
+  const token = signToken(member._id);
+
+  const cookieOptions = {
+    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
+    secure: false,
+    httpOnly: true
+  }
+  if(process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+
+  res.cookie('jwt', token, cookieOptions);
+
+  member.pinCode = undefined;
+
+  res.status(statusCode).json({
+    status: 'Succes!',
+    token,
+    data: {
+      member
+    }
+  })
 }
 
 exports.signup = catchAsync (async (req, res, next) => {
@@ -15,20 +38,11 @@ exports.signup = catchAsync (async (req, res, next) => {
     lastName: req.body.lastName,
     email: req.body.email,
     role: req.body.role,
-    // confirmPinCode: req.body.confirmPinCode,
+    confirmPinCode: req.body.confirmPinCode,
     phoneNumber: req.body.phoneNumber
   });
 
-  const token = signToken(newMember._id);
-  
-
-  res.status(201).json({
-    status: 'Success',
-    token,
-    data: {
-      member: newMember
-    }
-  })
+  createSendToken(newMember, 201, res);
 })
 
 exports.login = catchAsync (async (req, res, next) =>{
