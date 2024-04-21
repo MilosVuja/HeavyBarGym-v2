@@ -1,23 +1,37 @@
+import axios from "axios";
 
-const logIn = async (email, pinCode) => {
+export const login = async (email, pinCode) => {
   console.log(email, pinCode);
   try{
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/home',
+      url: 'http://127.0.0.1:3000/api/v1/home/login',
       data: {
         email,
         pinCode
       }
     });
-    console.log(res);
+
+    if(res.data.status === 'Succes!'){
+      alert('Logged in successfully!');
+      window.setTimeout(()=>{
+        location.assign('/');
+      }, 1000);
+    }
   }catch(error){
-    console.log(error);
+    alert(error.response.data.message);
   }
 }
-const loginF = document.querySelector('.loginForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const email = document.getElementById('emailLogin').value;
-  const pinCode = document.getElementById('pinCode').value;
-  logIn({email, pinCode});
-})
+
+export const logout = async() => {
+  try{
+    const res = await axios({
+      method: 'GET',
+      url: 'http://127.0.0.1:3000/api/v1/home/logout',
+    });
+
+    if(res.data.status === 'Success!') location.reload(true);
+  }catch(error){
+    showAlert('error', 'Error logging out! Try again!');
+  }
+}

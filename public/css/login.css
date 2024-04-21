@@ -8,6 +8,7 @@
   background-color: black;
 }
 * body .container {
+  height: 90vh;
   margin-top: 3rem;
   background-color: black;
   color: white;

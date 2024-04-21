@@ -6,11 +6,13 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
 
 const memberRouter = require('./routes/memberRoutes');
 const groupClassRouter = require('./routes/groupClassRoutes');
 const AppError = require('./utilities/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const viewRouter = require('./routes/viewRoutes');
 
 
 const app = express();
@@ -20,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(helmet());
+// app.use(helmet({ contentSecurityPolicy: false }));
 
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'));
@@ -34,6 +36,7 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 app.use(express.json({limit: '10kb'}));
+app.use(cookieParser());
 
 app.use(mongoSanitize());
 
@@ -47,21 +50,11 @@ app.use(hpp({
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
+  // console.log(req.cookies)
   next();
 })
 
-app.get('/', (req, res,) => {
-  res.status(200).render('main')
-})
-
-app.get('/login', (req, res) => {
-  res.status(200).render('login')
-})
-
-app.get('/groupClassBooking', (req, res,) => {
-  res.status(200).render('groupClassBooking')
-})
-
+app.use('/', viewRouter);
 app.use('/api/v1/home', memberRouter);
 app.use('/api/v1/groupClassBooking', groupClassRouter);
 

@@ -185,20 +185,33 @@
           }
         }
 
-        .login_btn{
-          text-decoration: none;
-          border: 2px solid red;
-          background: transparent;
-          border-radius: 15px;
-          font-size: .8rem;
-          font-weight: 700;
-          padding: .8rem 1.8rem;
-          margin-right: 2rem;
-          cursor: pointer;
+        .login-out{
+          display: flex;
+          justify-content: space-between;
+          .login_btn,
+          .logout_btn{
+            text-align: center;
+            text-decoration: none;
+            border: 2px solid red;
+            background: transparent;
+            border-radius: 15px;
+            font-weight: 700;
+            padding: 1rem 1.8rem;
+            cursor: pointer;
 
-          &:hover{
-            color: black;
-            background-color: red;
+            &:hover{
+              color: black;
+              background-color: red;
+            }
+          }
+          .logout_btn{
+            margin-right: 1rem;
+
+          }
+          img{
+            height: 3.5rem;
+            width: 3.5rem;
+            border-radius: 50%;
           }
         }
       }

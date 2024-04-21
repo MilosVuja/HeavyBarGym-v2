@@ -5,8 +5,9 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-router.post('/signup', authController.signup);
-router.post('/', authController.login);
+router.post('/', authController.signup);
+router.post('/login', authController.login);
+router.get('/logout', authController.logout);
 
 router.route('/profile')
 .patch(authController.protect, memberController.updateMember)

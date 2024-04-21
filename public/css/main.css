@@ -156,20 +156,33 @@
 * .container header .logo_and_login .logo img {
   height: 100%;
 }
-* .container header .logo_and_login .login_btn {
+* .container header .logo_and_login .login-out {
+  display: flex;
+  justify-content: space-between;
+}
+* .container header .logo_and_login .login-out .login_btn,
+* .container header .logo_and_login .login-out .logout_btn {
+  text-align: center;
   text-decoration: none;
   border: 2px solid red;
   background: transparent;
   border-radius: 15px;
-  font-size: 0.8rem;
   font-weight: 700;
-  padding: 0.8rem 1.8rem;
-  margin-right: 2rem;
+  padding: 1rem 1.8rem;
   cursor: pointer;
 }
-* .container header .logo_and_login .login_btn:hover {
+* .container header .logo_and_login .login-out .login_btn:hover,
+* .container header .logo_and_login .login-out .logout_btn:hover {
   color: black;
   background-color: red;
+}
+* .container header .logo_and_login .login-out .logout_btn {
+  margin-right: 1rem;
+}
+* .container header .logo_and_login .login-out img {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
 }
 * .container main {
   height: 100vh;

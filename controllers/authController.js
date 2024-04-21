@@ -58,18 +58,29 @@ exports.login = catchAsync (async (req, res, next) =>{
     return next(new AppError('Incorect email or pin code!', 401))
   }
 
-  const token = signToken(member._id);
+  createSendToken(member, 200, res);
+
   res.status(200).json({
     status: 'Success!',
     token
   })
 })
 
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'Loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true
+  })
+  res.status(200).json({status: 'Success!'});
+}
+
 exports.protect = catchAsync (async (req, res, next) => {
   let token;
 
   if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
     token = req.headers.authorization.split(' ')[1];
+  }else if(req.cookies.jwt){
+    token = req.cookies.jwt;
   }
 
   if(!token){
@@ -88,6 +99,26 @@ exports.protect = catchAsync (async (req, res, next) => {
   
   next();
 })
+
+exports.isLoggedIn = async(req, res, next) => {
+  if(req.cookies.jwt){
+    try{
+      const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+  
+      const currentMember = await Member.findById(decoded.id);
+  
+      if(!currentMember){
+        return next();
+      }
+  
+      res.locals.member = currentMember;
+      return next();
+    }catch(error){
+      return next();
+    }
+  }
+  next();
+}
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {

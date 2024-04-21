@@ -12,18 +12,9 @@
   <div class="container">
     <div class="hours-wrapper">
         <div class="hours">
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
-          <p>We are open 24/7!</p>
+          <% for (let i = 0; i < 12; i++){ %>
+            <p>We are open 24/7!</p>
+          <% } %>
         </div>
     </div>
     <header>
@@ -52,7 +43,15 @@
         <div class="logo">
           <img src="/images/heavy-bar-logo.png" alt="logo-red">
         </div>
-        <a class="login_btn" href="login">Login</a>
+        <div class="login-out">
+          
+          <% if(member){ %>
+            <a class="logout_btn" href="/">Logout</a>
+            <a href="/profile"><img src="/images/about-us.jpg" alt="prof.pic" /></a>
+          <% }else{ %>
+            <a class="login_btn" href="/login">Login</a>
+          <% } %>
+        </div>
       </div>
     </header>
     <main>
@@ -281,8 +280,7 @@
   </div>
 
 
-  <script src="/js/main.js"></script>
-  <script src="/js/login.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
+  <!-- <script src="/js/main.js"></script> -->
+  <script src="/js/bundle.js"></script>
 </body>
 </html>
