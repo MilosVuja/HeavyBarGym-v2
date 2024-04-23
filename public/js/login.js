@@ -12,7 +12,7 @@ export const login = async (email, pinCode) => {
       }
     });
 
-    if(res.data.status === 'Succes!'){
+    if(res.data.status === 'Success!'){
       alert('Logged in successfully!');
       window.setTimeout(()=>{
         location.assign('/');
@@ -27,11 +27,11 @@ export const logout = async() => {
   try{
     const res = await axios({
       method: 'GET',
-      url: 'http://127.0.0.1:3000/api/v1/home/logout',
+      url: 'http://127.0.0.1:3000/api/v1/home',
     });
 
     if(res.data.status === 'Success!') location.reload(true);
   }catch(error){
-    showAlert('error', 'Error logging out! Try again!');
+    alert('error', 'Error logging out! Try again!');
   }
 }

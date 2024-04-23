@@ -37,7 +37,28 @@ exports.createMember = (req, res) => {
 }
 
 exports.updateMember = catchAsync (async (req, res, next) => {
-  const filteredBody = filterObj(req.body, 'firstName', 'email');
+  const filteredBody = filterObj(req.body,
+    'firstName',
+    'lastName',
+    'email',
+    'photo',
+    'phoneNumber',
+    'address',
+    // 'sex',
+    'goal',
+    'program',
+    'height',
+    'weight',
+    'bodyFat',
+    'bmi',
+    'waist',
+    'arm',
+    'thigh',
+    // experiance,
+    'squat',
+    'bench',
+    'deadlift'
+  );
   const updatedMember = await Member.findByIdAndUpdate(req.member.id, filteredBody, {
     new: true,
     runValidators: true

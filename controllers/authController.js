@@ -24,7 +24,7 @@ const createSendToken = (member, statusCode, res) => {
   member.pinCode = undefined;
 
   res.status(statusCode).json({
-    status: 'Succes!',
+    status: 'Success!',
     token,
     data: {
       member
@@ -38,7 +38,6 @@ exports.signup = catchAsync (async (req, res, next) => {
     lastName: req.body.lastName,
     email: req.body.email,
     role: req.body.role,
-    confirmPinCode: req.body.confirmPinCode,
     phoneNumber: req.body.phoneNumber
   });
 
@@ -54,20 +53,15 @@ exports.login = catchAsync (async (req, res, next) =>{
 
   const member = await Member.findOne({email}).select('+pinCode');
 
-  if(!member || !await member.correctPinCode(pinCode, member.pinCode)){
+  if(!member || !(await member.correctPinCode(pinCode, member.pinCode))){
     return next(new AppError('Incorect email or pin code!', 401))
   }
 
   createSendToken(member, 200, res);
-
-  res.status(200).json({
-    status: 'Success!',
-    token
-  })
 })
 
 exports.logout = (req, res) => {
-  res.cookie('jwt', 'Loggedout', {
+  res.cookie('jwt', 'loggedout', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true
   })

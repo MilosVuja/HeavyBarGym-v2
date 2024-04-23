@@ -34,20 +34,8 @@ const memberSchema = new mongoose.Schema({
   },
   pinCode:{
     type: String,
-    // required: [true, 'Please provide a pin code!'],//
-    // minlength: 8,//
     select: false
   },
-  // confirmPinCode:{
-  //   type: String,
-  //   required: [true, 'Please confirm your pin code!'],
-  //   validate:{
-  //     validator: function(el){
-  //       return el === this.pinCode;
-  //     },
-  //     message: 'Pin Codes are not the same!'
-  //   }
-  // },
   phoneNumber: {
     type: String,
     required: [true, 'Please provide your phone number!']
@@ -57,6 +45,8 @@ const memberSchema = new mongoose.Schema({
     enum: gender,
     default: 'other'
   },
+  address: String,
+  goal: String,
   membership: String,
   training:{
 
@@ -75,8 +65,10 @@ const memberSchema = new mongoose.Schema({
     enum: exp,
     default: 'beginner'
   },
-  goal:{
-    
+  records:{
+    squat: Number,
+    bench: Number,
+    deadlift: Number,
   },
   createdAt:{
     type: Date,
