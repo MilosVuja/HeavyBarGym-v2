@@ -47,16 +47,11 @@ app.use(hpp({
     'difficulty'
   ]
 }));
-
-app.use((req, res, next) => {
-  req.requestTime = new Date().toISOString();
-  // console.log(req.cookies)
-  next();
-})
-
+const exercises = require('./public/data/exercises.json');
 app.use('/', viewRouter);
 app.use('/api/v1/home', memberRouter);
 app.use('/api/v1/groupClassBooking', groupClassRouter);
+
 
 app.all('*', (req, res, next)=>{
   next(new AppError(`Cant find ${req.originalUrl} on this server!`, 404));

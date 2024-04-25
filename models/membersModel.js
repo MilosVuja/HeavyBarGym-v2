@@ -86,16 +86,15 @@ memberSchema.pre('save', async function(next){
     let randomNumber = Math.floor(Math.random() * chars.length);
     password += chars.substring(randomNumber, randomNumber +1);
   }
-  console.log(password);
   this.pinCode = await bcrypt.hash(password, 12);
 
   this.confirmPinCode = undefined;
   
-  // await sendEmail({
-  //   email: 'milos.vujicic.dev@gmail.com',
-  //   subject: 'Login informations',
-  //   message: `This is your login password ${password}!`
-  // })
+  await sendEmail({
+    email: 'milos.vujicic.dev@gmail.com',
+    subject: 'Login informations',
+    message: `This is your login password ${password}`
+  })
 
   next();
 })

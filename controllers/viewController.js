@@ -62,3 +62,13 @@ exports.updateMemberData = catchAsync (async (req, res, next)=>{
 exports.getGroupClassPage = (req, res) => {
   res.status(200).render('groupClassBooking')
 }
+
+exports.getMuscleSelectPage = (req, res) => {
+  res.status(200).render('muscleSelect', {
+  })
+}
+
+exports.getChooseExercisesPage = (req, res) => {
+  res.status(200).render('chooseExercises', {
+  })
+}
