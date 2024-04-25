@@ -1,5 +1,7 @@
 const catchAsync = require("../utilities/catchAsync")
 const Member = require('../models/membersModel');
+const fs = require("fs");
+
 
 exports.getMainPage = (req, res,) => {
   res.status(200).render('main', {
@@ -50,12 +52,13 @@ exports.updateMemberData = catchAsync (async (req, res, next)=>{
   );
 
   res.status(200).render('profile', {
+    title: 'Your profile',
     member: updatedMember
   })
 });
 
 
 
-exports.getGroupClassPage = (req, res,) => {
+exports.getGroupClassPage = (req, res) => {
   res.status(200).render('groupClassBooking')
 }

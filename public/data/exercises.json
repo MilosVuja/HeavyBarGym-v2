@@ -1,0 +1,212 @@
+[
+  {
+    "id": "1",
+    "exerciseName": "Squats",
+    "muscles": {
+      "primary": "Quads",
+      "secondary": "Gluteus"
+    },
+    "muscleGroup": "Legs",
+    "body": "Lower",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/squats.jpg",
+    "video": "https://youtube.com/shorts/380PrZzUqkA?feature=share"
+  },
+  {
+    "id": "2",
+    "exerciseName": "Romanian Deadlift",
+    "muscles": {
+      "primary": "Biceps Femoris",
+      "secondary": "Back extensors"
+    },
+    "muscleGroup": "Legs",
+    "body": "Lower",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/romanianDL.jpg",
+    "video": "https://youtube.com/shorts/3Rt0Y7o-oAo?feature=share"
+  },
+  {
+    "id": "3",
+    "exerciseName": "Deadlift",
+    "muscles": {
+      "primary": "Biceps Femoris",
+      "secondary": "Glutes"
+    },
+    "muscleGroup": "Legs",
+    "body": "Lower",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/deadlift.jpg",
+    "video": "https://youtube.com/shorts/YT2iwl4cG7A?feature=share"
+  },
+  {
+    "id": "4",
+    "exerciseName": "Pilatess Ball Ab Pike",
+    "muscles": {
+      "primary": "Rectus Abdominis",
+      "secondary": ""
+    },
+    "muscleGroup": "Abs",
+    "body": "Upper",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/pilatessBallAbPike.jpg",
+    "video": "https://youtu.be/1PhffOnTnes"
+  },
+  {
+    "id": "5",
+    "exerciseName": "Ab Crunches",
+    "muscles": {
+      "primary": "Rectus Abdominis",
+      "secondary": ""
+    },
+    "muscleGroup": "Abs",
+    "body": "Lower",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/abCrunches.jpg",
+    "video": "https://youtu.be/yedalaGC1MY"
+  },
+  {
+    "id": "6",
+    "exerciseName": "Biceps Curl",
+    "muscles": {
+      "primary": "Biceps Brachii",
+      "secondary": ""
+    },
+    "muscleGroup": "Arms",
+    "body": "Lower",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/bicepsCurls.jpg",
+    "video": "https://youtu.be/BdFWH2gLi3c"
+  },
+  {
+    "id": "7",
+    "exerciseName": "Leg curl",
+    "muscles": {
+      "primary": "Biceps Femoris",
+      "secondary": ""
+    },
+    "muscleGroup": "Legs",
+    "body": "Lower",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/legCurl.jpg",
+    "video": "https://youtu.be/_HkLq6Wrkyg"
+  },
+  {
+    "id": "8",
+    "exerciseName": "Leg Extension",
+    "muscles": {
+      "primary": "Quadratus Femoris",
+      "secondary": ""
+    },
+    "muscleGroup": "Legs",
+    "body": "Lower",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/legExtension.jpg",
+    "video": "https://youtu.be/TTmSSa5aceU"
+  },
+  {
+    "id": "9",
+    "exerciseName": "Lat Pulldown",
+    "muscles": {
+      "primary": "Latissimus Dorsi",
+      "secondary": ""
+    },
+    "muscleGroup": "Back",
+    "body": "Upper",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/latPulldown.jpg",
+    "video": "https://youtu.be/mGMUef0GeJI"
+  },
+  {
+    "id": "10",
+    "exerciseName": "Leg Press",
+    "muscles": {
+      "primary": "Quadriceps femoris",
+      "secondary": "Gluteus Major"
+    },
+    "muscleGroup": "Legs",
+    "body": "Lower",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/legPress.jpg",
+    "video": "https://youtu.be/CcSniheuZbA"
+  },
+  {
+    "id": "11",
+    "exerciseName": "Scull Crushers",
+    "muscles": {
+      "primary": "Triceps Brachii",
+      "secondary": ""
+    },
+    "muscleGroup": "Arms",
+    "body": "Upper",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/scullCrushers.jpg",
+    "video": "https://youtu.be/AoPsBkYgsIo"
+  },
+  {
+    "id": "12",
+    "exerciseName": "Incline Dumbbell Chest press",
+    "muscles": {
+      "primary": "Pectoralis Minor",
+      "secondary": "Triceps Brachii"
+    },
+    "muscleGroup": "Chests",
+    "body": "Upper",
+    "description": "",
+    "movements": "push",
+    "thumbnail": "../images/exercises/inclineDumbbellChestPress.jpg",
+    "video": "https://youtu.be/ZUWlyv1NWPw"
+  },
+  {
+    "id": "13",
+    "exerciseName": "Hyperextensions",
+    "muscles": {
+      "primary": "Back Extensors",
+      "secondary": ""
+    },
+    "muscleGroup": "Back",
+    "body": "Upper",
+    "description": "",
+    "movements": "",
+    "thumbnail": "../images/exercises/hyperextensions.jpg",
+    "video": "https://youtu.be/gES_al5rdoc"
+  },
+  {
+    "id": "14",
+    "exerciseName": "Bench Press",
+    "muscles": {
+      "primary": "Pectoralis Major",
+      "secondary": "Triceps Brachii"
+    },
+    "muscleGroup": "Chests",
+    "body": "Upper",
+    "description": "",
+    "movements": "push",
+    "thumbnail": "../images/exercises/benchPress.jpg",
+    "video": "https://youtube.com/shorts/Epu53vUNNJM?feature=share"
+  },
+  {
+    "id": "15",
+    "exerciseName": "Shoulder Press",
+    "muscles": {
+      "primary": "Lateral Deltoideus",
+      "secondary": "Triceps Brachii"
+    },
+    "muscleGroup": "Chests",
+    "body": "Upper",
+    "description": "",
+    "movements": "push",
+    "thumbnail": "../images/exercises/shoulderPress.jpg",
+    "video": "https://www.youtube.com"
+  }
+]

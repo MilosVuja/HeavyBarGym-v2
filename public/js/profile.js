@@ -6,7 +6,6 @@ const training_btn=document.getElementById("training_btn");
 const imgDiv=document.querySelector(".profile_pic");
 const img=document.querySelector("#photo");
 const file=document.querySelector("#file");
-const upload_pic=document.querySelector("#upload_pic");
 
 
 const exercise_card=document.querySelectorAll(".exercise-card");

@@ -4,20 +4,9 @@ td = document.querySelectorAll("td");
 book = document.querySelector(".modal-booking");
 eks = document.querySelector(".close");
 
-td.forEach((elem)=>{
-  elem.addEventListener("click", ()=>{
-    book.style.display="block";
-  })
-});
 
-eks.addEventListener("click", ()=>{
-  book.style.display="none";
-})
-window.onclick = function(event) {
-  if (event.target == book) {
-    book.style.display = "none";
-  }
-}
+
+
 
 current = new Date();
 // current.setDate((current.getDate() - current.getDay() +1));

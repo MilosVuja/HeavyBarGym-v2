@@ -201,6 +201,7 @@
         .experience{
           grid-area: exp;
           display: flex;
+          justify-content: center;
           padding: 2%;
           border-radius: 10px;
           border: 2px solid rgb(92, 0, 0);
@@ -254,7 +255,7 @@
           grid-area: btns;
           display: flex;
           justify-content: center;
-          align-items: end;
+          align-items: start;
           margin-top: 1rem;
 
           .btn{
@@ -373,7 +374,7 @@
     display: block;
   }
   .modal-exercise-back{
-    // display: none;
+    display: none;
     position: fixed;
     z-index: 1000;
     padding: 7rem;

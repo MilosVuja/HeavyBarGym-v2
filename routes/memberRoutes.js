@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/', authController.signup);
 router.post('/login', authController.login);
-router.get('/logout', authController.logout);
+router.get('/', authController.logout);
 
 router.route('/profile')
 .patch(authController.protect, memberController.updateMember)

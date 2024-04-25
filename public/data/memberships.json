@@ -1,0 +1,21 @@
+{
+  "id": "",
+  "memebership": {
+    "month": "Month",
+    "threeMonths": "Three Months",
+    "sixMonths": "Six Months",
+    "year": "Year"
+  },
+  "price": {
+    "monthPrice": "",
+    "threeMonthPrice": "",
+    "sixMonthsPrice": "",
+    "yearPrice": ""
+  },
+  "duration": {
+    "monthD": "Month",
+    "threeMonthsD": "Three Months",
+    "sixMonthsD": "Six Months",
+    "yearD": "Year"
+  }
+}

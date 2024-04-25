@@ -1,0 +1,170 @@
+[trapezius, quadriceps femoris, biceps femoris
+  {
+    "id": "1",
+    "muscleID": "Traps",
+    "muscleName": "Trapezius",
+    "muscleGroup": "Back",
+    "movement": "pull",
+    "action": "Upper fibers: elevation of the scapula, upward rotation, and extension and rotation of the head at the neck. Middle fibers: elevation, upward rotation, and adduction (retraction) of the scapula. Lower fibers: depression, adduction (retraction), and upward rotation of the scapula",
+    "description": "Typical action of the trapezius muscle is fixation of the scapula for deltoid action. Continuous action in upward rotation of the scapula permits the arms to be raised over the head. The muscle is always used in preventing the glenoid fossae from being pulled down during the lifting of objects with the arms. It is also typically seen in action during the holding of an object overhead. Holding the arm at the side horizontally shows typical fixation of the scapula",
+    "stretching":""
+  },
+  {
+    "id": "2",
+    "muscleID": "Front delt",
+    "muscleName": "Anterior Deltoideus",
+    "muscleGroup": "Shoulders",
+    "movement": "push",
+    "action": "The anterior fibers of the deltoid muscle flex and internally rotate the humerus",
+    "description": "By abducting the arm in a slightly horizontally adducted (30 degrees) position, the anterior deltoid fibers can be emphasized. The anterior deltoid is stretched by taking the humerus into extreme horizontal abduction or by extreme extension and adduction."
+  },
+  {
+    "id": "3",
+    "muscleID": "Middle Delt",
+    "muscleName": "Lateral Deltoideus",
+    "muscleGroup": "Shoulders",
+    "movement": "push",
+    "action": "abduction of the glenohumeral joint",
+    "description": "Sidearm dumbbell raises are excellent for strengthening the deltoid, especially the middle fibers",
+    "stretching":"The middle deltoid is stretched by taking the humerus into extreme adduction behind the back"
+  },
+  {
+    "id": "4",
+    "muscleID": "Rear Delt",
+    "muscleName": "Posterior Deltoideus",
+    "muscleGroup": "Shoulders",
+    "movement": "pull",
+    "action": "abduction, extension, horizontal abduction and external rotation of the glenohumeral joint",
+    "description": "The posterior fibers can be strengthened better by abducting the arm in a slightly horizontally abducted (30 degrees) position",
+    "stretching":"Extreme horizontal adduction stretches the posterior deltoid"
+  },
+  {
+    "id": "5",
+    "muscleID": "Upper Chest",
+    "muscleName": "Pectoralis Minor",
+    "muscleGroup": "Chests",
+    "movement": "push",
+    "action": "Abduction (protraction): draws the scapula forward and tends to tilt the lower border away from the ribs. Downward rotation: as it abducts, it draws the scapula downward. Depression: when the scapula is rotated upward, it assists in depression",
+    "description": "The pectoralis minor is most used in depressing and rotating the scapula downward from an upwardly rotated position, as in pushing the body upward on dip bars or in body dips. The pectoralis minor is often tight due to being overused in activities involving abduction, which may lead to forward and rounded shoulders",
+    "stretching":"Wall push-up in the corner as used for stretching the serratus anterior. Additionally, lying supine with a rolled towel directly under the thoracic spine while a partner pushes each scapula into retraction places this muscle on stretch"
+  },
+  {
+    "id": "6",
+    "muscleID": "Middle Chest",
+    "muscleName": "Pectoralis Major",
+    "muscleGroup": "Chest",
+    "movement": "push",
+    "action": "Upper fibers (clavicular head): internal rotation, horizontal adduction, flexion up to about 60 degrees, abduction (once the arm is abducted 90 degrees, the upper fibers assist in further abduction), and adduction (with the arm below 90 degrees of abduction) of the glenohumeral joint. Lower fibers (sternal head): internal rotation, horizontal adduction, and adduction and extension of the glenohumeral joint from a flexed position to the anatomical position",
+    "description": "The pectoralis major is used powerfully in push-ups, pull-ups, throwing, and tennis serves. With a barbell, the subject takes a supine position on a bench with the arms at the side and moves the arms to a horizontally adducted position. This exercise, known as bench pressing, is widely used for pectoralis major development",
+    "stretching":"Stretching is often needed and can be done by passive external rotation. It is also stretched when the shoulder is horizontally abducted. Extending the shoulder fully provides stretching to the upper pectoralis major, while full abduction stretches the lower pectoralis major"
+  },
+  {
+    "id": "7",
+    "muscleID": "Triceps",
+    "muscleName": "Triceps Brachii",
+    "muscleGroup": "Arms",
+    "movement": "push",
+    "action": "All heads: extension of the elbow. Long head: extension, adduction, and horizonal abduction of the shoulder joint",
+    "description": "Typical action of the triceps brachii is shown in push-ups when there is powerful extension of the elbow. The long head is an important extensor of the shoulder joint. Two muscles extend the elbow—the triceps brachii and the anconeus. Push-ups demand strenuous contraction of these muscles. Dips on the parallel bars are more diffi cult to perform. Bench pressing a barbell or a dumbbell is an excellent exercise. Overhead presses and triceps curls (elbow extensions from an overhead position) emphasize the triceps",
+    "stretching":"The triceps brachii should be stretched with both the shoulder and the elbow in maximal flexion"
+  },
+  {
+    "id": "8",
+    "muscleID": "Biceps",
+    "muscleName": "Biceps Brachii",
+    "muscleGroup": "Arms",
+    "movement": "pull",
+    "action": "Flexion of the elbow, Supination of the forearm, Weak flexion of the shoulder joint, Weak abduction of the shoulder joint when the shoulder joint is in external rotation",
+    "description": "It is more powerful in flexing the elbow when the radioulnar joint is supinated. It is also a strong supinator, particularly if the elbow is flexed. The same muscles are used in elbow joint flexion, regardless of forearm pronation or supination. Flexion of the forearm with a barbell in the hands, known as “curling,” is an excellent exercise to develop the biceps brachii. This movement can be performed one arm at a time with dumbbells or both arms simultaneously with a barbell. Other activities in which there is powerful flexion of the forearm are chinning and rope climbing",
+    "stretching":"Due to the multiarticular orientation of the biceps, all three joints must be positioned appropriately to achieve optimal stretching. The elbow must be extended maximally with the shoulder in full extension. The biceps may also be stretched by beginning with full elbow extension and progressing into full horizontal abduction at approximately 70 to 110 degrees of shoulder abduction. In all cases, the forearm should be fully pronated to achieve maximal lengthening of the biceps brachii"
+  },
+  {
+    "id": "9",
+    "muscleID": "Foreamrs",
+    "muscleName": "Forearms",
+    "muscleGroup": "Arms",
+    "movement": "pull",
+    "action": "Flexion of the wrist, Abduction of the wrist, Weak flexion of the elbow, Weak pronation of the forearm",
+    "description": "The flexor carpi radialis, flexor carpi ulnaris, and palmaris longus are the most powerful of the wrist flexors. They are brought into play during any activity that requires wrist curling or stabilization of the wrist against resistance, particularly if the forearm is supinated. The flexor carpi radialis may be developed by performing wrist curls against a handheld resistance. This may be accomplished when the supinated forearm is supported by a table, with the hand and wrist hanging over the edge to allow full range of motion. The extended wrist is then flexed or curled up to strengthen this muscle",
+    "stretching":"To stretch the flexor carpi radialis, the elbow must be fully extended with the forearm supinated while a partner passively extends and adducts the wrist"
+  },
+  {
+    "id": "10",
+    "muscleID": "Abs",
+    "muscleName": "Rectus Abdominis",
+    "muscleGroup": "Abs",
+    "movement": "",
+    "action": "Both sides: lumbar flexion, Posterior pelvic rotation, Right side: weak lateral flexion to the right, Left side: weak lateral flexion to the left",
+    "description": "There are several exercises for the abdominal muscles, such as bent-knee sit-ups, crunches, and isometric contractions. Bent-knee sit-ups with the arms folded across the chest are considered by many to be a safe and effi cient exercise. Crunches are considered to be even more effective for isolating the work to the abdominals. Both of these exercises shorten the iliopsoas muscle and other hip flexors, thereby reducing their ability to generate force. Twisting to the left and right brings the oblique muscles into more active contraction.",
+    "stretching":"The rectus abdominis is stretched by simultaneously hyperextending both the lumbar and the thoracic spine. Extending the hips assists in this process by accentuating the anterior rotation of the pelvis to hyperextend the lumbar spine"
+  },
+  {
+    "id": "11",
+    "muscleID": "Side Abs",
+    "muscleName": "Transversus Abdominis",
+    "muscleGroup": "Abs",
+    "movement": "",
+    "action": "Both sides: lumbar flexion, Posterior pelvic rotation, Right side: lumbar lateral flexion to the right and rotation to the right, lateral pelvic rotation to the left, Left side: lumbar lateral flexion to the left and rotation to the left, lateral pelvic rotation to the right",
+    "description": "The internal oblique abdominal muscles run diagonally in the direction opposite that of the external obliques. The left internal oblique rotates to the left, and the right internal oblique rotates to the right. In touching the left elbow to the right knee in crunches, the left external oblique and the right internal oblique abdominal muscles contract at the same time, assisting the rectus abdominis muscle in flexing the trunk to make completion of the movement possible. In rotary movements, theinternal oblique and the external oblique on the opposite side always work together. Like the external oblique, each side of the internal oblique must be stretched individually",
+    "stretching":"The right side is stretched by moving into extreme left lateral flexion and extreme left lumbar rotation combined with extension. The same movements to the right combined with extension stretch the left side"
+  },
+  {
+    "id": "12",
+    "muscleID": "Quads",
+    "muscleName": "Quadriceps Femoris",
+    "muscleGroup": "Legs",
+    "movement": "",
+    "action": "Flexion of the hip, Extension of the knee, Anterior pelvic rotation",
+    "description": "The ability to jump is essential in nearly all sports. Individuals who have good jumping ability always have strong quadriceps muscles that extend the leg at the knee. The quadriceps function as a decelerator when it is necessary to decrease speed for changing direction or to prevent falling when landing. The muscles are the rectus femoris (the only two-joint muscle of the group), vastus lateralis (the largest muscle of the group), vastus intermedius, and vastus medialis. All attach to the patella and by the patellar tendon to the tuberosity of the tibia. The vertical jump is a simple test that may be used to indicate the strength or power of the quadriceps. The muscles of the quadriceps may be developed by resisted knee extension activities from a seated position; however, full-range knee extensions may be contraindicated with certain patellofemoral conditions. Performing functional weight-bearing activities such as step-ups or squats is particularly useful for strengthening and endurance",
+    "stretching":""
+  },
+  {
+    "id": "13",
+    "muscleID": "Glutes",
+    "muscleName": "Gluteus",
+    "muscleGroup": "Legs",
+    "movement": "",
+    "action": "Extension of the hip, External rotation of the hip, Upper fibers: assist in hip abduction, Lower fibers: assist in hip adduction, Posterior pelvic rotation",
+    "description": "It is important in extension of the thigh with external rotation. Strong action of the gluteus maximus muscle is seen in running, hopping, skipping, and jumping. Powerful extension of the thigh is secured in the return to standing from a squatting position, especially with weighted barbells placed on the shoulders. This muscle is most emphasized when the hip starts from a flexed position and moves to full extension and abduction, with the knee flxed 30 degrees or more to reduce the hamstrings involvement in the action",
+    "stretching":"The gluteus maximus is stretched in the supine position with full hip flexion to the ipsilateral axilla and then to the contralateral axilla with the knee in flexion. Simultaneous internal hip rotation accentuates this stretch"
+  },
+  {
+    "id": "14",
+    "muscleID": "Hams",
+    "muscleName": "Biceps Femoris",
+    "muscleGroup": "Legs",
+    "movement": "",
+    "description": "Muscle strains involving the hamstrings are very common in football and other sports that require explosive running. This muscle group is often referred to as the running muscle because of its function in acceleration. The hamstring muscles are antagonists to the quadriceps muscles at the knee and are named for their cordlike attachments at the knee. The flexibility of these muscles may be improved by performing slow, static stretching exercises, such as flexing the hip slowly while maintaining knee extension in a long sitting position. The hamstrings are primarily knee flexors in addition to serving as hip extensors. The semitendinosus and semimembranosus perform internal rotation. Rotation of the knee permits pivoting movements and change in direction of the body. This rotation of the knee is vital in accommodating to forces developing at the hip or ankle during directional changes in order to make the total movement more functional as well as more fluid in appearance",
+    "stretching":""
+  },
+  {
+    "id": "15",
+    "muscleID": "Adductors",
+    "muscleName": "Adductors",
+    "muscleGroup": "Legs",
+    "movement": "",
+    "action": "Adduction of the hip, External rotation as the hip adducts, Extension of the hip",
+    "description": "The adductor magnus muscle is used in the breaststroke kick in swimming and in horseback riding. Since the adductor muscles (adductor magnus, adductor longus, adductor brevis, and gracilis) are not heavily used in ordinary movement, some prescribed activity for them should be provided. Some modern exercise equipment is engineered to provide resistance for hip adduction movement. The muscle may be strengthened by using the scissors exercise, which requires the subject to sit on the floor with the legs spread wide while a partner puts his or her legs or arms inside each lower leg to provide resistance",
+    "stretching":"The adductor longus is stretched in the same manner as the adductor brevis(Abducting the extended and internally rotated hip provides stretching of the adductor brevis)"
+  },
+  {
+    "id": "16",
+    "muscleID": "Abductors",
+    "muscleName": "Abductors",
+    "muscleGroup": "Legs",
+    "movement": "",
+    "action": "Abduction of the hip, Flexion of the hip, Tendency to rotate the hip internally as it flexes, Anterior pelvic rotation",
+    "description": "The tensor fasciae latae muscle aids in preventing external rotation of the hip as it is flexed by other flexor muscles. The tensor fasciae latae muscle is used when flexion and internal rotation take place. This is a weak movement but is important in helping direct the leg forward so that the foot is placed straight forward in walking and running. Thus, from the supine position, raising the leg with defi nite internal rotation of the femur will call it into action. The tensor fasciae latae may be developed by performing hip abduction exercises against gravity and resistance while in a side-lying position. This is done simply by abducting the hip that is up and then slowly lowering it back to rest against the other leg",
+    "stretching":"Stretch may be applied by remaining on the side and having a partner passively move the downside hip into full extension, adduction, and external rotation"
+  },
+  {
+    "id": "17",
+    "muscleID": "Calfs",
+    "muscleName": "Gastrocnemius and Soleus",
+    "muscleGroup": "Legs",
+    "movement": "",
+    "action": "Plantar flexion of the ankle, Flexion of the knee",
+    "description": "The gastrocnemius and soleus together are known as the triceps surae with triceps referring to the heads of the medial and lateral gastrocnemius and the soleus and surae referring to the calf. Heel-raising exercises with the knees in full extension and the toes resting on a block of wood are an excellent way to strengthen the muscle through the full range of motion. Holding a barbell on the shoulders can increase the resistance",
+    "stretching":"The gastrocnemius may be stretched by standing and placing both palms on a wall about 3 feet away and leaning into the wall. The feet should be pointed straight ahead, and the heels should remain on the fl oor. The knees should remain fully extended throughout the exercise to accentuate the stretch on the gastrocnemius"
+  }
+]

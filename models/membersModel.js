@@ -51,25 +51,21 @@ const memberSchema = new mongoose.Schema({
   training:{
 
   },
-  measurements:{
-    height: Number,
-    weight: Number,
-    bodyFat: Number,
-    bmi: Number,
-    waist: Number,
-    arm: Number,
-    thigh: Number
-  },
+  height: Number,
+  weight: Number,
+  bodyFat: Number,
+  bmi: Number,
+  waist: Number,
+  arm: Number,
+  thigh: Number,
   experiance:{
     type: String,
     enum: exp,
     default: 'beginner'
   },
-  records:{
-    squat: Number,
-    bench: Number,
-    deadlift: Number,
-  },
+  squat: Number,
+  bench: Number,
+  deadlift: Number,
   createdAt:{
     type: Date,
     default: Date.now()
