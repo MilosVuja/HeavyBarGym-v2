@@ -5,7 +5,8 @@
   color: white;
   font-family: Open Sans;
   transition: all .6s ease;
-
+  scroll-behavior: smooth;
+  
   textarea:focus,
   input:focus {
     outline: none;
