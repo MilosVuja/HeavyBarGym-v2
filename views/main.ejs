@@ -48,13 +48,12 @@
         </div>
 
         <div class="login-out">
-
-
-          <a class="logout_btn" href="/logout">Logout</a>
-          <a href="/profile"><img src="/images/about-us.jpg" alt="prof.pic" /></a>
-
-          <a class="login_btn" href="/login">Login</a>
-
+          <% if (member) { %>
+            <a class="logout_btn" href="/logout">Logout</a>
+            <a href="/profile"><img src="/images/about-us.jpg" alt="prof.pic" /></a>
+          <% } else { %>
+            <a class="login_btn" href="/login">Login</a>
+          <% } %>
         </div>
       </div>
     </header>

@@ -10,6 +10,7 @@ router.post('/login', authController.login);
 router.get('/', authController.logout);
 
 router.route('/profile')
+.get(authController.isLoggedIn, memberController.getMember)
 .patch(authController.protect, memberController.updateMember)
 .delete(authController.protect, memberController.deleteMember);
 

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exercise Modal</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/css/profile.css" type="text/css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -33,28 +33,28 @@
           <div class="personal_info">
             <div class="profile-fname-lname">
               <div class="profile-fname">
-                <label for="fname">First name: </label>
-                <input type="text" id="fname">
+                <label for="firstName">First name: </label>
+                <input type="text" id="firstName" name="firstName" value="<%= member.firstName %>">
               </div>
               <div class="profile-lname">
-                <label for="lname">Last name: </label>
-                <input type="text" id="lname">
+                <label for="lastName">Last name: </label>
+                <input type="text" id="lastName" name="lastName" value="<%= member.lastName %>">
               </div>
             </div>
             <div class="profile-email-pnumber">
               <div class="profile-email">
                 <label for="email">Email: </label>
-                <input type="email" id="email">
+                <input type="email" id="email" name="email" value="<%= member.email %>">
               </div>
               <div class="profile-pnumber">
-                <label for="tel">Phone number:</label>
-                <input type="tel" id="tel">
+                <label for="phoneNumber">Phone number: </label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" value="<%= member.phoneNumber %>">
               </div>
             </div>
             <div class="profile-address-sex">
               <div class="profile-address-sex">
                 <label for="address">Address: </label>
-                <input type="text" id="address">
+                <input type="text" id="address" name="address" value="<%= member.address %>">
               </div>
               <!-- <div class="profile-sex">
               <label for="sex">Sex:</label>
@@ -70,11 +70,11 @@
         <div class="additional_info">
           <div class="goal">
             <label for="goal">Goal:</label>
-            <input type="text" id="goal">
+            <input type="text" id="goal" name="goal" value="<%= member.goal %>">
           </div>
           <div class="program">
             <label for="program">Program:</label>
-            <input type="text" id="program">
+            <input type="text" id="program" name="program" value="<%= member.program %>">
           </div>
           <p>Membership: </p>
         </div>
@@ -82,36 +82,36 @@
           <div class="height_weight">
             <div class="height">
               <label for="height">Height: </label>
-              <input type="text" id="height" placeholder="cm">
+              <input type="text" id="height" placeholder="cm" name="height" value="<%= member.height %>">
             </div>
             <div class="weight">
               <label for="weight">Weight: </label>
-              <input type="text" id="weight" placeholder="kg">
+              <input type="text" id="weight" placeholder="kg" name="weight" value="<%= member.weight %>">
             </div>
           </div>
           <div class="bfat_bmi">
             <div class="body_fat">
               <label for="bfat">Body fat:</label>
-              <input type="text" id="bfat" placeholder="%">
+              <input type="text" id="bfat" placeholder="%" name="bodyFat" value="<%= member.bodyFat %>">
             </div>
             <div class="bmi">
               <label for="bmi">BMI:</label>
-              <input type="text" id="bmi" placeholder="">
+              <input type="text" id="bmi" placeholder="" name="bmi" value="<%= member.bmi %>">
             </div>
           </div>
           <div class="waist_arm">
             <div class="waist">
               <label for="waist">Waist:</label>
-              <input type="text" id="waist" placeholder="cm">
+              <input type="text" id="waist" placeholder="cm" name="waist" value="<%= member.waist %>">
             </div>
             <div class="arm">
               <label for="arm">Arm:</label>
-              <input type="text" id="arm" placeholder="cm">
+              <input type="text" id="arm" placeholder="cm" name="arm" value="<%= member.arm %>">
             </div>
           </div>
           <div class="thigh">
             <label for="thigh">Thigh: </label>
-            <input type="text" id="thigh" placeholder="cm">
+            <input type="text" id="thigh" placeholder="cm" name="thigh" value="<%= member.thigh %>">
           </div>
         </div>
         <div class="experience">
@@ -138,15 +138,15 @@
           <div class="personal-best">
             <div class="squat">
               <label for="squat">Squat: </label>
-              <input type="number" id="squat" placeholder="100">
+              <input type="number" id="squat" placeholder="100" name="squat" value="<%= member.squat %>">
             </div>
             <div class="bench">
               <label for="bench">Bench: </label>
-              <input type="number" id="bench" placeholder="80">
+              <input type="number" id="bench" placeholder="80" name="bench" value="<%= member.bench %>">
             </div>
             <div class="deadlift">
               <label for="deadlift">Deadlift: </label>
-              <input type="number" id="deadlift" placeholder="100">
+              <input type="number" id="deadlift" placeholder="100" name="deadlift" value="<%= member.deadlift %>">
             </div>
           </div>
         </div>
@@ -653,7 +653,8 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="/js/bundle.js"></script>
+  <script src="/js/profile.js"></script>
 </body>
 
 </html>

@@ -89,7 +89,7 @@ exports.protect = catchAsync (async (req, res, next) => {
     return next(new AppError('Member belonging to this token does no longer exist!', 401))
   }
 
-  req.member = currentMember;
+  req.user = currentMember;
   
   next();
 })

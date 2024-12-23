@@ -22,19 +22,23 @@ exports.getAllMembers = catchAsync (async (req, res) => {
   })
 })
 
-exports.getMember = (req, res) => {
-  res.status(500).json({
-    status: 'Error',
-    message: 'This route isnt yet defined'
-  })
-}
+exports.getMember = catchAsync(async (req, res, next) => {
+  const member = await Member.findById(req.params.id);
 
-exports.createMember = (req, res) => {
+  res.status(200).json({
+    status: 'Success',
+    data: {
+      member
+    }
+  })
+});
+
+exports.createMember = catchAsync (async (req, res, next) => {
   res.status(500).json({
     status: 'Error',
     message: 'This route isnt yet defined'
   })
-}
+})
 
 exports.updateMember = catchAsync (async (req, res, next) => {
   const filteredBody = filterObj(req.body,

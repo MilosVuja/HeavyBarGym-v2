@@ -68,7 +68,7 @@ function copyRow(button) {
 
 function deleteRow(button) {
   const currentRow = button.closest(".exercise-row");
-  const rowsContainer = document.getElementById("rows-container");
+  const rowsContainer = document.querySelector(".rows-container");
 
   if (rowsContainer.children.length > 2) {
     currentRow.remove();
@@ -76,7 +76,7 @@ function deleteRow(button) {
 }
 
 function addRow() {
-  const rowsContainer = document.getElementById("rows-container");
+  const rowsContainer = document.querySelector(".rows-container");
   const lastRow = rowsContainer.lastElementChild;
   const newRow = lastRow.cloneNode(true);
 

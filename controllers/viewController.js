@@ -5,7 +5,8 @@ const fs = require("fs");
 
 exports.getMainPage = (req, res,) => {
   res.status(200).render('main', {
-    title: 'Heavy Bar Gym'
+    title: 'Heavy Bar Gym',
+    member: res.locals.member
   })
 }
 
@@ -15,11 +16,14 @@ exports.getLoginPage = (req, res) => {
   })
 }
 
-exports.getProfilePage = (req, res) => {
-  res.status(200).render('profile', {
-    title: 'Your profile'
-  })
-}
+exports.getProfilePage = catchAsync(async (req, res, next) => {
+  const member = await Member.findById(req.user.id);
+  if (!member) {
+    return next(new AppError('No member found with that ID', 404));
+  }
+  res.render('profile', { member });
+});
+
 exports.updateMemberData = catchAsync (async (req, res, next)=>{
   const updatedMember = await Member.findByIdAndUpdate(
     req.member.id,
