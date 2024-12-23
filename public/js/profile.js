@@ -46,59 +46,44 @@ window.onclick = function(event) {
   }
 }
 
-const column = document.querySelectorAll(".column");
-const addDel = document.querySelector(".add-delete");
-let addRow = document.querySelectorAll('.addRow');
+function updateField(element, type, increment) {
+  const valueElement = element.closest(".counter").querySelector(".value");
+  let currentValue = parseFloat(valueElement.value);
 
+  // Prevent negative numbers
+  if (currentValue + increment < 0) {
+    currentValue = 0;
+  } else {
+    currentValue += increment;
+  }
 
-addRow.forEach((elem)=>{
-  elem.addEventListener('click', ()=>{
-    column.forEach((ele)=>{
-      let newAdjust = document.createElement("div");
-      newAdjust.classList.add("adjust");
-      let newInput = document.createElement('input');
-      newInput.type='text';
-      newInput.placeholder='0';
-      newInput.name='bogzna';
-      let newSpanPlus = document.createElement('span');
-      let newIPlus = document.createElement('i');
-      newIPlus.classList.add('fa-regular', 'fa-plus');
-      let newSpanMinus = document.createElement('span');
-      let newIMinus = document.createElement('i');
-      newIMinus.classList.add('fa-solid', 'fa-minus');
-      ele.appendChild(newAdjust);
-      newAdjust.appendChild(newInput);
-      newAdjust.appendChild(newSpanPlus);
-      newAdjust.appendChild(newSpanMinus);
-      newSpanPlus.appendChild(newIPlus);
-      newSpanMinus.appendChild(newIMinus);
-    })
+  valueElement.value = currentValue.toFixed(type === "weight" ? 1 : 0);
+}
 
-    let newIcons = document.createElement('div');
-    newIcons.classList.add('icons');
-    let newSpanPlusIcon = document.createElement('span');
-    let newIPlusIcon = document.createElement('i');
-    newIPlusIcon.classList.add('fa-regular', 'fa-plus', 'white', 'addRow');
-    let newSpanMinusIcon = document.createElement('span');
-    let newIMinusIcon = document.createElement('i');
-    newIMinusIcon.classList.add('fa-solid', 'fa-trash', 'white', 'deleteRow');
-    addDel.appendChild(newIcons);
-    newIcons.appendChild(newSpanPlusIcon);
-    newIcons.appendChild(newSpanMinusIcon);
-    newSpanPlusIcon.appendChild(newIPlusIcon);
-    newSpanMinusIcon.appendChild(newIMinusIcon);
-    const deleteRow = document.querySelectorAll(".deleteRow");
-    deleteRow.forEach((el)=>{
-      el.addEventListener('click', ()=>{
-        newAdjust.remove();
-        newIcons.remove();
-      })
-    })
-  })
-})
+function copyRow(button) {
+  const currentRow = button.closest(".exercise-row");
+  const newRow = currentRow.cloneNode(true);
+  currentRow.parentNode.insertBefore(newRow, currentRow.nextSibling);
+}
 
+function deleteRow(button) {
+  const currentRow = button.closest(".exercise-row");
+  const rowsContainer = document.getElementById("rows-container");
 
-const icons = document.querySelector(".icons");
-const plus = document.querySelectorAll(".fa-plus");
-const minus = document.querySelectorAll("fa-minus");
-const input = document.querySelectorAll("input")
+  if (rowsContainer.children.length > 2) {
+    currentRow.remove();
+  }
+}
+
+function addRow() {
+  const rowsContainer = document.getElementById("rows-container");
+  const lastRow = rowsContainer.lastElementChild;
+  const newRow = lastRow.cloneNode(true);
+
+  const valueElements = newRow.querySelectorAll(".value");
+  valueElements.forEach((value) => {
+    value.value = 0;
+  });
+
+  rowsContainer.appendChild(newRow);
+}

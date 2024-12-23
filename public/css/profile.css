@@ -369,217 +369,111 @@
 * .modal-exercise-back .modal-exercise .modal-header .video-instruction .instruction form textarea::placeholder {
   color: black;
 }
-* .modal-exercise-back .modal-exercise .wrapper_adjust {
-  border: 2px solid rgb(92, 0, 0);
-  background-color: black;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments {
-  display: flex;
-  justify-content: space-between;
-  color: white;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns {
-  display: flex;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column {
-  width: 25%;
-  text-align: center;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .header {
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5% 0;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .header p {
-  text-transform: uppercase;
-  color: red;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .adjust {
-  height: 5vh;
-  padding-top: 2%;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .adjust input {
-  width: 15%;
-  text-align: end;
-  border: none;
-  background: transparent;
-  margin-right: 2%;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .adjust input::-moz-placeholder {
-  color: white;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .columns .column .adjust input::placeholder {
-  color: white;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete {
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  margin-right: 2%;
 }
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete .save_btn input {
-  border: 2px solid rgb(92, 0, 0);
-  background: transparent;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 0.5rem 0.8rem;
-  color: white;
-  cursor: pointer;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete .save_btn input:hover {
-  background-color: rgb(92, 0, 0);
-  color: black;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete .icons {
-  text-align: center;
-  margin-bottom: 15%;
-}
-* .modal-exercise-back .modal-exercise .wrapper_adjust .adjustments .add-delete .icons span {
-  cursor: pointer;
-}
-* .modal-exercise-back .modal-exercise .exercise-save-btn {
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row {
   display: flex;
-  justify-content: end;
-  margin-top: 1rem;
+  flex-direction: column;
+  border: 1px solid rgb(92, 0, 0);
+  padding: 1rem;
 }
-* .modal-exercise-back .modal-exercise .exercise-save-btn input {
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .header-row,
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .input-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .header-row .add-row,
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .input-row .add-row {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0;
+  height: 3rem;
+  width: 7rem;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .header-row .add-row:hover,
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .input-row .add-row:hover {
+  background-color: rgb(92, 0, 0);
+  border-radius: 15px;
+  color: black;
+  font-weight: 900;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter {
+  display: flex;
+  padding-left: 3rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter input {
+  width: 4rem;
+  text-align: center;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  outline: none;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter input::-webkit-outer-spin-button, * .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter button {
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  padding: 0.2rem;
+  cursor: pointer;
+  color: rgb(92, 0, 0);
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter button:hover {
+  color: red;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .row-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .row-actions span i {
+  color: rgb(92, 0, 0);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .row-actions span i:hover {
+  color: red;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .header-row span {
+  font-weight: bold;
+}
+* .modal-exercise-back .modal-exercise .wrapper_adjust .save {
   border: 2px solid red;
   background: transparent;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 700;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.2rem;
+  margin-top: 1rem;
   color: white;
   cursor: pointer;
 }
-* .modal-exercise-back .modal-exercise .exercise-save-btn input:hover {
+* .modal-exercise-back .modal-exercise .wrapper_adjust .save:hover {
   color: black;
   background-color: red;
-}
-
-@media only screen and (max-width: 1440px) {
-  * .profile h2 {
-    text-align: center;
-  }
-  * .profile .wrapper {
-    padding: 2%;
-  }
-  * .profile .wrapper form {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-  }
-  * .profile .wrapper form .basic_informations {
-    grid-row: 1/2;
-    grid-column: 1/4;
-  }
-  * .profile .wrapper form .basic_informations .profile_pic {
-    width: 12%;
-  }
-  * .profile .wrapper form .basic_informations .personal_info {
-    padding: 0 2%;
-    width: 60vw;
-  }
-  * .profile .wrapper form .basic_informations .personal_info div {
-    width: 100%;
-  }
-  * .profile .wrapper form .basic_informations .personal_info div div {
-    width: 50%;
-  }
-  * .profile .wrapper form .additional_info {
-    margin: 0;
-    grid-row: 1/2;
-    grid-column: 4/5;
-    height: 20vh;
-  }
-  * .profile .wrapper form .measurements {
-    grid-row: 2/4;
-    grid-column: 2/3;
-    margin: 0;
-  }
-  * .profile .wrapper form .experience {
-    grid-row: 2/3;
-    grid-column: 1/2;
-    margin: 0;
-  }
-  * .profile .wrapper form .records {
-    grid-row: 2/3;
-    grid-column: 3/4;
-  }
-}
-@media only screen and (max-width: 1024px) {
-  * header {
-    justify-content: space-between;
-  }
-  * header nav {
-    margin-left: 0;
-  }
-  * .profile .wrapper {
-    padding: 2% 2% 2% 5%;
-  }
-  * .profile .wrapper form {
-    display: flex;
-    flex-direction: column;
-  }
-  * .profile .wrapper form .basic_informations .profile_pic {
-    height: 15%;
-  }
-  * .profile .wrapper form .basic_informations .profile_pic #upload_pic {
-    width: auto;
-    height: auto;
-    bottom: 0;
-    right: 0;
-  }
-  * .profile .wrapper form .basic_informations .personal_info {
-    width: 80vw;
-  }
-  * .profile .wrapper form .measurements,
-  * .profile .wrapper form .experience,
-  * .profile .wrapper form .additional_info {
-    margin-left: 15%;
-    justify-content: center;
-  }
-  * .profile .wrapper form .experience div input[type=radio] {
-    width: 2vw;
-  }
-}
-@media only screen and (max-width: 768px) {
-  * .profile .wrapper form .basic_informations {
-    flex-direction: column;
-    align-items: center;
-  }
-  * .profile .wrapper form .basic_informations .personal_info {
-    margin: 0;
-    width: 100%;
-  }
-  * .profile .wrapper form .basic_informations .personal_info div {
-    display: block;
-  }
-  * .profile .wrapper form .basic_informations .personal_info div div {
-    width: auto;
-  }
-  * .profile .wrapper form .gym_info {
-    margin: 0;
-  }
-  * .profile .wrapper form .measurements {
-    margin: 0;
-    width: 100%;
-    padding: 5%;
-  }
-  * .profile .wrapper form .experience {
-    margin: 0;
-  }
-  * .profile .wrapper form .additional_info {
-    margin: 0;
-  }
-}
-@media only screen and (max-width: 425px) {
-  * .profile .wrapper form .basic_informations .profile_pic {
-    width: 30%;
-  }
-  * .profile .wrapper form .experience div input[type=radio] {
-    width: 4vw;
-  }
 }/*# sourceMappingURL=profile.css.map */

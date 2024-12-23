@@ -1,16 +1,10 @@
-dayWeek = document.querySelectorAll(".dayWeek");
-date = document.querySelectorAll(".date");
-td = document.querySelectorAll("td");
-book = document.querySelector(".modal-booking");
-eks = document.querySelector(".close");
+const headerRow = document.getElementById("header-row");
+const tableBody = document.getElementById("table-body");
+const modal = document.getElementById("modal");
+const modalContent = document.getElementById("modal-content");
 
 
-
-
-
-current = new Date();
-// current.setDate((current.getDate() - current.getDay() +1));
-const daysWeek = [
+const daysOfWeek = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -19,61 +13,118 @@ const daysWeek = [
   "Friday",
   "Saturday",
 ];
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+
+const times = [
+  "07:00-08:00",
+  "08:00-09:00",
+  "09:00-10:00",
+  "17:00-18:00",
+  "18:00-19:00",
+  "19:00-20:00",
+  "20:00-21:00",
+  "21:00-22:00",
 ];
 
-dayWeek[0].textContent = daysWeek[current.getDay()];
-date[0].textContent = current.getDate() + ". " + months[current.getMonth()];
-for (let i = 1; i < 7; i++) {
-  current.setDate(current.getDate()+1);
-  dayWeek[i].textContent = daysWeek[current.getDay()];
-  date[i].textContent = current.getDate() + ". " + months[current.getMonth()];
+function populateTable() {
+  const today = new Date();
+  const todayIndex = today.getDay();
+
+  for (let i = 0; i < 7; i++) {
+    const dayIndex = (todayIndex + i) % 7;
+    const date = new Date(today);
+    date.setDate(today.getDate() + i);
+
+    const dayName = daysOfWeek[dayIndex];
+    const formattedDate = `${date
+      .getDate()
+      .toString()
+      .padStart(2, "0")}. ${date.toLocaleString("default", { month: "long" })}`;
+    const th = document.createElement("th");
+    th.innerHTML = `<div>${dayName}<br>${formattedDate}</div>`;
+    headerRow.appendChild(th);
+  }
+
+  times.forEach((time) => {
+    const row = document.createElement("tr");
+    for (let i = 0; i < 7; i++) {
+      const td = document.createElement("td");
+      td.innerHTML = `
+        <div>${time}</div>
+        <p>Training: Yoga</p>
+        <p>Trainer: Milos</p>
+        <p>Room: 101</p>
+        <p>Participants: 4/40</p>
+        <div><button onclick="openModal()">Book</button></div>`;
+      row.appendChild(td);
+    }
+    tableBody.appendChild(row);
+  });
 }
 
-proba = new Date();
-proba.setDate(proba.getDate());
+function shiftTable() {
+  const firstHeaderCell = headerRow.firstChild;
+  headerRow.appendChild(firstHeaderCell);
 
-if(proba.getHours() == 22 &&
-    proba.getMinutes() == 56){
-      move();
-      console.log(proba);
-    }
-    
-function move() {
-  let table = document.querySelector("table");
-  let tr = table.rows;
-  for (let i = 1; i < tr.length; i++) {
-    tr[i].appendChild(tr[i].firstElementChild);
+  const rows = tableBody.children;
+  for (const row of rows) {
+    const firstCell = row.firstChild;
+    row.appendChild(firstCell);
   }
 }
 
+function openModal(time, training, trainer, room) {
+  modalContent.innerHTML = `
+    <div class="booking-modal-header">
+      <h3>Book your spot for training via your HBG account</h3>
+      <div class="close" onclick="closeModal()">
+        <span class="eks">&#x2718;</span>
+      </div>
+    </div>
+    <div class="main">
+      <p>Input your information from HBG account to reserve<br>
+      your spot for ${training} training with ${trainer} on ${room} at ${time}!</p>
+      <form>
+        <div class="contact-info">
+          <div class="email">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" placeholder="Email" required />
+          </div>
+          <div class="pin-number">
+            <label for="number">PIN code:</label><br>
+            <input type="text" id="number" placeholder="PIN code">
+          </div>
+        </div>
+        <p>If you don't know your PIN code, check your email inbox or contact our gym</p>
+        <input type="submit" class="book-modal-btn" value="Book">
+      </form>
+    </div>`;
 
-// function pickATimeOfDay(hour, minutes){
-//   const twentyFourHours = 86400000;
-//   let newDay=new Date();
-//   let untilMidnight = new Date(newDay.getFullYear(), newDay.getMonth(), newDay.getDate(), hour, minutes, 35, 0).getTime() - newDay;
-//   if (untilMidnight < 0)
-//   {
-//     untilMidnight += twentyFourHours;
-//   }
-//   setTimeout(()=> {
-//     move();
-//     setInterval(move, twentyFourHours);
-//   }, untilMidnight);
-// }
-// pickATimeOfDay(1,2,() => {
-//   move();
-// });
+  modal.style.display = "block";
+}
 
+function closeModal() {
+  modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+
+  if (event.target === modal) {
+    closeModal();
+  }
+};
+
+window.onload = () => {
+  populateTable();
+
+  const now = new Date();
+  const timeUntilMidnight = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1
+  ) - now;
+
+  setTimeout(() => {
+    shiftTable();
+    setInterval(shiftTable, 24 * 60 * 60 * 1000);
+  }, timeUntilMidnight);
+};
