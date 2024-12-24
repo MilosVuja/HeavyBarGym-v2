@@ -1,37 +1,41 @@
-import axios from "axios";
-
 export const login = async (email, pinCode) => {
-  console.log(email, pinCode);
-  try{
+  try {
     const res = await axios({
-      method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/home/login',
+      method: "POST",
+      url: "http://127.0.0.1:3000/api/v1/home/login",
       data: {
         email,
-        pinCode
-      }
+        pinCode,
+      },
     });
 
-    if(res.data.status === 'Success!'){
-      alert('Logged in successfully!');
-      window.setTimeout(()=>{
-        location.assign('/');
+    if (res.data.status === "Success!") {
+      alert("Logged in successfully!");
+      window.setTimeout(() => {
+        location.assign("/");
       }, 1000);
     }
-  }catch(error){
+  } catch (error) {
     alert(error.response.data.message);
   }
-}
+};
 
-export const logout = async() => {
-  try{
+export const logout = async () => {
+  try {
     const res = await axios({
-      method: 'GET',
-      url: 'http://127.0.0.1:3000/api/v1/home',
+      method: "GET",
+      url: "/api/v1/home/logout",
     });
 
-    if(res.data.status === 'Success!') location.reload(true);
-  }catch(error){
-    alert('error', 'Error logging out! Try again!');
+    if (res.data.status === "Success!") {
+      alert("Logged out successfully!");
+      window.setTimeout(() => {
+        location.assign("/");
+      }, 500);
+    }
+  } catch (error) {
+    console.error("Logout error:", error);
+    alert("Error logging out! Try again!");
   }
-}
+};
+

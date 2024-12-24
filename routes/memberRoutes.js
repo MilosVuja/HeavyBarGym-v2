@@ -7,7 +7,8 @@ const router = express.Router();
 
 router.post('/', authController.signup);
 router.post('/login', authController.login);
-router.get('/', authController.logout);
+router.get('/logout', authController.logout);
+
 
 router.route('/profile')
 .get(authController.isLoggedIn, memberController.getMember)

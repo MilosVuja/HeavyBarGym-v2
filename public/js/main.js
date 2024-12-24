@@ -1,11 +1,13 @@
+import { logout } from './login.js';
 const card=document.querySelectorAll(".card");
 const modal_purchasing=document.querySelector(".modal-purchasing");
 const close=document.querySelector(".eks");
 const login=document.querySelector(".login_btn");
-const dropmenu=document.querySelector(".login");
+// const dropmenu=document.querySelector(".login");
 const ham_links = document.querySelector(".nav-links");
-
 const hamMenu = document.querySelector('.ham-menu');
+const logoutButton = document.querySelector(".logout_btn");
+
 hamMenu.addEventListener("click", ()=>{
   hamMenu.classList.toggle('active');
   ham_links.classList.toggle('active');
@@ -26,6 +28,10 @@ window.onclick = function(event) {
   }
 }
 
-login.addEventListener("click", ()=>{
-  dropmenu.classList.toggle("active");
-});
+// login.addEventListener("click", ()=>{
+//   dropmenu.classList.toggle("active");
+// });
+
+if (logoutButton) {
+  logoutButton.addEventListener("click", logout);
+}

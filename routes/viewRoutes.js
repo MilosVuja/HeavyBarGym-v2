@@ -11,4 +11,6 @@ router.get('/groupClassBooking', viewController.getGroupClassPage);
 router.get('/chooseExercises', viewController.getChooseExercisesPage);
 router.get('/muscleSelect', viewController.getMuscleSelectPage);
 
+
+
 module.exports = router;
