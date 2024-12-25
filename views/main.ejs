@@ -27,18 +27,18 @@
       </div>
       <div class="nav-links">
         <ul>
-          <li><a href="#about-us">About us</a></li>
-          <li><a href="#memberships">Memberships</a></li>
-          <li><a href="#trainings">Trainings</a></li>
-          <li><a href="#get-in-touch">Contact</a></li>
+          <li><a href="index.html#about-us">About us</a></li>
+          <li><a href="index.html#memberships">Memberships</a></li>
+          <li><a href="index.html#trainings">Trainings</a></li>
+          <li><a href="index.html#get-in-touch">Contact</a></li>
         </ul>
       </div>
       <nav>
         <ul>
-          <li><a href="#about-us">About us</a></li>
-          <li><a href="#memberships">Memberships</a></li>
-          <li><a href="#trainings">Trainings</a></li>
-          <li><a href="#get-in-touch">Contact</a></li>
+          <li><a href="index.html#about-us">About us</a></li>
+          <li><a href="index.html#memberships">Memberships</a></li>
+          <li><a href="index.html#trainings">Trainings</a></li>
+          <li><a href="/partials/footer">Contact</a></li>
         </ul>
       </nav>
 
@@ -50,13 +50,14 @@
         <div class="login-out">
           <% if (member) { %>
             <a class="logout_btn">Logout</a>
-
-            <a href="/profile"><img src="/images/about-us.jpg" alt="prof.pic" /></a>
+            <a href="/profile">
+              <img src="<%= member.photo ? `/${member.photo}` : '/images/your-profile-default-pic.png' %>"
+                alt="prof.pic" />
+            </a>
             <% } else { %>
               <a class="login_btn" href="/login">Login</a>
               <% } %>
         </div>
-      </div>
     </header>
     <main>
       <h1>
@@ -289,9 +290,12 @@
 
         </div>
   </div>
+  </div>
+
 
   <script src="/js/bundle.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script type="module" src="/js/main.js"></script>
 </body>
+
 </html>

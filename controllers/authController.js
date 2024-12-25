@@ -56,12 +56,38 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const member = await Member.findOne({ email }).select("+pinCode");
+  console.log("Found member:", member);
 
   if (!member || !(await member.correctPinCode(pinCode, member.pinCode))) {
-    return next(new AppError("Incorect email or pin code!", 401));
+    return next(new AppError("Incorrect email or pin code!", 401));
   }
 
-  createSendToken(member, 200, res);
+  const token = jwt.sign({ id: member._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+  };
+
+  console.log("Setting cookie with token:", token);
+  console.log("Cookie options:", cookieOptions);
+
+  res.cookie("jwt", token, cookieOptions);
+
+  member.pinCode = undefined;
+
+  res.status(200).json({
+    status: "Success!",
+    token,
+    data: {
+      member,
+    },
+  });
 });
 
 exports.logout = catchAsync(async (req, res, next) => {
@@ -78,7 +104,6 @@ exports.logout = catchAsync(async (req, res, next) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
-
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
@@ -90,44 +115,45 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   if (!token) {
     return next(
-      new AppError("You are not logged in! PLease log in to get access!", 401)
+      new AppError("You are not logged in! Please log in to get access.", 401)
     );
   }
 
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
   const currentMember = await Member.findById(decoded.id);
-
   if (!currentMember) {
     return next(
-      new AppError("Member belonging to this token does no longer exist!", 401)
+      new AppError(
+        "The user belonging to this token does no longer exist.",
+        401
+      )
     );
   }
 
-  req.user = currentMember;
-
+  req.member = currentMember;
+  res.locals.member = currentMember;
   next();
 });
 
 exports.isLoggedIn = async (req, res, next) => {
-  if (req.cookies.jwt) {
-    try {
+  try {
+    if (req.cookies.jwt) {
       const decoded = await promisify(jwt.verify)(
         req.cookies.jwt,
         process.env.JWT_SECRET
       );
 
       const currentMember = await Member.findById(decoded.id);
-
       if (!currentMember) {
         return next();
       }
 
       res.locals.member = currentMember;
       return next();
-    } catch (error) {
-      return next();
     }
+  } catch (err) {
+    return next();
   }
   next();
 };
