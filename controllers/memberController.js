@@ -5,6 +5,8 @@ const multer = require("multer");
 const sharp = require("sharp");
 const fs = require("fs");
 const path = require("path");
+const util = require("util");
+const unlink = util.promisify(fs.unlink);
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -114,6 +116,9 @@ exports.resizeMemberPhoto = catchAsync(async (req, res, next) => {
     fs.mkdirSync(uploadDir, { recursive: true });
   }
 
+  const currentMember = await Member.findById(req.member.id);
+  const oldPhotoPath = currentMember.photo;
+
   req.file.filename = `member-${req.member.id}-${Date.now()}.jpeg`;
   const filePath = path.join(uploadDir, req.file.filename);
 
@@ -127,6 +132,15 @@ exports.resizeMemberPhoto = catchAsync(async (req, res, next) => {
       .toFormat("jpeg")
       .jpeg({ quality: 90 })
       .toFile(filePath);
+
+    if (oldPhotoPath && !oldPhotoPath.includes("default")) {
+      const oldFilePath = path.join("public", oldPhotoPath);
+      try {
+        await unlink(oldFilePath);
+      } catch (err) {
+        console.log("Error deleting old photo:", err);
+      }
+    }
   } catch (error) {
     return next(new AppError("Error uploading image. Please try again.", 500));
   }
@@ -186,12 +200,5 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     data: {
       member: updatedMember,
     },
-  });
-});
-
-exports.getProfile = catchAsync(async (req, res, next) => {
-  res.status(200).render("profile", {
-    title: "Your profile",
-    member: req.member,
   });
 });

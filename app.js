@@ -49,7 +49,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/", viewRouter);
-app.use("/api/v1/home", memberRouter);
+app.use("/api/v1/members", memberRouter);
 app.use("/api/v1/groupClassBooking", groupClassRouter);
 
 app.all("*", (req, res, next) => {

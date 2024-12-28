@@ -26,6 +26,10 @@ exports.getProfilePage = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getTrainingPage = (req, res) => {
+  res.status(200).render("training", {});
+};
+
 exports.getGroupClassPage = (req, res) => {
   res.status(200).render("groupClassBooking");
 };

@@ -4,8 +4,6 @@ const ApiFeatures = require('../utilities/apiFeatures');
 const catchAsync = require('../utilities/catchAsync');
 const AppError = require('../utilities/appError');
 
-
-
 exports.getAllGroupClasses = catchAsync (async (req, res, next) => {
   const features = new ApiFeatures(GroupClass.find(), req.query)
   .filter()
@@ -49,7 +47,6 @@ exports.createGroupClass = catchAsync (async (req, res, next) => {
     }
   })
 })
-
 
 exports.updateGroupClass = catchAsync (async (req, res, next) => {
   const groupClass = await GroupClass.findByIdAndUpdate(req.params.id, req.body, {

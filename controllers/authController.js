@@ -56,7 +56,6 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const member = await Member.findOne({ email }).select("+pinCode");
-  console.log("Found member:", member);
 
   if (!member || !(await member.correctPinCode(pinCode, member.pinCode))) {
     return next(new AppError("Incorrect email or pin code!", 401));
@@ -73,9 +72,6 @@ exports.login = catchAsync(async (req, res, next) => {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
   };
-
-  console.log("Setting cookie with token:", token);
-  console.log("Cookie options:", cookieOptions);
 
   res.cookie("jwt", token, cookieOptions);
 

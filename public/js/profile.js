@@ -2,7 +2,7 @@ const updateProfile = async (formData) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url: "/api/v1/home/updateMe",
+      url: "/api/v1/members/updateMe",
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -30,11 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const imgDiv = document.querySelector(".profile_pic");
   const img = document.querySelector("#photo");
   const file = document.querySelector("#file");
-  const exercise_card = document.querySelectorAll(".exercise-card");
-  const modal_exercise = document.querySelector(".modal-exercise-back");
   const save_btn = document.querySelector(".save-btn");
 
-  // Form submission handler
   const form = document.querySelector(".update-member-form");
   if (form) {
     form.addEventListener("submit", async (e) => {
@@ -104,58 +101,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  exercise_card.forEach((elem) => {
-    elem.addEventListener("click", () => {
-      modal_exercise.style.display = "block";
-    });
-  });
-
-  window.onclick = function (event) {
-    if (event.target == modal_exercise) {
-      modal_exercise.style.display = "none";
-    }
-  };
 });
-
-// Exercise functions
-window.updateField = function (element, type, increment) {
-  const valueElement = element.closest(".counter").querySelector(".value");
-  let currentValue = parseFloat(valueElement.value) || 0;
-
-  if (currentValue + increment < 0) {
-    currentValue = 0;
-  } else {
-    currentValue += increment;
-  }
-
-  valueElement.value = currentValue.toFixed(type === "weight" ? 1 : 0);
-};
-
-window.copyRow = function (button) {
-  const currentRow = button.closest(".exercise-row");
-  const newRow = currentRow.cloneNode(true);
-  currentRow.parentNode.insertBefore(newRow, currentRow.nextSibling);
-};
-
-window.deleteRow = function (button) {
-  const currentRow = button.closest(".exercise-row");
-  const rowsContainer = document.querySelector(".rows-container");
-
-  if (rowsContainer.children.length > 2) {
-    currentRow.remove();
-  }
-};
-
-window.addRow = function () {
-  const rowsContainer = document.querySelector(".rows-container");
-  const lastRow = rowsContainer.lastElementChild;
-  const newRow = lastRow.cloneNode(true);
-
-  const valueElements = newRow.querySelectorAll(".value");
-  valueElements.forEach((value) => {
-    value.value = "0";
-  });
-
-  rowsContainer.appendChild(newRow);
-};
