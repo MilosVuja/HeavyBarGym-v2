@@ -60,3 +60,9 @@ exports.getHome = (req, res) => {
     title: "Home",
   });
 };
+
+exports.getAddTrainingPlan = (req, res) => {
+  res.status(200).render("addTrainingPlan", {
+      title: "Add Training Plan",
+  });
+};

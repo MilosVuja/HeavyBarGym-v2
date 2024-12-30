@@ -22,4 +22,15 @@ router
   .get(memberController.getAllMembers)
   .post(memberController.createMember);
 
+router.patch(
+  "/:memberId/assign-training-plan",
+  memberController.assignTrainingPlan
+);
+
+router.get(
+  "/profile/your-training",
+  authController.protect,
+  memberController.getTrainingProfile
+);
+
 module.exports = router;

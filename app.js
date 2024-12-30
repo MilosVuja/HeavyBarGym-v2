@@ -13,6 +13,8 @@ const groupClassRouter = require("./routes/groupClassRoutes");
 const AppError = require("./utilities/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const viewRouter = require("./routes/viewRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const trainingPlanRoutes = require("./routes/trainingPlanRoutes");
 
 const app = express();
 
@@ -50,7 +52,9 @@ app.use(express.json());
 
 app.use("/", viewRouter);
 app.use("/api/v1/members", memberRouter);
+app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/groupClassBooking", groupClassRouter);
+app.use("/training-plans", trainingPlanRoutes);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Cant find ${req.originalUrl} on this server!`, 404));

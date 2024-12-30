@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  body {
+    background-color: white;
+    color: black;
+    font-family: "Open Sans", sans-serif;
+
+    .container {
+      form {
+        div {
+          .trainingDays {
+            #muscle-select {
+              .trainingDay {
+                .muscle-select {
+                  display: flex;
+
+                  .svg-container {
+                    max-width: 400px;
+                    margin-right: 2rem;
+
+                    svg {
+                      height: 70vh;
+
+                      .upper-chest:hover .cls-2,
+                      .middle-chest:hover .cls-2,
+                      .middle-deltoideus:hover .cls-2,
+                      .front-deltoideus:hover .cls-2,
+                      .biceps:hover .cls-2,
+                      .side-abs:hover .cls-2,
+                      .forearms:hover .cls-2,
+                      .adductors:hover .cls-2,
+                      .sartorius:hover .cls-2,
+                      .abductors:hover .cls-2,
+                      .pectineus:hover .cls-2,
+                      .quadriceps:hover .cls-2,
+                      .tibialis:hover .cls-2,
+                      .upper-trapezius:hover .cls-2,
+                      .lower-trapezius:hover .cls-2,
+                      .rhomboids-major:hover .cls-2,
+                      .rear-deltoideus:hover .cls-2,
+                      .teres-major:hover .cls-2,
+                      .triceps:hover .cls-2,
+                      .latissimus:hover .cls-2,
+                      .lower-back:hover .cls-2,
+                      .gluteus:hover .cls-2,
+                      .hamstrings:hover .cls-2,
+                      .calfs:hover .cls-2,
+                      .abdominals:hover .cls-2 {
+                        // fill: rgb(92, 0, 0);
+                        fill: red;
+                        cursor: pointer;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

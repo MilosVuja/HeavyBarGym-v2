@@ -11,5 +11,6 @@ router.get('/members/profile/your-training', authController.protect, viewControl
 router.get('/members/groupClassBooking', viewController.getGroupClassPage);
 router.get('/members/chooseExercises', viewController.getChooseExercisesPage);
 router.get('/muscleSelect', viewController.getMuscleSelectPage);
+router.get('/training-plans/add', viewController.getAddTrainingPlan);
 
 module.exports = router;

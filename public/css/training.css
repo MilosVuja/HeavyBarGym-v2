@@ -274,4 +274,58 @@
 * .modal-exercise-back .modal-exercise .wrapper_adjust .save:hover {
   color: black;
   background-color: red;
+}
+
+.container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.training-plan {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.training-plan h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.training-plan h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.training-plan p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+.training-plan ul {
+  list-style-type: none;
+  padding: 0;
+}
+.training-plan ul li {
+  background-color: #333;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+}
+
+h2 {
+  color: #ff4d4d;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+.button:hover {
+  background-color: #0056b3;
 }/*# sourceMappingURL=training.css.map */

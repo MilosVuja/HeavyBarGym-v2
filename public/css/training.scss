@@ -1,69 +1,68 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: black;
   color: white;
   font-family: Open Sans;
-  transition: all .6s ease;
+  transition: all 0.6s ease;
 
-
-  h2{
+  h2 {
     font-family: permanent marker;
   }
-  
-  header{
+
+  header {
     display: flex;
     background-color: black;
 
-    .logo{
-      margin: .5rem 0 .5rem 1rem;
+    .logo {
+      margin: 0.5rem 0 0.5rem 1rem;
 
-      img{
+      img {
         height: 5vh;
       }
     }
 
-    nav{
+    nav {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-left: 40%; 
-      
-      #training_btn{
+      margin-left: 40%;
+
+      #training_btn {
         border: 2px solid red;
         background: transparent;
         border-radius: 15px;
-        font-size: .8rem;
+        font-size: 0.8rem;
         font-weight: 700;
-        padding: .5rem 1.2rem;
+        padding: 0.5rem 1.2rem;
         margin-right: 2rem;
         color: white;
         cursor: pointer;
         text-decoration: none;
 
-        &:hover{
+        &:hover {
           color: black;
           background-color: red;
         }
       }
     }
   }
-  .training-container{
-    h2{
+  .training-container {
+    h2 {
       text-align: center;
       font-size: 4rem;
       color: red;
     }
-    .training{
+    .training {
       padding: 2rem;
-      
-      .one{
+
+      .one {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 4rem;
-        .upper{
+        .upper {
           display: grid;
           place-items: center;
           text-transform: uppercase;
@@ -73,59 +72,57 @@
           font-size: 2rem;
           margin-bottom: -3.5rem;
           z-index: 1;
-
         }
-        .lower{
+        .lower {
           border: 2px solid white;
           border-radius: 15px;
           padding: 4rem 2rem 2rem 2rem;
           display: flex;
           flex-wrap: wrap;
 
-          .exercise-card{
+          .exercise-card {
             border: 2px solid rgb(92, 0, 0);
             border-radius: 15px;
-            padding: .2rem;
-            margin: .5rem 1.2rem;
+            padding: 0.2rem;
+            margin: 0.5rem 1.2rem;
             cursor: pointer;
-            
-            &:hover{
+
+            &:hover {
               transform: scale(1.1);
             }
 
-            .exercise-thumb{
+            .exercise-thumb {
               border-radius: 10px;
-              img{
+              img {
                 height: 20vh;
                 border-radius: 10px;
               }
             }
 
-            h4{
+            h4 {
               text-align: center;
               text-transform: uppercase;
               border-bottom: 2px solid rgb(92, 0, 0);
-              padding: .5rem 0;
+              padding: 0.5rem 0;
             }
 
-            .exercise-details{
+            .exercise-details {
               display: flex;
               justify-content: center;
-              padding: .5rem;
+              padding: 0.5rem;
 
-              & div:nth-child(2){
-                padding: 0 .5rem;
-                margin: 0 .5rem;
+              & div:nth-child(2) {
+                padding: 0 0.5rem;
+                margin: 0 0.5rem;
                 border-inline: solid rgb(92, 0, 0);
               }
-              
-              & div p{
+
+              & div p {
                 text-align: center;
                 text-transform: uppercase;
-                
-                
-                &:last-child{
-                  padding-top: .5rem;
+
+                &:last-child {
+                  padding-top: 0.5rem;
                 }
               }
             }
@@ -134,10 +131,10 @@
       }
     }
   }
-  .show{
+  .show {
     display: block;
   }
-  .modal-exercise-back{
+  .modal-exercise-back {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -149,60 +146,59 @@
     overflow: auto;
     background-color: rgba(192, 192, 192, 0.534);
 
-    .modal-exercise{
+    .modal-exercise {
       background-color: #000000;
       padding: 1rem 2rem;
       border: 2px solid red;
       border-radius: 10px;
       position: relative;
 
-      .modal-header{
-        h3{
+      .modal-header {
+        h3 {
           text-align: center;
-          color:red;
+          color: red;
           font-size: 2rem;
         }
 
-        .video-instruction{
+        .video-instruction {
           margin: 1rem 0;
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between;
 
-          .video{
-            img{
+          .video {
+            img {
               height: 12rem;
               cursor: pointer;
             }
           }
 
-          .instruction{
-            form{
-              textarea{
+          .instruction {
+            form {
+              textarea {
                 color: white;
                 border: 2px solid rgb(92, 0, 0);
                 border-radius: 5px;
                 width: 30vw;
                 height: 12rem;
-                padding: .5rem;
+                padding: 0.5rem;
                 font-size: 1rem;
                 outline: none;
-                
-                &::placeholder{
+
+                &::placeholder {
                   color: black;
                 }
               }
-            } 
+            }
           }
         }
       }
-      
-      .wrapper_adjust{
+
+      .wrapper_adjust {
         .rows-container {
           display: flex;
           flex-direction: column;
 
-          
           .exercise-row {
             display: flex;
             flex-direction: column;
@@ -213,14 +209,14 @@
               border-top-left-radius: 5px;
               border-top-right-radius: 5px;
             }
-            
+
             .header-row,
             .input-row {
               display: grid;
               grid-template-columns: repeat(5, 1fr);
               place-items: center;
 
-              .add-row{
+              .add-row {
                 cursor: pointer;
                 background: transparent;
                 border: none;
@@ -230,8 +226,8 @@
                 padding: 0;
                 height: 3rem;
                 width: 7rem;
-  
-                &:hover{
+
+                &:hover {
                   background-color: rgb(92, 0, 0);
                   border-radius: 15px;
                   color: black;
@@ -239,20 +235,20 @@
                 }
               }
             }
-        
+
             .exercise-field {
               display: flex;
               flex-direction: column;
               align-items: center;
               justify-content: center;
-              
+
               .counter {
                 display: flex;
                 padding-left: 3rem;
                 align-items: center;
                 justify-content: center;
                 position: relative;
-        
+
                 input {
                   width: 4rem;
                   text-align: center;
@@ -262,14 +258,14 @@
                   font-weight: bold;
                   margin: 0;
                   outline: none;
-        
+
                   &::-webkit-outer-spin-button,
                   &::-webkit-inner-spin-button {
                     -webkit-appearance: none;
                     margin: 0;
                   }
                 }
-        
+
                 button {
                   font-size: 2rem;
                   background: transparent;
@@ -277,7 +273,7 @@
                   padding: 0.2rem;
                   cursor: pointer;
                   color: rgb(92, 0, 0);
-        
+
                   &:hover {
                     color: red;
                   }
@@ -290,40 +286,100 @@
               flex-direction: row;
               gap: 1rem;
               justify-content: center;
-              span i{
+              span i {
                 color: rgb(92, 0, 0);
                 font-size: 1.2rem;
                 cursor: pointer;
 
-                &:hover{
+                &:hover {
                   color: red;
                 }
               }
             }
-            
+
             .header-row span {
               font-weight: bold;
             }
           }
         }
 
-        .save{
+        .save {
           border: 2px solid red;
           background: transparent;
           border-radius: 15px;
-          font-size: .8rem;
+          font-size: 0.8rem;
           font-weight: 700;
-          padding: .5rem 1.2rem;
+          padding: 0.5rem 1.2rem;
           margin-top: 1rem;
           color: white;
           cursor: pointer;
-  
-          &:hover{
+
+          &:hover {
             color: black;
             background-color: red;
           }
         }
       }
     }
+  }
+}
+
+.container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.training-plan {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      background-color: #333;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+h2 {
+  color: #ff4d4d;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: #0056b3;
   }
 }

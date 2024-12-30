@@ -13,121 +13,32 @@
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-      <img src="/images/heavy-bar-logo.png" alt="logo">
-    </div>
-    <nav>
-      <a id="training_btn" href="/members/profile">Profile</a>
-    </nav>
-  </header>
-  <div class="training-container">
-    <h2>push/pull/legs</h2>
-    <div class="training">
-      <% ['Push', 'Push' ].forEach(type=> { %>
-        <div class="one">
-          <div class="upper">
-            <p>
-              <%= type %>
-            </p>
-          </div>
-          <div class="lower">
-            <% for(let i=0; i < 10; i++) { %>
-              <div class="exercise-card">
-                <div class="exercise-thumb">
-                  <img src="/images/about-us.jpg" alt="exercise">
-                </div>
-                <h4>Naziv vezbe</h4>
-                <div class="exercise-details">
-                  <div class="sets">
-                    <p>Sets</p>
-                    <p>4</p>
-                  </div>
-                  <div class="reps">
-                    <p>Reps</p>
-                    <p>12</p>
-                  </div>
-                  <div class="weight">
-                    <p>Weight (kg)</p>
-                    <p>40</p>
-                  </div>
-                </div>
-              </div>
-              <% } %>
-          </div>
-        </div>
-        <% }); %>
-    </div>
-
-    <div class="modal-exercise-back">
-      <div class="modal-exercise">
-        <div class="modal-header">
-          <h3>Name of the exercise</h3>
-          <div class="video-instruction">
-            <div class="video">
-              <img src="/images/about-us.jpg" alt="">
-            </div>
-            <div class="instruction">
-              <form>
-                <textarea placeholder="Input instructions"></textarea>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="wrapper_adjust">
-          <div class="rows-container">
-            <div class="exercise-row">
-              <div class="header-row">
-                <span>SETS</span>
-                <span>REPS</span>
-                <span>WEIGHT</span>
-                <span>REST</span>
-                <button class="add-row" onclick="addRow()">Add Row</button>
-              </div>
-            </div>
-            <div class="exercise-row">
-              <div class="input-row">
-                <div class="exercise-field">
-                  <div class="counter">
-                    <input class="value" data-type="sets" type="number" placeholder="0" value="0">
-                    <button onclick="updateField(this, 'sets', 1)">+</button>
-                    <button onclick="updateField(this, 'sets', -1)">-</button>
-                  </div>
-                </div>
-                <div class="exercise-field">
-                  <div class="counter">
-                    <input class="value" data-type="reps" type="number" placeholder="0" value="0">
-                    <button onclick="updateField(this, 'reps', 1)">+</button>
-                    <button onclick="updateField(this, 'reps', -1)">-</button>
-                  </div>
-                </div>
-                <div class="exercise-field">
-                  <div class="counter">
-                    <input class="value" data-type="weight" type="number" placeholder="0" value="0">
-                    <button onclick="updateField(this, 'weight', 2.5)">+</button>
-                    <button onclick="updateField(this, 'weight', -2.5)">-</button>
-                  </div>
-                </div>
-                <div class="exercise-field">
-                  <div class="counter">
-                    <input class="value" data-type="rest" type="number" placeholder="0" value="0">
-                    <button onclick="updateField(this, 'rest', 60)">+</button>
-                    <button onclick="updateField(this, 'rest', -60)">-</button>
-                  </div>
-                </div>
-                <div class="exercise-field">
-                  <div class="row-actions">
-                    <span onclick="copyRow(this)"><i class="fa-regular fa-copy"></i></span>
-                    <span onclick="deleteRow(this)"><i class="fa-solid fa-trash"></i></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button class="save">Save</button>
-        </div>
+  <div class="container">
+    <% if (member.activeTrainingPlan) { %>
+      <h2>
+        <%= member.activeTrainingPlan.name %>
+      </h2>
+      <div class="training-plan">
+        <h2>
+          <%= member.activeTrainingPlan.name %>
+        </h2>
+        <p>
+          <%= member.activeTrainingPlan.description %>
+        </p>
+        <p>Duration: <%= member.activeTrainingPlan.duration %> weeks</p>
+        <h3>Training Days:</h3>
+        <ul>
+          <% member.activeTrainingPlan.trainingDays.forEach(day=> { %>
+            <li>
+              <%= day.day %>: <%= day.trainingType %>
+            </li>
+            <% }); %>
+        </ul>
       </div>
-    </div>
+      <% } else { %>
+        <h2>You don't have a training plan. Do you want to make one?</h2>
+        <a href="/training-plans/add" class="button">Create Training Plan</a>
+        <% } %>
   </div>
 
   <script src="/js/training.js"></script>

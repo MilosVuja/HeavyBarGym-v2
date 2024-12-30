@@ -7,6 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const util = require("util");
 const unlink = util.promisify(fs.unlink);
+const TrainingPlan = require("../models/trainingPlanModel");
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -199,6 +200,100 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     status: "Success!",
     data: {
       member: updatedMember,
+    },
+  });
+});
+
+exports.getAdminMemberTraining = catchAsync(async (req, res, next) => {
+  const member = await Member.findById(req.params.id)
+    .populate({
+      path: "activeTrainingPlan",
+      select: "name description difficulty duration trainingDays",
+    })
+    .populate({
+      path: "trainingHistory.plan",
+      select: "name description difficulty duration",
+    });
+
+  if (!member) {
+    return next(new AppError("No member found with that ID", 404));
+  }
+
+  const trainingProfile = {
+    memberInfo: {
+      name: `${member.firstName} ${member.lastName}`,
+      email: member.email,
+      experience: member.experience,
+      goal: member.goal,
+      currentMeasurements: member.currentMeasurements,
+      currentStrengthStats: member.currentStrengthStats,
+      membershipStatus: member.membership.status,
+    },
+    activeTraining: member.activeTrainingPlan,
+    trainingHistory: member.trainingHistory,
+    measurementsProgress: member.measurementsHistory,
+    strengthProgress: member.strengthStatsHistory,
+    medicalInfo: {
+      conditions: member.medicalConditions,
+      injuries: member.injuries,
+    },
+  };
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      trainingProfile,
+    },
+  });
+});
+
+exports.assignTrainingPlan = catchAsync(async (req, res, next) => {
+  console.log("Assigning training plan for member ID:", req.params.id);
+  const { trainingPlanId } = req.body;
+
+  const member = await Member.findById(req.params.id);
+  if (!member) {
+    return next(new AppError("No member found with that ID", 404));
+  }
+
+  const trainingPlan = await TrainingPlan.findById(trainingPlanId);
+  if (!trainingPlan) {
+    return next(new AppError("No training plan found with that ID", 404));
+  }
+
+  if (member.activeTrainingPlan) {
+    member.trainingHistory.push({
+      plan: member.activeTrainingPlan,
+      startDate: new Date(),
+      endDate: new Date(),
+      completed: false,
+    });
+  }
+
+  member.activeTrainingPlan = trainingPlanId;
+  await member.save();
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      member,
+    },
+  });
+});
+
+exports.getTrainingProfile = catchAsync(async (req, res, next) => {
+  const member = await Member.findById(req.member.id)
+    .populate("activeTrainingPlan")
+    .populate("trainingHistory.plan");
+
+  if (!member) {
+    return next(new AppError("No member found with that ID", 404));
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      member,
     },
   });
 });
