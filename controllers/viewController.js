@@ -1,6 +1,5 @@
 const catchAsync = require("../utilities/catchAsync");
-const Member = require("../models/membersModel");
-const fs = require("fs");
+const Muscles = require("../models/musclesModel");
 
 exports.getMainPage = (req, res) => {
   res.status(200).render("main", {
@@ -65,4 +64,23 @@ exports.getAddTrainingPlan = (req, res) => {
   res.status(200).render("addTrainingPlan", {
       title: "Add Training Plan",
   });
+};
+
+exports.getAddMusclePage = (req, res) => {
+  res.status(200).render("addMuscles", {
+      title: "Add Muscle",
+  });
+};
+
+exports.getAddExercisePage = async (req, res) => {
+  try {
+      const muscles = await Muscles.find();
+      res.status(200).render("addExercises", {
+          title: "Add Exercise",
+          muscles: muscles,
+      });
+  } catch (error) {
+      console.error("Error fetching muscles:", error);
+      res.status(500).send("Internal Server Error");
+  }
 };

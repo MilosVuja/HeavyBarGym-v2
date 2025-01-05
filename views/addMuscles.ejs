@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addMuscles.css">
+    <title>Add Muscle</title>
+</head>
+
+<body>
+    <h1>Add Muscle</h1>
+    <form id="addMuscleForm" action="/api/v1/muscles/add" method="POST">
+        <label for="name">Muscle Name:</label>
+        <select id="name" name="name" required>
+            <option value="Trapezius">Trapezius</option>
+            <option value="Front Deltoideus">Front Deltoideus</option>
+            <option value="Middle Deltoideus">Middle Deltoideus</option>
+            <option value="Rear Deltoideus">Rear Deltoideus</option>
+            <option value="Upper Chest">Upper Chest</option>
+            <option value="Middle Chest">Middle Chest</option>
+            <option value="Upper Back">Upper Back</option>
+            <option value="Latissimus">Latissimus</option>
+            <option value="Lower Back">Lower Back</option>
+            <option value="Tricep">Tricep</option>
+            <option value="Bicep">Bicep</option>
+            <option value="Forearm">Forearm</option>
+            <option value="Abdominals">Abdominals</option>
+            <option value="Side Abs">Side Abs</option>
+            <option value="Gluteus">Gluteus</option>
+            <option value="Quadriceps">Quadriceps</option>
+            <option value="Adductor">Adductor</option>
+            <option value="Abductor">Abductor</option>
+            <option value="Hamstrings">Hamstrings</option>
+            <option value="Tibialis">Tibialis</option>
+            <option value="Calfs">Calfs</option>
+        </select><br>
+        <label for="latinName">Latin Name:</label>
+        <select id="latinName" name="latinName" required>
+            <option value="Trapezius">Trapezius</option>
+            <option value="Anterior Deltoideus">Anterior Deltoideus</option>
+            <option value="Lateral Deltoideus">Lateral Deltoideus</option>
+            <option value="Posterior Deltoideus">Posterior Deltoideus</option>
+            <option value="Pectoralis Minor">Pectoralis Minor</option>
+            <option value="Pectoralis Major">Pectoralis Major</option>
+            <option value="Upper Back">Upper Back</option>
+            <option value="Latissimus Dorsi">Latissimus Dorsi</option>
+            <option value="Lower Back">Lower Back</option>
+            <option value="Triceps Brachii">Triceps Brachii</option>
+            <option value="Biceps Brachii">Biceps Brachii</option>
+            <option value="Antebrachium">Antebrachium</option>
+            <option value="Rectus Abdominis">Rectus Abdominis</option>
+            <option value="Abdominal external oblique">Abdominal external oblique</option>
+            <option value="Gluteus maximus">Gluteus maximus</option>
+            <option value="Quadriceps">Quadriceps</option>
+            <option value="Adductors">Adductors</option>
+            <option value="Abductors">Abductors</option>
+            <option value="Biceps Femoris">Biceps Femoris</option>
+            <option value="Gastrocnemius">Gastrocnemius</option>
+            <option value="Tibialis Anterior">Tibialis Anterior</option>
+        </select><br>
+        <label for="bodyPart">Body Part:</label>
+        <select id="bodyPart" name="bodyPart" required>
+            <option value="Upper Body">Upper Body</option>
+            <option value="Lower Body">Lower Body</option>
+        </select><br>
+
+        <label for="muscleGroup">Muscle Group:</label>
+        <select id="muscleGroup" name="muscleGroup" required>
+            <option value="Shoulders">Shoulders</option>
+            <option value="Chest">Chest</option>
+            <option value="Back">Back</option>
+            <option value="Arms">Arms</option>
+            <option value="Abdomen">Abdomen</option>
+            <option value="Glutes">Glutes</option>
+            <option value="Legs">Legs</option>
+        </select><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea><br>
+
+        <label for="movements">Movements:</label>
+        <input type="text" id="movements" name="movements" required><br>
+
+        <label for="exercises">Exercises:</label>
+        <input type="text" id="exercises" name="exercises" required><br>
+
+        <label for="equipment">Equipment:</label>
+        <input type="text" id="equipment" name="equipment" required><br>
+
+        <button type="submit">Add Muscle</button>
+    </form>
+
+    <script src="/js/addMuscles.js" defer></script>
+</body>
+
+</html>

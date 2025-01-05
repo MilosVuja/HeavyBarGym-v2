@@ -118,9 +118,16 @@ const memberSchema = new mongoose.Schema(
         plan: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "TrainingPlan",
+          required: true,
         },
-        startDate: Date,
-        endDate: Date,
+        startDate: {
+          type: Date,
+          required: true,
+        },
+        endDate: {
+          type: Date,
+          required: true,
+        },
         completed: {
           type: Boolean,
           default: false,
@@ -131,6 +138,24 @@ const memberSchema = new mongoose.Schema(
           min: 1,
           max: 5,
         },
+        completedSessions: [
+          {
+            date: {
+              type: Date,
+              default: Date.now,
+            },
+            exercises: [
+              {
+                name: { type: String, required: true },
+                sets: { type: Number, default: null },
+                reps: { type: Number, default: null },
+                weight: { type: Number, default: null },
+                duration: { type: Number, default: null },
+                notes: String,
+              },
+            ],
+          },
+        ],
       },
     ],
 

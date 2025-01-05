@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Exercise</title>
+</head>
+
+<body>
+    <h1>Add Exercise</h1>
+    <form id="addExerciseForm" action="/api/v1/exercises/add" method="POST">
+        <label for="name">Exercise Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="thumbnail">Thumbnail URL:</label>
+        <input type="text" id="thumbnail" name="thumbnail" required><br>
+
+        <label for="video">Video URL:</label>
+        <input type="text" id="video" name="video" required><br>
+
+        <label for="instruction">Instruction:</label>
+        <textarea id="instruction" name="instruction" required></textarea><br>
+
+        <label for="muscle">Select Muscle:</label>
+        <select id="muscle" name="muscle" required>
+            <% muscles.forEach(function(muscle) { %>
+                <option value="<%= muscle._id %>">
+                    <%= muscle.name %>
+                </option>
+                <% }); %>
+        </select><br>
+
+        <button type="submit">Add Exercise</button>
+    </form>
+
+    <script src="/js/addExercises.js" defer></script>
+</body>
+
+</html>

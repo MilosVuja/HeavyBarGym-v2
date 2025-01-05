@@ -13,4 +13,7 @@ router.get('/members/chooseExercises', viewController.getChooseExercisesPage);
 router.get('/muscleSelect', viewController.getMuscleSelectPage);
 router.get('/training-plans/add', viewController.getAddTrainingPlan);
 
+router.get('/muscles/add', authController.protect, viewController.getAddMusclePage);
+router.get('/exercises/add', authController.protect, viewController.getAddExercisePage);
+
 module.exports = router;

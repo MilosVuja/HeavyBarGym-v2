@@ -5,7 +5,7 @@ const ExerciseSchema = new mongoose.Schema({
   sets: { type: Number, default: null },
   reps: { type: Number, default: null },
   weight: { type: Number, default: null },
-  duration: { type: Number, default: null }, // In minutes
+  duration: { type: Number, default: null },
   notes: String,
 });
 
@@ -60,6 +60,32 @@ const TrainingPlanSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+});
+
+const CompletedSessionSchema = new mongoose.Schema({
+  member: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Member',
+      required: true,
+  },
+  date: {
+      type: Date,
+      default: Date.now,
+  },
+  exercises: [
+      {
+          name: { type: String, required: true },
+          sets: { type: Number, default: null },
+          reps: { type: Number, default: null },
+          weight: { type: Number, default: null },
+          duration: { type: Number, default: null },
+          notes: String,
+      },
+  ],
+});
+
+TrainingPlanSchema.add({
+  completedSessions: [CompletedSessionSchema],
 });
 
 module.exports = mongoose.model("TrainingPlan", TrainingPlanSchema);

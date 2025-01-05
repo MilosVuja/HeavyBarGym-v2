@@ -1,3 +1,4 @@
+// app.js
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -7,6 +8,7 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const memberRouter = require("./routes/memberRoutes");
 const groupClassRouter = require("./routes/groupClassRoutes");
@@ -15,6 +17,8 @@ const globalErrorHandler = require("./controllers/errorController");
 const viewRouter = require("./routes/viewRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const trainingPlanRoutes = require("./routes/trainingPlanRoutes");
+const musclesRouter = require("./routes/musclesRouter");
+const exercisesRouter = require("./routes/exercisesRoutes");
 
 const app = express();
 
@@ -47,17 +51,18 @@ app.use(
   })
 );
 
-app.use(cookieParser());
-app.use(express.json());
+app.use(cors());
 
 app.use("/", viewRouter);
 app.use("/api/v1/members", memberRouter);
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/groupClassBooking", groupClassRouter);
 app.use("/training-plans", trainingPlanRoutes);
+app.use("/api/v1/muscles", musclesRouter);
+app.use("/api/v1/exercises", exercisesRouter);
 
 app.all("*", (req, res, next) => {
-  next(new AppError(`Cant find ${req.originalUrl} on this server!`, 404));
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
 app.use(globalErrorHandler);

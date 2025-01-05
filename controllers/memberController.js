@@ -6,8 +6,9 @@ const sharp = require("sharp");
 const fs = require("fs");
 const path = require("path");
 const util = require("util");
-const unlink = util.promisify(fs.unlink);
 const TrainingPlan = require("../models/trainingPlanModel");
+
+const unlink = util.promisify(fs.unlink);
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
