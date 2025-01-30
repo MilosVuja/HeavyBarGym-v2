@@ -22,19 +22,20 @@
         <label for="instruction">Instruction:</label>
         <textarea id="instruction" name="instruction" required></textarea><br>
 
-        <label for="muscle">Select Muscle:</label>
-        <select id="muscle" name="muscle" required>
-            <% muscles.forEach(function(muscle) { %>
-                <option value="<%= muscle._id %>">
-                    <%= muscle.name %>
-                </option>
+        <label>Select Muscles:</label><br>
+        <div id="muscle-selects">
+            <select name="muscles" required>
+                <option value="" disabled selected>Select a muscle</option>
+                <% muscles.forEach(function(muscle) { %>
+                    <option value="<%= muscle.name %>"><%= muscle.name %></option>
                 <% }); %>
-        </select><br>
+            </select>
+        </div>
+        <button type="button" onclick="addMuscleSelect()">Add Another Muscle</button><br>
 
         <button type="submit">Add Exercise</button>
     </form>
 
-    <script src="/js/addExercises.js" defer></script>
+    <script src="/js/addExercises.js"></script>
 </body>
-
 </html>

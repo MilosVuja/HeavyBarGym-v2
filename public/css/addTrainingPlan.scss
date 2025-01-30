@@ -2,50 +2,38 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: black;
+  color: white;
+  font-family: Open Sans;
+  transition: all 0.6s ease;
 
-  body {
-    background-color: white;
-    color: black;
-    font-family: "Open Sans", sans-serif;
+  h2 {
+    font-family: permanent marker;
+  }
+  .container {
+    form {
+      div {
+        .trainingDays {
+          #muscle-select {
+            .trainingDay {
+              .muscle-select {
+                display: flex;
 
-    .container {
-      form {
-        div {
-          .trainingDays {
-            #muscle-select {
-              .trainingDay {
-                .muscle-select {
-                  display: flex;
+                .svg-container {
+                  max-width: 400px;
+                  margin-right: 2rem;
 
-                  .svg-container {
-                    max-width: 400px;
-                    margin-right: 2rem;
+                  svg {
+                    height: 70vh;
 
-                    svg {
-                      height: 70vh;
+                    // Hover effects for individual muscles
+                    .muscle {
+                      &.filled {
+                        fill: red;
+                      }
 
-                      .upper-chest:hover .cls-2,
-                      .middle-chest:hover .cls-2,
-                      .middle-deltoideus:hover .cls-2,
-                      .front-deltoideus:hover .cls-2,
-                      .biceps:hover .cls-2,
-                      .side-abs:hover .cls-2,
-                      .forearms:hover .cls-2,
-                      .adductors:hover .cls-2,
-                      .abductors:hover .cls-2,
-                      .quadriceps:hover .cls-2,
-                      .tibialis:hover .cls-2,
-                      .upper-trapezius:hover .cls-2,
-                      .upper-back:hover .cls-2,
-                      .rear-deltoideus:hover .cls-2,
-                      .triceps:hover .cls-2,
-                      .latissimus:hover .cls-2,
-                      .lower-back:hover .cls-2,
-                      .gluteus:hover .cls-2,
-                      .hamstrings:hover .cls-2,
-                      .calfs:hover .cls-2,
-                      .abdominals:hover .cls-2 {
-                        // fill: rgb(92, 0, 0);
+                      // Hover effects for specific muscles
+                      &:hover {
                         fill: red;
                         cursor: pointer;
                       }
@@ -53,6 +41,227 @@
                   }
                 }
               }
+            }
+          }
+        }
+      }
+      #select-exercises {
+        .container {
+          border: 2px dashed #db1818;
+          padding: 16px;
+          margin: 16px;
+          min-height: 200px;
+          display: flex;
+
+          h2 {
+            text-align: center;
+          }
+        }
+
+        #exercises-container {
+          display: flex;
+          .exercise-card {
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin: 8px;
+            background-color: #f9f9f9;
+            cursor: grab;
+
+            &.dragging {
+              opacity: 0.5;
+              cursor: grabbing;
+            }
+          }
+        }
+      }
+      #chosen-exercises {
+        display: flex;
+        cursor: pointer;
+      }
+    }
+    .modal-exercise-back {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding: 7rem;
+      right: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      background-color: rgba(192, 192, 192, 0.534);
+
+      .modal-exercise {
+        background-color: #000000;
+        padding: 1rem 2rem;
+        border: 2px solid red;
+        border-radius: 10px;
+        position: relative;
+
+        .modal-header {
+          h3 {
+            text-align: center;
+            color: red;
+            font-size: 2rem;
+          }
+
+          .video-instruction {
+            margin: 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            .video {
+              img {
+                height: 12rem;
+                cursor: pointer;
+              }
+            }
+
+            .instruction {
+              form {
+                textarea {
+                  color: white;
+                  border: 2px solid rgb(92, 0, 0);
+                  border-radius: 5px;
+                  width: 30vw;
+                  height: 12rem;
+                  padding: 0.5rem;
+                  font-size: 1rem;
+                  outline: none;
+
+                  &::placeholder {
+                    color: black;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .wrapper_adjust {
+          .rows-container {
+            display: flex;
+            flex-direction: column;
+
+            .exercise-row {
+              display: flex;
+              flex-direction: column;
+              border: 1px solid rgb(92, 0, 0);
+              padding: 1rem;
+
+              &:first-child {
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+              }
+
+              .header-row,
+              .input-row {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                place-items: center;
+
+                .add-row {
+                  cursor: pointer;
+                  background: transparent;
+                  border: none;
+                  font-size: 1rem;
+                  text-align: center;
+                  padding: 0;
+                  height: 3rem;
+                  width: 7rem;
+
+                  &:hover {
+                    background-color: rgb(92, 0, 0);
+                    border-radius: 15px;
+                    color: black;
+                    font-weight: 900;
+                  }
+                }
+              }
+
+              .exercise-field {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .counter {
+                  display: flex;
+                  padding-left: 3rem;
+                  align-items: center;
+                  justify-content: center;
+                  position: relative;
+
+                  input {
+                    width: 4rem;
+                    text-align: center;
+                    background: transparent;
+                    border: none;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    margin: 0;
+                    outline: none;
+
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                      -webkit-appearance: none;
+                      margin: 0;
+                    }
+                  }
+
+                  button {
+                    font-size: 2rem;
+                    background: transparent;
+                    border: none;
+                    padding: 0.2rem;
+                    cursor: pointer;
+                    color: rgb(92, 0, 0);
+
+                    &:hover {
+                      color: red;
+                    }
+                  }
+                }
+              }
+
+              .row-actions {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                justify-content: center;
+
+                span i {
+                  color: rgb(92, 0, 0);
+                  font-size: 1.2rem;
+                  cursor: pointer;
+
+                  &:hover {
+                    color: red;
+                  }
+                }
+              }
+
+              .header-row span {
+                font-weight: bold;
+              }
+            }
+          }
+
+          .save {
+            border: 2px solid red;
+            background: transparent;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.5rem 1.2rem;
+            margin-top: 1rem;
+            color: white;
+            cursor: pointer;
+
+            &:hover {
+              color: black;
+              background-color: red;
             }
           }
         }

@@ -1,7 +1,7 @@
 const express = require("express");
 const trainingPlanController = require("../controllers/trainingPlanController");
 const authController = require("../controllers/authController");
-const musclesController = require("../controllers/musclesController");
+const exercisesController = require("../controllers/exercisesController.js");
 
 const router = express.Router();
 
@@ -13,8 +13,8 @@ router.get(
   "/add",
   authController.protect,
   trainingPlanController.addExercise,
-  trainingPlanController.updateExercise,
-  trainingPlanController.deleteTrainingDay
+  trainingPlanController.deleteTrainingDay,
+  exercisesController.getAllExercises,
 );
 
 module.exports = router;

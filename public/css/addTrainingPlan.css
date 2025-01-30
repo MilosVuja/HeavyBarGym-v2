@@ -2,43 +2,214 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: black;
+  color: white;
+  font-family: Open Sans;
+  transition: all 0.6s ease;
 }
-* body {
-  background-color: white;
-  color: black;
-  font-family: "Open Sans", sans-serif;
+* h2 {
+  font-family: permanent marker;
 }
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select {
+* .container form div .trainingDays #muscle-select .trainingDay .muscle-select {
   display: flex;
 }
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container {
+* .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container {
   max-width: 400px;
   margin-right: 2rem;
 }
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg {
+* .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg {
   height: 70vh;
 }
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .upper-chest:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .middle-chest:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .middle-deltoideus:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .front-deltoideus:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .biceps:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .side-abs:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .forearms:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .adductors:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .abductors:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .quadriceps:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .tibialis:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .upper-trapezius:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .upper-back:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .rear-deltoideus:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .triceps:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .latissimus:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .lower-back:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .gluteus:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .hamstrings:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .calfs:hover .cls-2,
-* body .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .abdominals:hover .cls-2 {
+* .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .muscle.filled {
+  fill: red;
+}
+* .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .muscle:hover {
   fill: red;
   cursor: pointer;
+}
+* .container form #select-exercises .container {
+  border: 2px dashed #db1818;
+  padding: 16px;
+  margin: 16px;
+  min-height: 200px;
+  display: flex;
+}
+* .container form #select-exercises .container h2 {
+  text-align: center;
+}
+* .container form #select-exercises #exercises-container {
+  display: flex;
+}
+* .container form #select-exercises #exercises-container .exercise-card {
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin: 8px;
+  background-color: #f9f9f9;
+  cursor: grab;
+}
+* .container form #select-exercises #exercises-container .exercise-card.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+* .container form #chosen-exercises {
+  display: flex;
+  cursor: pointer;
+}
+* .container .modal-exercise-back {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding: 7rem;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(192, 192, 192, 0.534);
+}
+* .container .modal-exercise-back .modal-exercise {
+  background-color: #000000;
+  padding: 1rem 2rem;
+  border: 2px solid red;
+  border-radius: 10px;
+  position: relative;
+}
+* .container .modal-exercise-back .modal-exercise .modal-header h3 {
+  text-align: center;
+  color: red;
+  font-size: 2rem;
+}
+* .container .modal-exercise-back .modal-exercise .modal-header .video-instruction {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+* .container .modal-exercise-back .modal-exercise .modal-header .video-instruction .video img {
+  height: 12rem;
+  cursor: pointer;
+}
+* .container .modal-exercise-back .modal-exercise .modal-header .video-instruction .instruction form textarea {
+  color: white;
+  border: 2px solid rgb(92, 0, 0);
+  border-radius: 5px;
+  width: 30vw;
+  height: 12rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+* .container .modal-exercise-back .modal-exercise .modal-header .video-instruction .instruction form textarea::-moz-placeholder {
+  color: black;
+}
+* .container .modal-exercise-back .modal-exercise .modal-header .video-instruction .instruction form textarea::placeholder {
+  color: black;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container {
+  display: flex;
+  flex-direction: column;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(92, 0, 0);
+  padding: 1rem;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .header-row,
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .input-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .header-row .add-row,
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .input-row .add-row {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0;
+  height: 3rem;
+  width: 7rem;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .header-row .add-row:hover,
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .input-row .add-row:hover {
+  background-color: rgb(92, 0, 0);
+  border-radius: 15px;
+  color: black;
+  font-weight: 900;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter {
+  display: flex;
+  padding-left: 3rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter input {
+  width: 4rem;
+  text-align: center;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  outline: none;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter input::-webkit-outer-spin-button, * .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter button {
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  padding: 0.2rem;
+  cursor: pointer;
+  color: rgb(92, 0, 0);
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .exercise-field .counter button:hover {
+  color: red;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .row-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .row-actions span i {
+  color: rgb(92, 0, 0);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .row-actions span i:hover {
+  color: red;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .rows-container .exercise-row .header-row span {
+  font-weight: bold;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .save {
+  border: 2px solid red;
+  background: transparent;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+  margin-top: 1rem;
+  color: white;
+  cursor: pointer;
+}
+* .container .modal-exercise-back .modal-exercise .wrapper_adjust .save:hover {
+  color: black;
+  background-color: red;
 }/*# sourceMappingURL=addTrainingPlan.css.map */

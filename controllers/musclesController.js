@@ -1,15 +1,17 @@
 const Muscles = require("../models/musclesModel");
 const catchAsync = require("../utilities/catchAsync");
 
-exports.getAllMuscles = async (req, res) => {
-  try {
-    const muscles = await Muscles.find({});
+exports.getAllMuscles = catchAsync(async (req, res) => {
+  const muscles = await Muscles.find();
 
-    res.status(200).json(muscles);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching muscles", error });
-  }
-};
+  res.status(200).json({
+    status: "Success",
+    results: muscles.length,
+    data: {
+      muscles,
+    },
+  });
+});
 
 exports.addMuscle = catchAsync(async (req, res) => {
   const {

@@ -4,7 +4,11 @@ const authController = require("../controllers/authController");
 
 const router = express.Router();
 
-router.route("/").get(exercisesController.getAllExercises);
+//exercises
+router.get("/", authController.protect, exercisesController.FilteredExercises);
 
-router.route("/add").post(authController.protect, exercisesController.addExercise);
+router
+  .route("/add")
+  .post(authController.protect, exercisesController.addExercise);
+
 module.exports = router;

@@ -2616,3 +2616,7 @@ node_modules/yallist/yallist.js
 .cache/fb/2a1f8241679b343160d68dbdd1bc91.json
 /.cache
 rute.js
+
+/.cache
+/.vscode
+/node_modules
