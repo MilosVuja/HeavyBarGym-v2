@@ -11,7 +11,7 @@
 
 <body>
   <div class="container">
-    <form action="/api/v1/training-plans" method="POST">
+    <form>
       <div>
         <label for="name">Plan Name:</label>
         <input type="text" id="name" name="name" required>
@@ -244,7 +244,7 @@
       </div>
       <div id="select-exercises"></div>
 
-      <button type="submit">Create training plan</button>
+      <button class="save-training-plan" onclick="saveTrainingPlan()">Save Training Plan</button>
     </form>
     <div class="modal-exercise-back">
       <div class="modal-exercise">
@@ -252,7 +252,7 @@
           <h3 class="modal-exercise-name">Name of the exercise</h3>
           <div class="video-instruction">
             <div class="video">
-              <iframe src="" frameborder="0" width="100%" height="315" allowfullscreen></iframe>
+              <iframe class="iframe" src="" frameborder="0" width="100%" height="315" allowfullscreen></iframe>
             </div>            
             <div class="instruction">
               <form>
@@ -276,28 +276,28 @@
               <div class="input-row">
                 <div class="exercise-field">
                   <div class="counter">
-                    <input class="value" data-type="sets" type="number" placeholder="0" value="0" />
+                    <input class="value" id="sets" data-type="sets" type="number" placeholder="0" value="0" />
                     <button onclick="updateField(this, 'sets', 1)">+</button>
                     <button onclick="updateField(this, 'sets', -1)">-</button>
                   </div>
                 </div>
                 <div class="exercise-field">
                   <div class="counter">
-                    <input class="value" data-type="reps" type="number" placeholder="0" value="0" />
+                    <input class="value" id="reps" data-type="reps" type="number" placeholder="0" value="0" />
                     <button onclick="updateField(this, 'reps', 1)">+</button>
                     <button onclick="updateField(this, 'reps', -1)">-</button>
                   </div>
                 </div>
                 <div class="exercise-field">
                   <div class="counter">
-                    <input class="value" data-type="weight" type="number" placeholder="0" value="0" />
+                    <input class="value" id="weight" data-type="weight" type="number" placeholder="0" value="0" />
                     <button onclick="updateField(this, 'weight', 2.5)">+</button>
                     <button onclick="updateField(this, 'weight', -2.5)">-</button>
                   </div>
                 </div>
                 <div class="exercise-field">
                   <div class="counter">
-                    <input class="value" data-type="rest" type="number" placeholder="0" value="0" />
+                    <input class="value" id="rest" data-type="rest" type="number" placeholder="0" value="0" />
                     <button onclick="updateField(this, 'rest', 60)">+</button>
                     <button onclick="updateField(this, 'rest', -60)">-</button>
                   </div>
@@ -312,7 +312,7 @@
             </div>
           </div>
           
-          <button class="save">Save</button>
+          <button class="save" onclick="saveExercise()">Save</button>
         </div>
       </div>
     </div>

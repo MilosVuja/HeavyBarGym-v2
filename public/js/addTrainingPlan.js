@@ -26,35 +26,38 @@ function addMuscleClickListeners() {
     });
   });
 
-  document.getElementById("add-muscle-button").addEventListener("click", function () {
-    const muscleName =document.getElementById("muscle-name-value").textContent;
+  document
+    .getElementById("add-muscle-button")
+    .addEventListener("click", function () {
+      const muscleName =
+        document.getElementById("muscle-name-value").textContent;
 
-    if (muscleName) {
-      const alreadySelected = Array.from(musclePaths).some(
-        (path) =>
-          path.classList.contains("filled") &&
-          path.getAttribute("data-name") === muscleName
-      );
+      if (muscleName) {
+        const alreadySelected = Array.from(musclePaths).some(
+          (path) =>
+            path.classList.contains("filled") &&
+            path.getAttribute("data-name") === muscleName
+        );
 
-      if (alreadySelected) {
-        alert("This muscle has already been added.");
-        return;
+        if (alreadySelected) {
+          alert("This muscle has already been added.");
+          return;
+        }
+
+        const selectedMuscle = Array.from(musclePaths).filter(
+          (path) => path.getAttribute("data-name") === muscleName
+        );
+
+        selectedMuscle.forEach((path) => {
+          path.classList.add("filled");
+        });
+
+        selectedMuscles.push({ name: muscleName });
+        updateSelectedMusclesList();
+      } else {
+        console.error("No muscle selected to add.");
       }
-
-      const selectedMuscle = Array.from(musclePaths).filter(
-        (path) => path.getAttribute("data-name") === muscleName
-      );
-
-      selectedMuscle.forEach((path) => {
-        path.classList.add("filled");
-      });
-
-      selectedMuscles.push({ name: muscleName });
-      updateSelectedMusclesList();
-    } else {
-      console.error("No muscle selected to add.");
-    }
-  });
+    });
 }
 
 function updateSelectedMusclesList() {
@@ -250,11 +253,11 @@ function addDeleteButton(card) {
   `;
 
   card.style.position = "relative";
-  
+
   card.addEventListener("mouseenter", () => {
     deleteButton.style.display = "block";
   });
-  
+
   card.addEventListener("mouseleave", () => {
     deleteButton.style.display = "none";
   });
@@ -266,7 +269,6 @@ function addDeleteButton(card) {
 
   card.appendChild(deleteButton);
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("dragover", (e) => {
@@ -297,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  let chosenExercisesContainer = document.querySelector('#chosen-exercises');
+  let chosenExercisesContainer = document.querySelector("#chosen-exercises");
 
   const initializeDragAndDrop = () => {
     if (!chosenExercisesContainer) return;
@@ -305,9 +307,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let draggedCard = null;
 
     const makeCardsDraggable = () => {
-      chosenExercisesContainer.querySelectorAll('.exercise-card').forEach(card => {
-        card.draggable = true;
-      });
+      chosenExercisesContainer
+        .querySelectorAll(".exercise-card")
+        .forEach((card) => {
+          card.draggable = true;
+        });
     };
 
     chosenExercisesContainer.addEventListener("dragstart", (event) => {
@@ -345,7 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const initializeChosenExercises = () => {
-    chosenExercisesContainer = document.querySelector('#chosen-exercises');
+    chosenExercisesContainer = document.querySelector("#chosen-exercises");
 
     if (chosenExercisesContainer) {
       initializeDragAndDrop();
@@ -356,20 +360,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initializeChosenExercises();
 
-  window.addCard = function() {
-    if (!document.querySelector('#chosen-exercises')) {
+  window.addCard = function () {
+    if (!document.querySelector("#chosen-exercises")) {
       return;
     }
 
-    const card = document.createElement('div');
-    card.classList.add('exercise-card');
-    card.setAttribute('draggable', 'true');
-    card.innerHTML = '<p>New Exercise Card</p>';
-    document.querySelector('#chosen-exercises').appendChild(card);
+    const card = document.createElement("div");
+    card.classList.add("exercise-card");
+    card.setAttribute("draggable", "true");
+    card.innerHTML = "<p>New Exercise Card</p>";
+    document.querySelector("#chosen-exercises").appendChild(card);
 
     initializeChosenExercises();
   };
-
 });
 
 function isDuplicate(newCard) {
@@ -384,26 +387,28 @@ function isDuplicate(newCard) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const modal_exercise = document.querySelector('.modal-exercise-back');
-  
+  const modal_exercise = document.querySelector(".modal-exercise-back");
+
   const interval = setInterval(() => {
-    const chosenExercisesContainer = document.querySelector('#chosen-exercises');
-    
+    const chosenExercisesContainer =
+      document.querySelector("#chosen-exercises");
+
     if (chosenExercisesContainer) {
       clearInterval(interval);
-      
+
       if (modal_exercise) {
-        chosenExercisesContainer.addEventListener('click', (event) => {
-          const card = event.target.closest('.exercise-card');
+        chosenExercisesContainer.addEventListener("click", (event) => {
+          const card = event.target.closest(".exercise-card");
           if (card) {
-            modal_exercise.style.display = 'block';
+            modal_exercise.style.display = "block";
 
             const name = card.getAttribute("data-name");
             const video = card.getAttribute("data-video");
             const instruction = card.getAttribute("data-instruction");
-          
+
             document.querySelector(".modal-exercise-name").textContent = name;
-            document.querySelector(".modal-exercise-instruction").textContent = instruction;
+            document.querySelector(".modal-exercise-instruction").textContent =
+              instruction;
 
             const iframe = document.querySelector(".video iframe");
             iframe.src = video;
@@ -461,14 +466,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     makeRowsDraggable();
 
-    window.copyRow = function(button) {
+    window.copyRow = function (button) {
       const currentRow = button.closest(".exercise-row");
       const newRow = currentRow.cloneNode(true);
       currentRow.parentNode.insertBefore(newRow, currentRow.nextSibling);
       makeRowsDraggable();
     };
 
-    window.addRow = function() {
+    window.addRow = function () {
       const lastRow = rowsContainer.lastElementChild;
       if (lastRow) {
         const newRow = lastRow.cloneNode(true);
@@ -480,18 +485,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    window.deleteRow = function(button) {
+    window.deleteRow = function (button) {
       const currentRow = button.closest(".exercise-row");
       const totalRows = rowsContainer.querySelectorAll(".exercise-row").length;
-    
+
       if (totalRows > 2) {
         currentRow.remove();
       } else {
         alert("At least one exercise row must exist.");
       }
     };
-    
-    window.updateField = function(element, type, increment) {
+
+    window.updateField = function (element, type, increment) {
       const valueElement = element.closest(".counter").querySelector(".value");
       let currentValue = parseFloat(valueElement.value);
 
@@ -514,3 +519,94 @@ document.addEventListener("DOMContentLoaded", () => {
     heading.textContent = `Muscle Selection for ${this.value}`;
   });
 });
+
+function saveExercise() {
+  const exerciseName = document.querySelector(".modal-exercise-name").textContent;
+  const exerciseVideo = document.querySelector(".iframe").src;
+
+  const exercise = {
+    name: exerciseName,
+    video: exerciseVideo,
+    instructions: document.querySelector(".modal-exercise-instruction").value,
+    sets: document.getElementById("sets").value,
+    reps: document.getElementById("reps").value,
+    weight: document.getElementById("weight").value,
+    rest: document.getElementById("rest").value,
+  };
+
+  let trainingPlan = JSON.parse(localStorage.getItem("trainingPlan")) || { trainingDays: [] };
+
+  const selectedDay = document.getElementById("day-select").value;
+
+  let trainingDay = trainingPlan.trainingDays.find((day) => day.day === selectedDay);
+  if (!trainingDay) {
+    trainingDay = { day: selectedDay, trainingType: "", exercises: [] };
+    trainingPlan.trainingDays.push(trainingDay);
+  }
+
+  trainingDay.exercises.push(exercise);
+
+  localStorage.setItem("trainingPlan", JSON.stringify(trainingPlan));
+
+  alert("Exercise saved to training plan!");
+
+  document.getElementById("sets").value = "";
+  document.getElementById("reps").value = "";
+  document.getElementById("weight").value = "";
+  document.getElementById("rest").value = "";
+
+}
+
+async function saveTrainingPlan(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const description = document.getElementById("description").value;
+  const duration = document.getElementById("duration").value;
+  const trainingsPerWeek = document.getElementById("times-per-week").value;
+  const weekStart = document.getElementById("weekStart").value;
+
+  const trainingPlan = JSON.parse(localStorage.getItem("trainingPlan"));
+  const trainingDays = trainingPlan?.trainingDays || [];
+  const amountOfTrainings = trainingDays.length;
+
+  if (amountOfTrainings === 0) {
+    alert("Please add exercises to your training plan first.");
+    return;
+  }
+
+  const trainingData = {
+    name,
+    description,
+    duration,
+    trainingsPerWeek,
+    weekStart,
+    amountOfTrainings,
+    trainingDays,
+  };
+
+  try {
+    const saveButton = document.querySelector(".save-training-plan");
+    saveButton.disabled = true;
+
+    const response = await fetch("/api/v1/training-plans/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(trainingData),
+    });
+
+    if (!response.ok) throw new Error("Failed to save training plan.");
+
+    alert("Training plan saved successfully!");
+    localStorage.removeItem("trainingPlan");
+    saveButton.disabled = false;
+  } catch (error) {
+    alert("Error saving training plan.");
+    saveButton.disabled = false;
+  }
+}
+
+document.querySelector(".save-training-plan").addEventListener("click", saveTrainingPlan);
+

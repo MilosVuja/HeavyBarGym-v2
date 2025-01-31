@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 
 const ExerciseSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  video: { type: String },  // Added for video URL
+  instructions: { type: String },  // Added for exercise instructions
   sets: { type: Number, default: null },
   reps: { type: Number, default: null },
   weight: { type: Number, default: null },
+  rest: { type: Number, default: null },  // Added for rest duration between sets
   duration: { type: Number, default: null },
-  notes: String,
 });
 
 const TrainingDaySchema = new mongoose.Schema({
@@ -23,8 +25,8 @@ const TrainingDaySchema = new mongoose.Schema({
     ],
     required: true,
   },
-  trainingType: { type: String, required: true },
-  exercises: [ExerciseSchema],
+  trainingType: { type: String },
+  exercises: [ExerciseSchema],  // This will hold the list of exercises for each day
 });
 
 const TrainingPlanSchema = new mongoose.Schema({
@@ -37,25 +39,28 @@ const TrainingPlanSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  user: {
+  member: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Member",
     required: true,
   },
   duration: {
     type: Number,
     required: [true, "Training plan must have a duration (in weeks)"],
   },
-  difficulty: {
-    type: String,
-    enum: ["beginner", "intermediate", "advanced"],
-    required: true,
+  trainingsPerWeek: {
+    type: Number,
+    required: [true, "Training plan must have a number of trainings per week"],
   },
   weekStart: {
     type: Date,
     required: true,
   },
-  trainingDays: [TrainingDaySchema],
+  amountOfTrainings: {
+    type: Number,
+  },
+
+  trainingDays: [TrainingDaySchema],  // An array of training days
   createdAt: {
     type: Date,
     default: Date.now(),

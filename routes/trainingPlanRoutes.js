@@ -1,20 +1,18 @@
 const express = require("express");
 const trainingPlanController = require("../controllers/trainingPlanController");
 const authController = require("../controllers/authController");
-const exercisesController = require("../controllers/exercisesController.js");
 
 const router = express.Router();
 
 router.use(authController.protect);
 
-router.post("/", trainingPlanController.createTrainingPlan);
+//training-plans
+router.get("/", trainingPlanController.getUserPlans);
 
-router.get(
+router.post(
   "/add",
   authController.protect,
-  trainingPlanController.addExercise,
-  trainingPlanController.deleteTrainingDay,
-  exercisesController.getAllExercises,
+  trainingPlanController.saveTraining,
 );
 
 module.exports = router;

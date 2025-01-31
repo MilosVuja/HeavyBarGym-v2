@@ -98,7 +98,6 @@ const memberSchema = new mongoose.Schema(
       type: {
         type: String,
         enum: ["basic", "premium", "vip"],
-        required: true,
       },
       startDate: Date,
       endDate: Date,

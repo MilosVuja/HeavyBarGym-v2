@@ -57,7 +57,7 @@ app.use("/", viewRouter);
 app.use("/api/v1/members", memberRouter);
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/groupClassBooking", groupClassRouter);
-app.use("/training-plans", trainingPlanRoutes);
+app.use("/api/v1/training-plans", trainingPlanRoutes);
 app.use("/api/v1/muscles", musclesRouter);
 app.use("/api/v1/exercises", exercisesRouter);
 
