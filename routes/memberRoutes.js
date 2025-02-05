@@ -3,6 +3,7 @@ const memberController = require("../controllers/memberController");
 const authController = require("../controllers/authController");
 
 const router = express.Router();
+
 // /members
 router.post("/", authController.signup);
 router.post("/login", authController.login);
@@ -21,11 +22,6 @@ router
   .route("/")
   .get(memberController.getAllMembers)
   .post(memberController.createMember);
-
-router.patch(
-  "/:memberId/assign-training-plan",
-  memberController.assignTrainingPlan
-);
 
 router.get(
   "/profile/your-training",

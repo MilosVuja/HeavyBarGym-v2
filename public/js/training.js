@@ -1,62 +1,64 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const exercise_card = document.querySelectorAll(".exercise-card");
-  const modal_exercise = document.querySelector(".modal-exercise-back");
-  exercise_card.forEach((elem) => {
-    elem.addEventListener("click", () => {
-      modal_exercise.style.display = "block";
-    });
-  });
+async function fetchTrainingPlan() {
+  try {
+    const response = await fetch(`/api/v1/training-plans/active`);
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    
+    const result = await response.json();
+    console.log("Training Plan Data:", result); 
 
-  exercise_card.forEach((elem) => {
-    elem.addEventListener("click", () => {
-      modal_exercise.style.display = "block";
-    });
-  });
-
-  window.onclick = function (event) {
-    if (event.target == modal_exercise) {
-      modal_exercise.style.display = "none";
+    if (result.status === "success" && result.data) {
+      renderTrainingPlan(result.data.activePlan);
+    } else {
+      console.error("No training plan found");
     }
-  };
-});
-
-window.updateField = function (element, type, increment) {
-  const valueElement = element.closest(".counter").querySelector(".value");
-  let currentValue = parseFloat(valueElement.value) || 0;
-
-  if (currentValue + increment < 0) {
-    currentValue = 0;
-  } else {
-    currentValue += increment;
+  } catch (error) {
+    console.error("Fetch error:", error);
   }
+}
 
-  valueElement.value = currentValue.toFixed(type === "weight" ? 1 : 0);
-};
+function renderTrainingPlan(plan) {
+  const container = document.getElementById("training-plan-container");
+  container.innerHTML = `
+    <h2>${plan.name}</h2>
+    <div class="training">
+      <div class="training-informations">
+        <p>${plan.description}</p>
+        <p>Duration: ${plan.duration} min</p>
+        <p>Trainings per Week: ${plan.trainingsPerWeek}</p>
+        <p>Start Date: ${new Date(plan.weekStart).toDateString()}</p>
+      </div>
+      <div class="training-days">
+        ${plan.trainingDays
+          .map(
+            (day) => `
+            <div class="training-day">
+              <h3>${day.day} - ${day.trainingType}</h3>
+              ${day.exercises
+                .map(
+                  (exercise) => `
+                  <div class="training-card">
+                    <div class="exercise-thumbnail">
+                      <img src="${exercise.thumbnail}" alt="${exercise.name}">
+                    </div>
+                    <div class="exercise-details">
+                      <h3>${exercise.name}</h3>
+                      <p>Instructions: ${exercise.instructions}</p>
+                      <p>Sets: ${exercise.sets}</p>
+                      <p>Reps: ${exercise.reps}</p>
+                      <p>Weight: ${exercise.weight} kg</p>
+                      <p>Rest: ${exercise.rest} sec</p>
+                    </div>
+                  </div>
+              `
+                )
+                .join("")}
+            </div>
+        `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+}
 
-window.copyRow = function (button) {
-  const currentRow = button.closest(".exercise-row");
-  const newRow = currentRow.cloneNode(true);
-  currentRow.parentNode.insertBefore(newRow, currentRow.nextSibling);
-};
-
-window.deleteRow = function (button) {
-  const currentRow = button.closest(".exercise-row");
-  const rowsContainer = document.querySelector(".rows-container");
-
-  if (rowsContainer.children.length > 2) {
-    currentRow.remove();
-  }
-};
-
-window.addRow = function () {
-  const rowsContainer = document.querySelector(".rows-container");
-  const lastRow = rowsContainer.lastElementChild;
-  const newRow = lastRow.cloneNode(true);
-
-  const valueElements = newRow.querySelectorAll(".value");
-  valueElements.forEach((value) => {
-    value.value = "0";
-  });
-
-  rowsContainer.appendChild(newRow);
-};
+fetchTrainingPlan();

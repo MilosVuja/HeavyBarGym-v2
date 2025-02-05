@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 
 const ExerciseSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  video: { type: String },  // Added for video URL
-  instructions: { type: String },  // Added for exercise instructions
+  thumbnail: { type: String },
+  video: { type: String },
+  instructions: { type: String },
   sets: { type: Number, default: null },
   reps: { type: Number, default: null },
   weight: { type: Number, default: null },
-  rest: { type: Number, default: null },  // Added for rest duration between sets
+  rest: { type: Number, default: null },
   duration: { type: Number, default: null },
 });
 
@@ -26,7 +27,7 @@ const TrainingDaySchema = new mongoose.Schema({
     required: true,
   },
   trainingType: { type: String },
-  exercises: [ExerciseSchema],  // This will hold the list of exercises for each day
+  exercises: [ExerciseSchema],
 });
 
 const TrainingPlanSchema = new mongoose.Schema({
@@ -60,7 +61,7 @@ const TrainingPlanSchema = new mongoose.Schema({
     type: Number,
   },
 
-  trainingDays: [TrainingDaySchema],  // An array of training days
+  trainingDays: [TrainingDaySchema],
   createdAt: {
     type: Date,
     default: Date.now(),

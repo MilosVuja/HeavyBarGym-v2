@@ -13,33 +13,11 @@
 </head>
 
 <body>
-  <div class="container">
-    <% if (member.activeTrainingPlan) { %>
-      <h2>
-        <%= member.activeTrainingPlan.name %>
-      </h2>
-      <div class="training-plan">
-        <h2>
-          <%= member.activeTrainingPlan.name %>
-        </h2>
-        <p>
-          <%= member.activeTrainingPlan.description %>
-        </p>
-        <p>Duration: <%= member.activeTrainingPlan.duration %> weeks</p>
-        <h3>Training Days:</h3>
-        <ul>
-          <% member.activeTrainingPlan.trainingDays.forEach(day=> { %>
-            <li>
-              <%= day.day %>: <%= day.trainingType %>
-            </li>
-            <% }); %>
-        </ul>
-      </div>
-      <% } else { %>
-        <h2>You don't have a training plan. Do you want to make one?</h2>
-        <a href="/training-plans/add" class="button">Create Training Plan</a>
-        <% } %>
-  </div>
+  <div id="training-plan-container"></div>
+  <div id="exercise-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ccc;">
+    <div id="exercise-modal-content"></div>
+</div>
+
 
   <script src="/js/training.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

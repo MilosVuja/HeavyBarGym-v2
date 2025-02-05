@@ -284,17 +284,16 @@ exports.assignTrainingPlan = catchAsync(async (req, res, next) => {
 
 exports.getTrainingProfile = catchAsync(async (req, res, next) => {
   const member = await Member.findById(req.member.id)
-    .populate("activeTrainingPlan")
-    .populate("trainingHistory.plan");
+    .populate("activeTrainingPlan");
 
-  if (!member) {
-    return next(new AppError("No member found with that ID", 404));
+  if (!member || !member.activeTrainingPlan) {
+    return next(new AppError("No member found with that ID or there is no active training for this member!", 404));
   }
 
   res.status(200).json({
     status: "success",
     data: {
-      member,
+      activeTrainingPlan: member.activeTrainingPlan,
     },
   });
 });

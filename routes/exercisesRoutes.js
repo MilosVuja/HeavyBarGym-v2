@@ -7,6 +7,8 @@ const router = express.Router();
 //exercises
 router.get("/", authController.protect, exercisesController.FilteredExercises);
 
+router.get("/:id", authController.protect, exercisesController.getExercise);
+
 router
   .route("/add")
   .post(authController.protect, exercisesController.addExercise);

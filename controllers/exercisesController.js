@@ -18,6 +18,25 @@ exports.getAllExercises = catchAsync(async (req, res, next) => {
   next();
 });
 
+exports.getExercise = catchAsync(async (req, res, next) => {
+  const exercise = await Exercises.findById(req.params.id);
+
+  if (!exercise) {
+    return res.status(404).json({
+      status: "error",
+      message: "No exercise found with that ID.",
+    });
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      exercise,
+    },
+  });
+  next();
+});
+
 exports.FilteredExercises = catchAsync(async (req, res, next) => {
   const { muscles } = req.query;
 

@@ -1,4 +1,5 @@
 let selectedMuscles = [];
+let thumbnail = "";
 
 function addMuscleClickListeners() {
   const musclePaths = document.querySelectorAll(".muscle");
@@ -97,21 +98,52 @@ function removeMuscle(index) {
   updateSelectedMusclesList();
 }
 
-function updateTrainingDates() {
-  const duration = parseInt(document.getElementById("duration").value);
-  const startDateInput = document.getElementById("weekStart").value;
+document.addEventListener("DOMContentLoaded", function () {
+  function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
 
-  if (duration && startDateInput) {
-    const startDate = new Date(startDateInput);
-    const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + duration * 7);
+  function updateTrainingDates() {
+    const durationInput = document.getElementById("duration");
+    const timesPerWeekInput = document.getElementById("times-per-week");
+    const startDateInput = document.getElementById("weekStart");
+
+    const duration = Number(durationInput.value);
+    const timesPerWeek = Number(timesPerWeekInput.value);
+    const startDateValue = startDateInput.value;
 
     const trainingDatesParagraph = document.getElementById("training-dates");
-    trainingDatesParagraph.textContent = `Training starts on ${formatDate(
-      startDate
-    )} and ends on ${formatDate(endDate)}.`;
+
+    if (duration > 0 && timesPerWeek > 0 && startDateValue) {
+      const startDate = new Date(startDateValue);
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + duration * 7);
+
+      const totalSessions = duration * timesPerWeek;
+
+      trainingDatesParagraph.textContent = `Your training plan will start on ${formatDate(
+        startDate
+      )}, 
+        end on ${formatDate(endDate)}, 
+        and include a total of ${totalSessions} training sessions.`;
+    } else {
+      trainingDatesParagraph.textContent = "";
+    }
   }
-}
+
+  document
+    .getElementById("duration")
+    .addEventListener("input", updateTrainingDates);
+  document
+    .getElementById("times-per-week")
+    .addEventListener("input", updateTrainingDates);
+  document
+    .getElementById("weekStart")
+    .addEventListener("change", updateTrainingDates);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   addMuscleClickListeners();
@@ -209,6 +241,7 @@ function displayExercises(groupedExercises) {
       exerciseCard.setAttribute("data-name", exercise.name);
       exerciseCard.setAttribute("data-video", exercise.video);
       exerciseCard.setAttribute("data-instruction", exercise.instruction);
+      exerciseCard.setAttribute("data-thumbnail", exercise.thumbnail);
 
       exerciseCard.innerHTML = `
       <h3>${exercise.name}</h3>
@@ -270,6 +303,7 @@ function addDeleteButton(card) {
   card.appendChild(deleteButton);
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -297,6 +331,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   let chosenExercisesContainer = document.querySelector("#chosen-exercises");
@@ -397,21 +433,25 @@ document.addEventListener("DOMContentLoaded", () => {
       clearInterval(interval);
 
       if (modal_exercise) {
-        chosenExercisesContainer.addEventListener("click", (event) => {
+        document.addEventListener("click", (event) => {
           const card = event.target.closest(".exercise-card");
-          if (card) {
-            modal_exercise.style.display = "block";
+          if (card && card.closest("#chosen-exercises")) {
+            if (card) {
+              modal_exercise.style.display = "block";
 
-            const name = card.getAttribute("data-name");
-            const video = card.getAttribute("data-video");
-            const instruction = card.getAttribute("data-instruction");
+              const name = card.getAttribute("data-name");
+              const video = card.getAttribute("data-video");
+              const instruction = card.getAttribute("data-instruction");
+              thumbnail = card.getAttribute("data-thumbnail");
 
-            document.querySelector(".modal-exercise-name").textContent = name;
-            document.querySelector(".modal-exercise-instruction").textContent =
-              instruction;
+              document.querySelector(".modal-exercise-name").textContent = name;
+              document.querySelector(
+                ".modal-exercise-instruction"
+              ).textContent = instruction;
 
-            const iframe = document.querySelector(".video iframe");
-            iframe.src = video;
+              const iframe = document.querySelector(".video iframe");
+              iframe.src = video;
+            }
           }
         });
       }
@@ -498,16 +538,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.updateField = function (element, type, increment) {
       const valueElement = element.closest(".counter").querySelector(".value");
+      
       let currentValue = parseFloat(valueElement.value);
-
+      if (isNaN(currentValue)) {
+        currentValue = 0;
+      }
+    
       if (currentValue + increment < 0) {
         currentValue = 0;
       } else {
         currentValue += increment;
       }
-
-      valueElement.value = currentValue.toFixed(type === "weight" ? 1 : 0);
+    
+      if (!isNaN(currentValue)) {
+        valueElement.value = currentValue.toFixed(type === "weight" ? 1 : 0);
+      } else {
+        console.error("Invalid number for currentValue:", currentValue);
+        valueElement.value = 0;
+      }
     };
+    
   }
 });
 
@@ -521,11 +571,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function saveExercise() {
-  const exerciseName = document.querySelector(".modal-exercise-name").textContent;
+  const exerciseName = document.querySelector(
+    ".modal-exercise-name"
+  ).textContent;
   const exerciseVideo = document.querySelector(".iframe").src;
 
   const exercise = {
     name: exerciseName,
+    thumbnail: thumbnail,
     video: exerciseVideo,
     instructions: document.querySelector(".modal-exercise-instruction").value,
     sets: document.getElementById("sets").value,
@@ -534,15 +587,21 @@ function saveExercise() {
     rest: document.getElementById("rest").value,
   };
 
-  let trainingPlan = JSON.parse(localStorage.getItem("trainingPlan")) || { trainingDays: [] };
+  let trainingPlan = JSON.parse(localStorage.getItem("trainingPlan")) || {
+    trainingDays: [],
+  };
 
   const selectedDay = document.getElementById("day-select").value;
 
-  let trainingDay = trainingPlan.trainingDays.find((day) => day.day === selectedDay);
+  let trainingDay = trainingPlan.trainingDays.find(
+    (day) => day.day === selectedDay
+  );
   if (!trainingDay) {
     trainingDay = { day: selectedDay, trainingType: "", exercises: [] };
     trainingPlan.trainingDays.push(trainingDay);
   }
+
+  trainingDay.trainingType = "";
 
   trainingDay.exercises.push(exercise);
 
@@ -554,7 +613,40 @@ function saveExercise() {
   document.getElementById("reps").value = "";
   document.getElementById("weight").value = "";
   document.getElementById("rest").value = "";
+  document.querySelector(".modal-exercise-instruction").value = "";
 
+  const trainingTypeInput = document.querySelector(
+    "input[name='trainingDays[0][trainingType]']"
+  );
+  if (trainingTypeInput) trainingTypeInput.value = "";
+
+  selectedMuscles = [];
+
+  const filledMuscles = document.querySelectorAll(
+    ".svg-container svg .muscle.filled"
+  );
+  filledMuscles.forEach((muscle) => {
+    muscle.classList.remove("filled");
+  });
+
+  const selectedMusclesContainer = document.getElementById(
+    "selected-muscles-list"
+  );
+  if (selectedMusclesContainer) {
+    selectedMusclesContainer.innerHTML = "";
+  }
+
+  const chosenExercises = document.getElementById("chosen-exercises");
+  if (chosenExercises) chosenExercises.remove();
+
+  const exercisesContainer = document.getElementById("exercises-container");
+  if (exercisesContainer) exercisesContainer.remove();
+
+  const exerciseFields = document.querySelectorAll(".exercise-field");
+  exerciseFields.forEach((field) => (field.value = ""));
+
+  const modal = document.querySelector(".modal-exercise-back");
+  if (modal) modal.style.display = "none";
 }
 
 async function saveTrainingPlan(event) {
@@ -601,12 +693,11 @@ async function saveTrainingPlan(event) {
 
     alert("Training plan saved successfully!");
     localStorage.removeItem("trainingPlan");
-    saveButton.disabled = false;
   } catch (error) {
     alert("Error saving training plan.");
-    saveButton.disabled = false;
   }
 }
 
-document.querySelector(".save-training-plan").addEventListener("click", saveTrainingPlan);
-
+document
+  .querySelector(".save-training-plan")
+  .addEventListener("click", saveTrainingPlan);

@@ -2,15 +2,61 @@ const TrainingPlan = require("../models/trainingPlanModel");
 const catchAsync = require("../utilities/catchAsync");
 const Member = require("../models/membersModel");
 
+exports.getAllActiveTrainingPlans = catchAsync(async (req, res) => {
+  if (req.user.role !== "admin") {
+    return res.status(403).json({
+      status: "fail",
+      message: "Access denied. Only admins can view active training plans.",
+    });
+  }
 
+  const activePlans = await TrainingPlan.find({ isActive: true }).populate(
+    "member exercises"
+  );
 
-exports.getUserPlans = catchAsync(async (req, res) => {
-  const plans = await TrainingPlan.find({ user: req.user.id });
+  if (!activePlans) {
+    return res.status(404).json({
+      status: "fail",
+      message: "No active training plans found.",
+    });
+  }
 
   res.status(200).json({
     status: "success",
-    results: plans.length,
-    data: { plans },
+    data: { activePlans },
+  });
+});
+
+exports.getActiveMemberPlan = catchAsync(async (req, res) => {
+  const memberId = req.member._id;
+
+  const member = await Member.findById(memberId).select('activeTrainingPlan');
+  if (!member) {
+    return res.status(404).json({
+      status: "fail",
+      message: "No member found with that ID.",
+    });
+  }
+
+  if (!member.activeTrainingPlan) {
+    return res.status(404).json({
+      status: "fail",
+      message: "No active training plan found for this member.",
+    });
+  }
+
+  const activePlan = await TrainingPlan.findById(member.activeTrainingPlan);
+
+  if (!activePlan) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Active training plan not found.",
+    });
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: { activePlan },
   });
 });
 
@@ -44,50 +90,55 @@ exports.addExercise = catchAsync(async (req, res) => {
 
 exports.saveTraining = catchAsync(async (req, res, next) => {
   try {
-    const { name, description, duration, trainingsPerWeek, weekStart, amountOfTrainings, trainingDays } = req.body;
-    const memberId = req.member.id; // Extracted from auth middleware
+    const {
+      name,
+      description,
+      duration,
+      trainingsPerWeek,
+      weekStart,
+      amountOfTrainings,
+      trainingDays,
+    } = req.body;
+    const memberId = req.member.id;
 
-    // Create new training plan
     const newTrainingPlan = new TrainingPlan({
-        name,
-        description,
-        duration,
-        trainingsPerWeek,
-        weekStart,
-        amountOfTrainings,
-        trainingDays: trainingDays.map(day => ({
-            day: day.day,
-            trainingType: day.trainingType,
-            exercises: day.exercises.map(exercise => ({
-                name: exercise.name,
-                video: exercise.video,
-                instructions: exercise.instructions,
-                sets: exercise.sets,
-                reps: exercise.reps,
-                weight: exercise.weight,
-                rest: exercise.rest,
-            }))
+      name,
+      description,
+      duration,
+      trainingsPerWeek,
+      weekStart,
+      amountOfTrainings,
+      trainingDays: trainingDays.map((day) => ({
+        day: day.day,
+        trainingType: day.trainingType,
+        exercises: day.exercises.map((exercise) => ({
+          name: exercise.name,
+          thumbnail: exercise.thumbnail,
+          video: exercise.video,
+          instructions: exercise.instructions,
+          sets: exercise.sets,
+          reps: exercise.reps,
+          weight: exercise.weight,
+          rest: exercise.rest,
         })),
-        member: memberId,
+      })),
+      member: memberId,
     });
 
     await newTrainingPlan.save();
 
-    // Find the member and update their training history
     const member = await Member.findById(memberId);
     if (!member) return res.status(404).json({ error: "Member not found" });
 
-    // Move old training plan to history
     if (member.activeTrainingPlan) {
-        member.trainingHistory.push({
-            plan: member.activeTrainingPlan,
-            startDate: new Date(),
-            endDate: new Date(),
-            completed: true,
-        });
+      member.trainingHistory.push({
+        plan: member.activeTrainingPlan,
+        startDate: new Date(),
+        endDate: new Date(),
+        completed: true,
+      });
     }
 
-    // Set new active training plan
     member.activeTrainingPlan = newTrainingPlan._id;
     await member.save();
 
@@ -98,22 +149,18 @@ exports.saveTraining = catchAsync(async (req, res, next) => {
   }
 });
 
-
-
-// Fetch training history
 exports.getTrainingHistory = catchAsync(async (req, res, next) => {
   const member = await Member.findById(req.member.id)
-      .populate("activeTrainingPlan")
-      .populate("trainingHistory.plan");
+    .populate("activeTrainingPlan")
+    .populate("trainingHistory.plan");
 
   if (!member) return res.status(404).json({ error: "Member not found" });
 
   res.status(200).json({
-      activeTrainingPlan: member.activeTrainingPlan,
-      trainingHistory: member.trainingHistory,
+    activeTrainingPlan: member.activeTrainingPlan,
+    trainingHistory: member.trainingHistory,
   });
 });
-
 
 exports.deleteTrainingDay = catchAsync(async (req, res) => {
   const { planId, dayId } = req.params;

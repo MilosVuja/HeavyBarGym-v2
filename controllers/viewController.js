@@ -27,41 +27,16 @@ exports.getProfilePage = catchAsync(async (req, res, next) => {
 });
 
 exports.getTrainingPage = (req, res) => {
-  res.status(200).render("training", {});
+  res.status(200).render("training", {
+    title: "Your training plan",
+  });
 };
 
 exports.getGroupClassPage = (req, res) => {
   res.status(200).render("groupClassBooking");
 };
 
-exports.getMuscleSelectPage = (req, res) => {
-  res.status(200).render("muscleSelect", {});
-};
-
-exports.getChooseExercisesPage = (req, res) => {
-  res.status(200).render("chooseExercises", {});
-};
-
-exports.getProfile = catchAsync(async (req, res) => {
-  res.status(200).render("profile", {
-    title: "Your profile",
-    member: req.member,
-  });
-});
-
-exports.getLoginForm = (req, res) => {
-  res.status(200).render("login", {
-    title: "Log into your account",
-  });
-};
-
-exports.getHome = (req, res) => {
-  res.status(200).render("main", {
-    title: "Home",
-  });
-};
-
-exports.getAddTrainingPlan = (req, res) => {
+exports.getAddTrainingPlanPage = (req, res) => {
   res.status(200).render("addTrainingPlan", {
     title: "Add Training Plan",
     exercises: res.locals.exercises,
