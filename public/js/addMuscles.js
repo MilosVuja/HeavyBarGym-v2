@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
+    delete data.exercises;
+
     try {
       const response = await fetch("/api/v1/muscles/add", {
         method: "POST",

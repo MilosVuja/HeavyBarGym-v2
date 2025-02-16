@@ -1,41 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Exercise</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Exercise</title>
 </head>
-
 <body>
-    <h1>Add Exercise</h1>
-    <form id="addExerciseForm" action="/api/v1/exercises/add" method="POST">
-        <label for="name">Exercise Name:</label>
-        <input type="text" id="name" name="name" required><br>
+  <h1>Add Exercise</h1>
+  <form id="addExerciseForm" action="/api/v1/exercises/add" method="POST">
 
-        <label for="thumbnail">Thumbnail URL:</label>
-        <input type="text" id="thumbnail" name="thumbnail" required><br>
+    <label for="name">Exercise Name:</label>
+    <input type="text" id="name" name="name" required /><br />
 
-        <label for="video">Video URL:</label>
-        <input type="text" id="video" name="video" required><br>
+    <label for="thumbnail">Thumbnail URL:</label>
+    <input type="text" id="thumbnail" name="thumbnail" required /><br />
 
-        <label for="instruction">Instruction:</label>
-        <textarea id="instruction" name="instruction" required></textarea><br>
+    <label for="video">Video URL:</label>
+    <input type="text" id="video" name="video" required /><br />
 
-        <label>Select Muscles:</label><br>
-        <div id="muscle-selects">
-            <select name="muscles" required>
-                <option value="" disabled selected>Select a muscle</option>
-                <% muscles.forEach(function(muscle) { %>
-                    <option value="<%= muscle.name %>"><%= muscle.name %></option>
-                <% }); %>
-            </select>
-        </div>
-        <button type="button" onclick="addMuscleSelect()">Add Another Muscle</button><br>
+    <label for="instruction">Instruction:</label>
+    <textarea id="instruction" name="instruction" required></textarea><br />
 
-        <button type="submit">Add Exercise</button>
-    </form>
+    <label for="equipment">Equipment:</label><br />
+    <div id="equipment-selects">
+      <select name="equipment" required>
+        <option value="" disabled selected>Select equipment</option>
+        <option value="Bodyweight">Bodyweight</option>
+        <option value="Dumbbell">Dumbbell</option>
+        <option value="Barbell">Barbell</option>
+        <option value="Kettlebell">Kettlebell</option>
+        <option value="Resistance Band">Resistance Band</option>
+        <option value="Cable">Cable</option>
+        <option value="Machine">Machine</option>
+        <option value="Smith Machine">Smith Machine</option>
+        <option value="Medicine Ball">Medicine Ball</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <button type="button" onclick="addEquipmentSelect()">Add Another Equipment</button><br />
 
-    <script src="/js/addExercises.js"></script>
+    <label>Select Muscles:</label><br />
+    <div id="muscle-selects">
+      <select name="muscles" required>
+        <option value="" disabled selected>Select a muscle</option>
+        <% muscles.forEach(function(muscle) { %>
+          <option value="<%= muscle._id %>"><%= muscle.name %></option>
+        <% }); %>
+      </select>
+    </div>
+    <button type="button" onclick="addMuscleSelect()">Add Another Muscle</button><br />
+
+    <label for="movement">Movement Type:</label>
+    <select id="movement" name="movement" required>
+      <option value="" disabled selected>Select a movement</option>
+      <option value="Push">Push</option>
+      <option value="Pull">Pull</option>
+      <option value="Squat">Squat</option>
+      <option value="Lunge">Lunge</option>
+      <option value="Hinge">Hinge</option>
+      <option value="Rotation">Rotation</option>
+      <option value="Carry">Carry</option>
+      <option value="Jump">Jump</option>
+      <option value="Plyometric">Plyometric</option>
+      <option value="Isometric">Isometric</option>
+    </select><br />
+
+    <label for="trainingType">Training Type:</label>
+    <select id="trainingType" name="trainingType" required>
+      <option value="" disabled selected>Select a training type</option>
+      <option value="Strength">Strength</option>
+      <option value="Endurance">Endurance</option>
+      <option value="Hypertrophy">Hypertrophy</option>
+      <option value="Balance">Balance</option>
+      <option value="HIIT">HIIT</option>
+      <option value="Power">Power</option>
+    </select><br />
+
+    <label for="category">Category:</label>
+    <select id="category" name="category" required>
+      <option value="" disabled selected>Select a category</option>
+      <option value="Bodybuilding">Bodybuilding</option>
+      <option value="CrossFit">CrossFit</option>
+      <option value="Functional">Functional</option>
+      <option value="Powerlifting">Powerlifting</option>
+      <option value="Yoga">Yoga</option>
+      <option value="Rehabilitation">Rehabilitation</option>
+    </select><br />
+
+    <label>Tags:</label><br />
+    <div id="tags-checkboxes">
+      <label><input type="checkbox" name="tags" value="Fat Loss"> Fat Loss</label><br />
+      <label><input type="checkbox" name="tags" value="Muscle Gain"> Muscle Gain</label><br />
+      <label><input type="checkbox" name="tags" value="Endurance"> Endurance</label><br />
+      <label><input type="checkbox" name="tags" value="Core Strength"> Core Strength</label><br />
+      <label><input type="checkbox" name="tags" value="Powerlifting"> Powerlifting</label><br />
+      <label><input type="checkbox" name="tags" value="Athletic Training"> Athletic Training</label><br />
+      <label><input type="checkbox" name="tags" value="Strength"> Strength</label><br />
+      <label><input type="checkbox" name="tags" value="Flexibility"> Flexibility</label><br />
+      <label><input type="checkbox" name="tags" value="Rehab"> Rehab</label><br />
+      <label><input type="checkbox" name="tags" value="Mobility"> Mobility</label><br />
+      <label><input type="checkbox" name="tags" value="Explosiveness"> Explosiveness</label><br />
+      <label><input type="checkbox" name="tags" value="Grip Strength"> Grip Strength</label><br />
+      <label><input type="checkbox" name="tags" value="Isometric"> Isometric</label><br />
+      <label><input type="checkbox" name="tags" value="Plyometric"> Plyometric</label><br />
+      <label><input type="checkbox" name="tags" value="Full Body"> Full Body</label><br />
+      <label><input type="checkbox" name="tags" value="Upper Body"> Upper Body</label><br />
+      <label><input type="checkbox" name="tags" value="Lower Body"> Lower Body</label><br />
+      <label><input type="checkbox" name="tags" value="Cardio"> Cardio</label><br />
+      <label><input type="checkbox" name="tags" value="Bodyweight Only"> Bodyweight Only</label><br />
+      <label><input type="checkbox" name="tags" value="Weightlifting"> Weightlifting</label><br />
+    </div>
+
+    <button type="submit">Add Exercise</button>
+  </form>
+
+  <script src="/js/addExercises.js"></script>
 </body>
 </html>

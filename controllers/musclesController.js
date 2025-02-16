@@ -14,44 +14,25 @@ exports.getAllMuscles = catchAsync(async (req, res) => {
 });
 
 exports.addMuscle = catchAsync(async (req, res) => {
-  const {
-    name,
-    latinName,
-    bodyPart,
-    muscleGroup,
-    description,
-    movements,
-    exercises,
-    equipment,
-  } = req.body;
+  const { name, latinName, bodyPart, muscleGroup, information, description, movements } = req.body;
 
   const existingMuscle = await Muscles.findOne({ name });
   if (existingMuscle) {
-    return res.status(400).render("addMuscle", {
-      title: "Add Muscle",
-      error: "A muscle with this name already exists.",
-      formData: req.body,
-    });
+    return res.status(400).json({ message: "Muscle already exists" });
   }
-
-  const exercisesArray = exercises
-    ? exercises.split(",").map((exercise) => exercise.trim())
-    : [];
-  const equipmentArray = equipment
-    ? equipment.split(",").map((equip) => equip.trim())
-    : [];
 
   const newMuscle = new Muscles({
     name,
     latinName,
     bodyPart,
     muscleGroup,
+    information,
     description,
     movements,
-    exercises: exercisesArray,
-    equipment: equipmentArray,
   });
+
   await newMuscle.save();
+  
   res.status(200).json({
     status: "success",
     data: { newMuscle },

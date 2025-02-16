@@ -12,34 +12,31 @@
   }
   .container {
     form {
-      div {
-        .trainingDays {
-          #muscle-select {
-            .trainingDay {
-              .muscle-select {
-                display: flex;
+      #basic-info {}
+      #trainingDays {
+        .trainingDay {
+        }
+      }
+      #muscle-select {
+        display: flex;
 
-                .svg-container {
-                  max-width: 400px;
-                  margin-right: 2rem;
+        .svg-container {
+          max-width: 400px;
+          margin-right: 2rem;
 
-                  svg {
-                    height: 70vh;
+          svg {
+            height: 70vh;
+            fill: white;
+            // Hover effects for individual muscles
+            .muscle {
+              &.filled {
+                fill: red;
+              }
 
-                    // Hover effects for individual muscles
-                    .muscle {
-                      &.filled {
-                        fill: red;
-                      }
-
-                      // Hover effects for specific muscles
-                      &:hover {
-                        fill: red;
-                        cursor: pointer;
-                      }
-                    }
-                  }
-                }
+              // Hover effects for specific muscles
+              &:hover {
+                fill: red;
+                cursor: pointer;
               }
             }
           }
@@ -268,4 +265,39 @@
       }
     }
   }
+  .custom-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 180px;
+  }
+  
+  .dropdown-header {
+    padding: 8px;
+    background: #f8f9fa;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dropdown-arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+  }
+  
+  .dropdown-content.show {
+    display: block;
+  }
+  
 }

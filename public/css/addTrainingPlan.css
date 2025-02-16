@@ -10,20 +10,21 @@
 * h2 {
   font-family: permanent marker;
 }
-* .container form div .trainingDays #muscle-select .trainingDay .muscle-select {
+* .container form #muscle-select {
   display: flex;
 }
-* .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container {
+* .container form #muscle-select .svg-container {
   max-width: 400px;
   margin-right: 2rem;
 }
-* .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg {
+* .container form #muscle-select .svg-container svg {
   height: 70vh;
+  fill: white;
 }
-* .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .muscle.filled {
+* .container form #muscle-select .svg-container svg .muscle.filled {
   fill: red;
 }
-* .container form div .trainingDays #muscle-select .trainingDay .muscle-select .svg-container svg .muscle:hover {
+* .container form #muscle-select .svg-container svg .muscle:hover {
   fill: red;
   cursor: pointer;
 }
@@ -212,4 +213,34 @@
 * .container .modal-exercise-back .modal-exercise .wrapper_adjust .save:hover {
   color: black;
   background-color: red;
+}
+* .custom-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 180px;
+}
+* .dropdown-header {
+  padding: 8px;
+  background: #f8f9fa;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+* .dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+* .dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+}
+* .dropdown-content.show {
+  display: block;
 }/*# sourceMappingURL=addTrainingPlan.css.map */

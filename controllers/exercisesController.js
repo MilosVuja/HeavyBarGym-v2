@@ -1,9 +1,9 @@
+const Muscles = require("../models/musclesModel");
 const Exercises = require("../models/exercisesModel");
 const catchAsync = require("../utilities/catchAsync");
 
 const multer = require("multer");
 const upload = multer();
-
 
 exports.getAllExercises = catchAsync(async (req, res, next) => {
   const exercises = await Exercises.find();
@@ -37,49 +37,86 @@ exports.getExercise = catchAsync(async (req, res, next) => {
   next();
 });
 
-exports.FilteredExercises = catchAsync(async (req, res, next) => {
-  const { muscles } = req.query;
+exports.getFilteredExercises = catchAsync(async (req, res, next) => {
+  let filter = {};
 
-  if (!muscles || muscles.length === 0) {
-    return res.status(400).json({ status: "error", message: "No muscles provided." });
+  const {
+    search,
+    muscles,
+    trainingType,
+    category,
+    equipment,
+    movement,
+  } = req.query;
+
+  if (search) {
+    filter.$text = { $search: search };
   }
 
-  try {
-    const parsedMuscles = JSON.parse(muscles);
-
-    const exercises = await Exercises.find({ muscles: { $in: parsedMuscles } });
-
-    const groupedExercises = parsedMuscles.map((muscle) => {
-      return {
-        muscle,
-        exercises: exercises.filter((exercise) => exercise.muscles.includes(muscle))
-      };
-    });
-
-    res.json({ status: "success", groupedExercises });
-  } catch (error) {
-    res.status(500).json({ status: "error", message: "Failed to fetch exercises." });
+  if (trainingType) {
+    filter.trainingType = trainingType;
   }
+
+  if (category) {
+    filter.category = category;
+  }
+
+  if (muscles) {
+    const muscleNames = muscles.split(",");
+    const muscleIds = await Muscles.find({ name: { $in: muscleNames } }).select("_id");
+    filter.muscles = { $in: muscleIds.map((m) => m._id) };
+  }
+
+  if (equipment) {
+    const equipmentValues = equipment.split(",");
+    filter.equipment = { $in: equipmentValues.map(e => new RegExp(`^${e}$`, "i")) };
+  }
+
+
+  if (movement) {
+    const movementValues = movement.split(",");
+    filter.movement = { $in: movementValues.map(e => new RegExp(`^${e}$`, "i")) };
+  }
+
+  const exercises = await Exercises.find(filter);
+
+  res.status(200).json({
+    status: "success",
+    results: exercises.length,
+    data: exercises,
+  });
 });
 
 exports.addExercise = [
   upload.none(),
   catchAsync(async (req, res) => {
-    const { name, thumbnail, video, instruction, muscle } = req.body;
 
-    if (!name || !thumbnail || !video || !instruction || !muscle) {
+    const {
+      name,
+      thumbnail,
+      video,
+      instruction,
+      muscles,
+      equipment,
+      movement,
+      trainingType,
+      category,
+      repetitions,
+      timePerSet,
+      tags,
+    } = req.body;
+
+    let musclesArray, equipmentArray, tagsArray;
+
+    try {
+      musclesArray = JSON.parse(muscles);
+      equipmentArray = equipment ? JSON.parse(equipment) : [];
+      tagsArray = tags ? JSON.parse(tags) : [];
+    } catch (err) {
+      console.error("Error parsing JSON arrays:", err);
       return res.status(400).json({
         message:
-          "All fields are required, and at least one muscle must be selected.",
-      });
-    }
-
-    let musclesArray;
-    try {
-      musclesArray = JSON.parse(muscle);
-    } catch (err) {
-      return res.status(400).json({
-        message: "Invalid format for muscle. It should be a valid JSON array.",
+          "Invalid format for muscles, equipment, or tags. They should be valid JSON arrays.",
       });
     }
 
@@ -102,12 +139,28 @@ exports.addExercise = [
       video,
       instruction,
       muscles: musclesArray,
+      equipment: equipmentArray,
+      movement,
+      trainingType,
+      category,
+      repetitions,
+      timePerSet,
+      tags: tagsArray,
     });
 
-    await newExercise.save();
-    res.status(201).json({
-      status: "success",
-      data: { newExercise },
-    });
+    try {
+      await newExercise.save();
+      res.status(201).json({
+        status: "success",
+        data: { newExercise },
+      });
+    } catch (err) {
+      console.error("MongoDB Save Error:", err);
+      res.status(500).json({
+        status: "error",
+        message: "Failed to save exercise",
+        error: err.message,
+      });
+    }
   }),
 ];

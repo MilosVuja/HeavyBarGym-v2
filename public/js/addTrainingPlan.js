@@ -22,7 +22,6 @@ function addMuscleClickListeners() {
         musclePaths.forEach((p) => p.classList.remove("highlighted"));
         this.classList.add("highlighted");
       } catch (error) {
-        console.error("Error fetching muscle data:", error);
       }
     });
   });
@@ -56,7 +55,7 @@ function addMuscleClickListeners() {
         selectedMuscles.push({ name: muscleName });
         updateSelectedMusclesList();
       } else {
-        console.error("No muscle selected to add.");
+        alert("Please select a muscle first.");
       }
     });
 }
@@ -150,10 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .getElementById("choose-exercises-button")
-    .addEventListener("click", setupContainersAndFetchExercises);
+    .addEventListener("click", setupContainers);
 });
 
-function setupContainersAndFetchExercises() {
+function setupContainers() {
   const muscleNames = selectedMuscles.map((muscle) => muscle.name);
 
   if (muscleNames.length === 0) {
@@ -161,9 +160,100 @@ function setupContainersAndFetchExercises() {
     return;
   }
 
+  let selectExercises = document.getElementById("select-exercises");
+  let filtersContainer = document.getElementById("exercise-filters");
+
+  if (!filtersContainer) {
+    filtersContainer = document.createElement("div");
+    filtersContainer.id = "exercise-filters";
+    filtersContainer.style.cssText = `
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    `;
+
+    const searchInput = document.createElement("input");
+    searchInput.type = "text";
+    searchInput.id = "search-exercise";
+    searchInput.placeholder = "Search exercise...";
+    searchInput.addEventListener("input", applyFilters);
+
+    const equipmentDropdown = createCustomDropdown(
+      "Equipment",
+      ["Bodyweight", "Dumbbell", "Barbell", "Machine"],
+      "filter-equipment"
+    );
+
+    const movementDropdown = createCustomDropdown(
+      "Movement",
+      [
+        "Push",
+        "Pull",
+        "Squat",
+        "Lunge",
+        "Hinge",
+        "Rotation",
+        "Anti-Extension",
+        "Anti-Rotation",
+        "Carry",
+        "Jump",
+        "Plyometric",
+        "Isometric",
+        "Stability",
+        "Flexion",
+        "Extension",
+        "Abduction",
+        "Adduction",
+        "Explosive",
+        "Dynamic",
+        "Static",
+        "Running",
+        "Rowing",
+        "Walking",
+        "Cycling",
+      ],
+      "filter-movement"
+    );
+
+    const trainingTypeFilter = document.createElement("select");
+    trainingTypeFilter.id = "filter-trainingType";
+    trainingTypeFilter.innerHTML = `
+      <option value="">Select Training Type</option>
+      <option value="Strength">Strength</option>
+      <option value="Cardio">Cardio</option>
+      <option value="Flexibility">Flexibility</option>
+      <option value="Hypertrophy">Hypertrophy</option>
+      <option value="Balance">Balance</option>
+      <option value="HIIT">HIIT</option>
+      <option value="Endurance">Endurance</option>
+      <option value="Power">Power</option>
+    `;
+    trainingTypeFilter.addEventListener("change", applyFilters);
+
+    const categoryFilter = document.createElement("select");
+    categoryFilter.id = "filter-category";
+    categoryFilter.innerHTML = `
+      <option value="">Select Category</option>
+      <option value="Bodybuilding">Bodybuilding</option>
+      <option value="CrossFit">CrossFit</option>
+      <option value="Function">Functional</option>
+      <option value="Powerlifting">Powerlifting</option>
+      <option value="Yoga">Yoga</option>
+      <option value="Rehabilitation">Rehabilitation</option>
+
+    `;
+    categoryFilter.addEventListener("change", applyFilters);
+
+    filtersContainer.appendChild(searchInput);
+    filtersContainer.appendChild(equipmentDropdown);
+    filtersContainer.appendChild(movementDropdown);
+    filtersContainer.appendChild(trainingTypeFilter);
+    filtersContainer.appendChild(categoryFilter);
+    selectExercises.prepend(filtersContainer);
+  }
+
   let exercisesContainer = document.getElementById("exercises-container");
   let chosenExercisesContainer = document.getElementById("chosen-exercises");
-  const selectExercises = document.getElementById("select-exercises");
 
   if (!exercisesContainer) {
     exercisesContainer = document.createElement("div");
@@ -191,27 +281,114 @@ function setupContainersAndFetchExercises() {
     selectExercises.appendChild(chosenExercisesContainer);
   }
 
-  fetchAndDisplayExercises();
+  fetchExercises();
 }
 
-function fetchAndDisplayExercises() {
-  const muscleNames = selectedMuscles.map((muscle) => muscle.name);
-  const queryString = `muscles=${encodeURIComponent(
-    JSON.stringify(muscleNames)
-  )}`;
+function createCustomDropdown(title, options, id) {
+  const dropdown = document.createElement("div");
+  dropdown.classList.add("custom-dropdown");
 
-  fetch(`/api/v1/exercises?${queryString}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
+  const dropdownHeader = document.createElement("div");
+  dropdownHeader.classList.add("dropdown-header");
+  dropdownHeader.textContent = `Select ${title}`;
+
+  const arrowIcon = document.createElement("span");
+  arrowIcon.innerHTML = "▼";
+  arrowIcon.classList.add("dropdown-arrow");
+
+  dropdownHeader.appendChild(arrowIcon);
+  dropdown.appendChild(dropdownHeader);
+
+  const dropdownContent = document.createElement("div");
+  dropdownContent.classList.add("dropdown-content");
+  dropdownContent.id = id;
+
+  options.forEach((option) => {
+    const label = document.createElement("label");
+    label.style.display = "block";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = option.toLowerCase();
+    checkbox.dataset.filterType = id.replace("filter-", "");
+
+    checkbox.addEventListener("change", applyFilters);
+
+    label.appendChild(checkbox);
+    label.append(option);
+    dropdownContent.appendChild(label);
+  });
+
+  dropdown.appendChild(dropdownContent);
+
+  dropdownHeader.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = dropdownContent.classList.toggle("show");
+    arrowIcon.style.transform = isOpen ? "rotate(180deg)" : "rotate(0deg)";
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdownContent.classList.remove("show");
+      arrowIcon.style.transform = "rotate(0deg)";
+    }
+  });
+
+  return dropdown;
+}
+
+function applyFilters() {
+  const selectedFilters = {
+    equipment: [],
+    movement: [],
+    trainingType: "",
+    category: "",
+    search: "",
+  };
+
+  document
+    .querySelectorAll(
+      "#filter-equipment input:checked, #filter-movement input:checked"
+    )
+    .forEach((checkbox) => {
+      selectedFilters[checkbox.dataset.filterType].push(checkbox.value);
+    });
+
+  selectedFilters.trainingType = document.getElementById(
+    "filter-trainingType"
+  ).value;
+  selectedFilters.category = document.getElementById("filter-category").value;
+
+  selectedFilters.search = document
+    .getElementById("search-exercise")
+    .value.trim();
+
+  fetchExercises(selectedFilters);
+}
+
+function fetchExercises(filters = {}) {
+  const muscleNames = selectedMuscles.map((muscle) => muscle.name);
+  let queryParams = new URLSearchParams();
+
+  if (muscleNames.length > 0) {
+    queryParams.set("muscles", muscleNames.join(","));
+  }
+
+  Object.keys(filters).forEach((key) => {
+    if (Array.isArray(filters[key]) && filters[key].length > 0) {
+      queryParams.set(key, filters[key].join(","));
+    } else if (typeof filters[key] === "string" && filters[key]) {
+      queryParams.set(key, filters[key]);
+    }
+  });
+
+  fetch(`/api/v1/exercises/filter?${queryParams.toString()}`)
+    .then((response) => response.json())
     .then((data) => {
       if (data.status === "success") {
-        displayExercises(data.groupedExercises);
+        displayExercises(data.data);
       } else {
-        alert(data.message || "Failed to fetch exercises.");
+        alert("Failed to fetch exercises.");
       }
     })
     .catch(() => {
@@ -229,24 +406,25 @@ function displayExercises(groupedExercises) {
     return;
   }
 
-  groupedExercises.forEach((group) => {
-    const muscleHeader = document.createElement("h2");
-    muscleHeader.textContent = group.muscle;
-    exercisesContainer.appendChild(muscleHeader);
+  groupedExercises.forEach((exercise) => {
+    if (!exercise.name) {
+      return;
+    }
 
-    group.exercises.forEach((exercise) => {
-      const exerciseCard = document.createElement("div");
-      exerciseCard.classList.add("exercise-card");
-      exerciseCard.setAttribute("draggable", "true");
-      exerciseCard.setAttribute("data-name", exercise.name);
-      exerciseCard.setAttribute("data-video", exercise.video);
-      exerciseCard.setAttribute("data-instruction", exercise.instruction);
-      exerciseCard.setAttribute("data-thumbnail", exercise.thumbnail);
+    const exerciseCard = document.createElement("div");
+    exerciseCard.classList.add("exercise-card");
+    exerciseCard.setAttribute("draggable", "true");
+    exerciseCard.setAttribute("data-name", exercise.name);
+    exerciseCard.setAttribute("data-video", exercise.video || "");
+    exerciseCard.setAttribute("data-instruction", exercise.instruction || "");
+    exerciseCard.setAttribute("data-thumbnail", exercise.thumbnail || "");
 
-      exerciseCard.innerHTML = `
+    const thumbnailSrc = exercise.thumbnail || "/path/to/default/thumbnail.jpg";
+
+    exerciseCard.innerHTML = `
       <h3>${exercise.name}</h3>
       <img 
-        src="${exercise.thumbnail}" 
+        src="${thumbnailSrc}" 
         alt="Thumbnail for ${exercise.name}" 
         width="300" 
         height="200"
@@ -254,12 +432,11 @@ function displayExercises(groupedExercises) {
       />
     `;
 
-      exercisesContainer.appendChild(exerciseCard);
+    exercisesContainer.appendChild(exerciseCard);
 
-      exerciseCard.addEventListener("dragstart", (e) => {
-        e.dataTransfer.setData("text/html", exerciseCard.outerHTML);
-        e.dataTransfer.effectAllowed = "copy";
-      });
+    exerciseCard.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text/html", exerciseCard.outerHTML);
+      e.dataTransfer.effectAllowed = "copy";
     });
   });
 }
@@ -303,7 +480,6 @@ function addDeleteButton(card) {
   card.appendChild(deleteButton);
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -331,8 +507,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
   let chosenExercisesContainer = document.querySelector("#chosen-exercises");
@@ -538,26 +712,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.updateField = function (element, type, increment) {
       const valueElement = element.closest(".counter").querySelector(".value");
-      
+
       let currentValue = parseFloat(valueElement.value);
       if (isNaN(currentValue)) {
         currentValue = 0;
       }
-    
+
       if (currentValue + increment < 0) {
         currentValue = 0;
       } else {
         currentValue += increment;
       }
-    
+
       if (!isNaN(currentValue)) {
         valueElement.value = currentValue.toFixed(type === "weight" ? 1 : 0);
       } else {
-        console.error("Invalid number for currentValue:", currentValue);
         valueElement.value = 0;
       }
     };
-    
   }
 });
 

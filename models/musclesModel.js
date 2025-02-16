@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
-const musclesSchema = new mongoose.Schema({
+const muscleSchema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
     enum: [
       "Trapezius",
       "Front Deltoideus",
@@ -10,26 +11,29 @@ const musclesSchema = new mongoose.Schema({
       "Rear Deltoideus",
       "Upper Chest",
       "Middle Chest",
+      "Lower Chest",
       "Upper Back",
       "Latissimus",
       "Lower Back",
-      "Tricep",
-      "Bicep",
+      "Triceps",
+      "Biceps",
+      "Forearm",
       "Abdominals",
       "Side Abs",
-      "Forearm",
       "Gluteus",
       "Quadriceps",
+      "Hamstrings",
+      "Calves",
       "Adductor",
       "Abductor",
-      "Hamstrings",
       "Tibialis",
-      "Calfs",
+      "TEST"
     ],
-    required: true,
   },
+
   latinName: {
     type: String,
+    required: true,
     enum: [
       "Trapezius",
       "Anterior Deltoideus",
@@ -37,38 +41,40 @@ const musclesSchema = new mongoose.Schema({
       "Posterior Deltoideus",
       "Pectoralis Minor",
       "Pectoralis Major",
-      "Upper Back",
+      "Rhomboids",
       "Latissimus Dorsi",
-      "Lower Back",
+      "Erector Spinae",
       "Triceps Brachii",
       "Biceps Brachii",
-      "Antebrachium",
+      "Brachialis",
       "Rectus Abdominis",
-      "Abdominal external oblique",
-      "Gluteus maximus",
-      "Quadriceps",
-      "Adductors",
-      "Abductors",
+      "Obliques",
+      "Gluteus Maximus",
+      "Quadriceps Femoris",
       "Biceps Femoris",
       "Gastrocnemius",
+      "Adductors",
+      "Abductors",
       "Tibialis Anterior",
+      "TESTIS",
     ],
-    required: true,
   },
+
   bodyPart: {
     type: String,
-    enum: ["Upper Body", "Lower Body"],
     required: true,
+    enum: ["Upper Body", "Lower Body", "Full Body"],
   },
+
   muscleGroup: {
     type: String,
-    enum: ["Chest", "Back", "Shoulders", "Arms", "Legs", "Abdomen", "Glutes"],
     required: true,
+    enum: ["Chest", "Back", "Shoulders", "Arms", "Legs", "Abs", "Glutes"],
   },
+
+  information: { type: String, required: true },
   description: { type: String, required: true },
   movements: { type: String, required: true },
-  exercises: { type: Array, required: true },
-  equipment: { type: Array, required: true },
 });
 
-module.exports = mongoose.model("Muscles", musclesSchema);
+module.exports = mongoose.model("Muscle", muscleSchema);

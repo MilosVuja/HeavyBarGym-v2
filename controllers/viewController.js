@@ -49,9 +49,10 @@ exports.getAddMusclePage = (req, res) => {
   });
 };
 
-exports.getAddExercisePage = (req, res) => {
+exports.getAddExercisePage = catchAsync(async (req, res) => {
+  const muscles = await Muscles.find();
   res.status(200).render("addExercises", {
     title: "Add Exercise",
-    muscles: res.locals.muscles,
+    muscles: muscles,
   });
-};
+});

@@ -5,7 +5,8 @@ const authController = require("../controllers/authController");
 const router = express.Router();
 
 //exercises
-router.get("/", authController.protect, exercisesController.FilteredExercises);
+router.get("/", authController.protect, exercisesController.getAllExercises);
+router.get("/filter", authController.protect, exercisesController.getFilteredExercises);
 
 router.get("/:id", authController.protect, exercisesController.getExercise);
 

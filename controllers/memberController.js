@@ -249,7 +249,6 @@ exports.getAdminMemberTraining = catchAsync(async (req, res, next) => {
 });
 
 exports.assignTrainingPlan = catchAsync(async (req, res, next) => {
-  console.log("Assigning training plan for member ID:", req.params.id);
   const { trainingPlanId } = req.body;
 
   const member = await Member.findById(req.params.id);
